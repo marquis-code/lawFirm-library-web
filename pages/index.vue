@@ -20,10 +20,10 @@
 
       <div class="max-w-7xl mx-auto px-4 py-16 md:py-24">
         <div class="relative z-10 max-w-3xl mx-auto text-center ">
-          <h1 class="text-4xl md:text-7xl font-semibold leading-relaxed text-[#292929] mb-6">
+          <h1 data-aos="fade-up"  class="text-4xl md:text-7xl font-semibold leading-relaxed text-[#292929] mb-6">
             Live Together, Share Comfortably
           </h1>
-          <p class="text-lg md:text-xl text-[#1D2739] mb-8">
+          <p data-aos="fade-up"  class="text-lg md:text-xl text-[#1D2739] mb-8">
             Find, Share, and Effortlessly Manage Your Ideal Home in One Place.
           </p>
           <button @click="handleSignin"
