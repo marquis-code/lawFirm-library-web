@@ -12,7 +12,7 @@ export default defineNuxtConfig({
   },
   app: {
     head: {
-      title: "Buildr - Build the future of your business",
+      title: "BlackCountry - Live Together, Share Comfortably",
       htmlAttrs: { lang: "en" },
       meta: [
         { charset: "utf-8" },
@@ -49,12 +49,12 @@ export default defineNuxtConfig({
       enabled: true
     },
     meta: {
-      title: "Buildr - Build the future of your business",
+      title: "BlackCountry - Live Together, Share Comfortably",
       author: "Marquis",
       mobileAppIOS: false,
       mobileApp: true,
       description:
-        "specialize in software development, product design, and bespoke solutions to help businesses innovate and thrive in the digital age.",
+        "Find, Share, and Effortlessly Manage Your Ideal Home in One Place..",
       theme_color: "#27396B",
       background_color: "#27396B",
       display: "standalone",
@@ -95,5 +95,27 @@ export default defineNuxtConfig({
         strategyOptions: { cacheableResponse: { statuses: [0, 200] } },
       },
     ],
-  }
+  },
+  vite: {
+    optimizeDeps: {
+      include: ['fast-deep-equal']
+    },
+    build: {
+      // transpile: ['@vueup/vue-quill'],
+      rollupOptions: {
+        output: {
+          manualChunks(id) {
+            if (id.includes("pdfjs-dist")) {
+              return "pdfjs";
+            }
+          },
+        },
+      },
+    },
+    // server: {
+    //   fs: {
+    //     allow: ["public/lib"],
+    //   },
+    // },
+  },
 });
