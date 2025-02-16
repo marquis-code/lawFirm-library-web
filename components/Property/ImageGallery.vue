@@ -83,7 +83,7 @@ const openCarousel = () => {
   
   // Function to handle "View all" navigation
   const navigateToAllImages = () => {
-    router.push(`/dashboard/listings/${props?.property?.id}/property-gallery`); // Adjust the route as needed
+    router.push(`/property/${props?.property?.id}/property-gallery`); // Adjust the route as needed
   };
   </script>
   

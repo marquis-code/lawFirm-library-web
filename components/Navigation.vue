@@ -1,22 +1,22 @@
 <template>
-  <nav class="bg-white fixed w-full top-0 px-3 lg:px-0 z-50">
-    <div class="max-w-4xl bg-[#EAEAEA66] mt-5 rounded-3xl mx-auto h-20 px-4 sm:px-6 lg:px-8">
+  <nav class="fixed w-full top-0 px-3 lg:px-0 z-50">
+    <div class="max-w-4xl bg-white/30 backdrop-blur-lg mt-5 rounded-3xl mx-auto h-20 px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between pt-5 items-center">
         <div class="flex items-center space-x-8">
           <NuxtLink to="/"><img src="@/assets/icons/logo.svg" alt="BlackCountry" class="h-10" /></NuxtLink>
         </div>
         <div class="hidden md:flex space-x-6">
-          <a href="#" class="text-[#292929] font-medium">Tenants</a>
-          <a href="#" class="text-[#292929] font-medium">Agents</a>
-          <a href="#" class="text-[#292929] font-medium">Service Providers</a>
-          <a href="#" class="text-[#292929] font-medium">About Us</a>
+          <a @click="handleNavigate('tenant')" href="#tenants" class="text-[#292929] font-medium">Tenants</a>
+          <a @click="handleNavigate('agent')" href="#agents" class="text-[#292929] font-medium">Agents</a>
+          <a @click="handleNavigate('service-provider')" href="#agents" class="text-[#292929] font-medium">Service Providers</a>
+          <a @click="handleNavigate('about-us')" href="#about-us" class="text-[#292929] font-medium">About Us</a>
         </div>
         <div class="relative" ref="dropdownRef">
           <button @click="toggleDropdown"
             class="bg-[#326543] hidden lg:block text-white px-6 py-3 rounded-md hover:bg-green-800 focus:outline-none">
             Login
           </button>
-          <button class="lg:hidden">
+          <button @click="openNav = true" class="lg:hidden">
             <svg width="30" height="31" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M3.33325 4.69743H16.6666" stroke="#292929" stroke-width="1.5" stroke-linecap="round"
                 stroke-linejoin="round" />
@@ -66,6 +66,8 @@
       </div>
     </div>
   </nav>
+
+  <SideNavigation @close="handleClose" v-if="openNav" />
 </template>
 
 <style>
@@ -94,6 +96,12 @@ const handleRedirect = () => {
   isDropdownOpen.value = false
 }
 
+const openNav = ref(false)
+
+const handleClose = () => {
+  openNav.value = false
+}
+
 // Close dropdown when clicking outside
 onClickOutside(dropdownRef, () => {
   isDropdownOpen.value = false;
@@ -102,4 +110,8 @@ onClickOutside(dropdownRef, () => {
 const toggleDropdown = () => {
   isDropdownOpen.value = !isDropdownOpen.value;
 };
+
+const handleNavigate = (item: any) => {
+  router.push('/')
+}
 </script>

@@ -1,5 +1,6 @@
 <template>
-    <div class="flex flex-col items-center justify-center min-h-screen bg-white p-6">
+<main class="container mx-auto p-3">
+  <div class="flex flex-col items-center justify-center p-6">
       <div class="w-full">
        <div class="flex justify-center items-center">
        <img src="@/assets/icons/tenant-tag.svg" />
@@ -35,6 +36,7 @@
         </div>
       </div>
     </div>
+</main>
   </template>
   
   <script setup lang="ts">

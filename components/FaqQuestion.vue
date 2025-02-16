@@ -81,10 +81,10 @@ const toggleQuestion = (index: number) => {
 
 <template>
 <main class="bg-[#F9FAFB]">
-  <div class="max-w-3xl bg-[#F9FAFB] mx-auto p-6 py-10">
-    <h2 class="text-xl text-[#1D2739] md:text-2xl font-semibold text-center mb-6">Frequently Asked Questions</h2>
+  <div class="max-w-3xl bg-[#F9FAFB] mx-auto p-6 py-20">
+    <h2 data-aos="fade-up" class="text-xl text-[#1D2739] md:text-2xl font-semibold text-center mb-6">Frequently Asked Questions</h2>
     
-    <div class="flex justify-center lg:gap-4 mb-6">
+    <!-- <div data-aos="fade-up" class="flex justify-center lg:gap-4 mb-6">
       <button 
         class="px-4 py-2 lg:py-3 rounded-lg border-[0.5px] border-gray-25 text-base lg:text-sm transition-all duration-200"
         v-for="tab in ['Tenant', 'Agent', 'Service Provider']" 
@@ -93,10 +93,24 @@ const toggleQuestion = (index: number) => {
         :class="activeTab === tab ? 'bg-[#292929] text-white' : 'bg-[#F0F2F5] text-[#1D2739]'">
         {{ tab }}
       </button>
+    </div> -->
+
+    <div data-aos="fade-up" class="flex justify-center lg:gap-4 mb-6 overflow-x-auto whitespace-nowrap">
+      <div class="flex gap-2">
+        <button 
+          class="px-4 py-2 lg:py-3 rounded-lg border-[0.5px] border-gray-25 text-base lg:text-sm transition-all duration-200"
+          v-for="tab in ['Tenant', 'Agent', 'Service Provider']" 
+          :key="tab"
+          @click="activeTab = tab as any"
+          :class="activeTab === tab ? 'bg-[#292929] text-white' : 'bg-[#F0F2F5] text-[#1D2739]'">
+          {{ tab }}
+        </button>
+      </div>
     </div>
 
+
     
-    <div class="space-y-4">
+    <div data-aos="fade-up" class="space-y-4">
       <div 
         v-for="(faq, index) in faqData[activeTab]" 
         :key="index" 
@@ -105,7 +119,7 @@ const toggleQuestion = (index: number) => {
           class="w-full flex justify-between items-center  px-4 py-5 bg-white"
           @click="toggleQuestion(index)">
           <span class="font-mediuk=m text-start">{{ faq.question }}</span>
-          <span :class="openQuestion === index ? 'rotate-180' : 'rotate-0'" class="transition-transform">
+          <span :class="openQuestion === index ? 'rotate-0' : 'rotate-180'" class="transition-transform">
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M12 10C12 10 9.05407 6.00001 8 6C6.94587 5.99999 4 10 4 10" stroke="#667185" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>

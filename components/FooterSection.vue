@@ -1,21 +1,31 @@
 <template>
-  <div class="bg-[#1D1D1D] py-12 px-6 text-white">
-    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between">
-      <div class="md:w-1/2 text-center md:text-left bg-cover bg-center py-10 px-6 bg-[url(@/assets/img/app-download-bg.svg)]">
-  <p class="text-sm uppercase text-gray-400">App Download</p>
-  <h2 class="text-5xl font-medium mt-2">Download our mobile App</h2>
-  <p class="pt-6 text-gray-300">Manage Your Rental on the Go – Get the App</p>
+  <div class="bg-[#1D1D1D] pb-12 text-white relative z-[9999]">
+    <div class="flex flex-col  lg:py-12 lg:px-16 md:flex-row items-center justify-between bg-[url(@/assets/img/app-download-bg.svg)]">
+      <div class="md:w-1/2 text-center md:text-left bg-cover bg-center py-10 px-6 bg-[#1D1D1D]/30 backdrop-blur-lg rounded-xl">
+  <p data-aos="fade-up"  class="text-sm text-start lg:text-left uppercase text-gray-400">App Download</p>
+  <h2 data-aos="fade-up"  class="text-3xl lg:text-5xl text-start lg:text-left font-medium mt-2">Download our mobile App</h2>
+  <p  data-aos="fade-up" class="pt-6 text-start lg:text-left text-gray-300">Manage Your Rental on the Go – Get the App</p>
   
-  <div class="flex space-x-4 mt-10">
-    <button class="flex items-center space-x-2 bg-[#EBE5E0] text-black max-w-6xl w-full justify-center py-3.5 rounded-lg shadow-sm">
+  <div class="lg:flex lg:gap-4 space-y-4 lg:space-y-0 mt-10">
+  <button data-aos="fade-up" class="flex items-center justify-center space-x-2 bg-[#EBE5E0] text-black w-full lg:w-1/2 h-14 rounded-lg shadow-sm">
+    <img src="@/assets/icons/android.svg" alt="Google Playstore" class="w-5 h-5" />
+    <span>Google Playstore</span>
+  </button>
+  <button data-aos="fade-up" class="flex items-center justify-center space-x-2 bg-[#EBE5E0] text-black w-full lg:w-1/2 h-14 rounded-lg shadow-sm">
+    <img src="@/assets/icons/ios.svg" alt="App Store" class="w-5 h-5" />
+    <span>App store</span>
+  </button>
+</div>
+  <!-- <div class="lg:flex lg:space-x-2 space-y-4 lg:spsce-y-0 mt-10">
+    <button data-aos="fade-up" class="flex items-center space-x-2 bg-[#EBE5E0] text-black max-w-6xl w-full justify-center py-3.5 rounded-lg shadow-sm">
       <img src="@/assets/icons/android.svg" alt="Google Playstore" class="w-5 h-5" />
       <span>Google Playstore</span>
     </button>
-    <button class="flex items-center space-x-2 bg-[#EBE5E0] text-black max-w-6xl w-full justify-center py-3.5 rounded-lg shadow-sm">
+    <button data-aos="fade-up" class="flex items-center space-x-2 bg-[#EBE5E0] text-black max-w-6xl w-full justify-center py-3.5 rounded-lg shadow-sm">
       <img src="@/assets/icons/ios.svg" alt="App Store" class="w-5 h-5" />
       <span>App store</span>
     </button>
-  </div>
+  </div> -->
 </div>
 
       <!-- Right Content (Image) -->
@@ -31,12 +41,12 @@
   </div>
 
     <!-- Footer -->
-    <div class="max-w-6xl mx-auto mt-12 border-t border-gray-700 pt-6 flex flex-col md:flex-row items-center justify-between text-gray-400 text-sm">
+    <div class="max-w-6xl mx-auto space-y-4 lg:space-y-0 mt-12 border-t border-gray-700 pt-6 flex flex-col md:flex-row items-center justify-between text-gray-400 text-sm">
       <!-- <div class="flex items-center space-x-2">
         <img src="/icons/logo.svg" alt="BlackCountry" class="w-6 h-6" />
         <span>BlackCountry</span>
       </div> -->
-      <p class="text-[#F2EEEA]">&copy; 2024 BlackCountry. All rights reserved.</p>
+      <p  class="text-[#F2EEEA]">&copy; 2024 BlackCountry. All rights reserved.</p>
       <div class="flex space-x-4">
         <a href="#" class="hover:text-white text-[#F2EEEA]">Terms & Conditions</a>
         <a href="#" class="hover:text-white text-[#F2EEEA]">Privacy Policy</a>

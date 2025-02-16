@@ -1,7 +1,7 @@
 <template>
   <main>
     <div class="px-4">
-      <h3 class="text-[#1D2739] font-semibold text-2xl pb-3">
+      <h3 class="text-[#1D2739] font-medium text-2xl pb-3">
         {{ property?.name ?? 'Nil' }}
       </h3>
       <p class="flex items-center space-x- text-[#667185]">
@@ -17,26 +17,26 @@
         <span class="pl-3">{{ property?.address ?? 'Nil' }}</span>
       </p>
     </div>
-    <div class="flex flex-col lg:flex-row gap-6 px-4">
+    <div class="flex flex-col lg:flex-row gap-6 lg:px-4">
 
       <section class="lg:w-7/12 space-y-6 lg:p-0 p-4">
         <div class="max-w-3xl mx-auto bg-white">
           <!-- Dynamic Tabs -->
-          <div class="mt-4 flex space-x-2 overflow-x-auto hide-scrollbar scrollbar-hide">
+          <div data-aos="fade-up"  class="mt-4 flex space-x-2 overflow-x-auto hide-scrollbar scrollbar-hide">
             <button :class="[activeTab === 'property-overview' ? 'bg-[#EBE5E0]' : 'bg-[#F0F2F5]']"
               @click="handleSelectedTab('property-overview')"
-              class="text-[#292929] text-sm py-3 px-4 font-medium  rounded-md flex-shrink-0 whitespace-nowrap w-auto">
+              class="text-[#292929] text-sm py-3 outline-none px-4 font-medium  rounded-md flex-shrink-0 whitespace-nowrap w-auto">
               Property Overview
             </button>
             <button :class="[activeTab === 'common-areas' ? 'bg-[#EBE5E0]' : 'bg-[#F0F2F5]']"
               @click="handleSelectedTab('common-areas')"
-              class="text-[#292929] text-sm py-3 px-4 font-medium rounded-md flex-shrink-0 whitespace-nowrap w-auto">
+              class="text-[#292929] text-sm py-3 outline-none px-4 font-medium rounded-md flex-shrink-0 whitespace-nowrap w-auto">
               Common Areas
             </button>
             <button v-for="room in tabs" :key="room.id"
               :class="[activeTab === room.name ? 'bg-[#EBE5E0]' : 'bg-[#F0F2F5]']"
               @click="handleSelectedTab(room, 'dynamic')"
-              class="text-[#292929] text-sm py-3 px-4 font-medium rounded-md flex-shrink-0 whitespace-nowrap w-auto">
+              class="text-[#292929] text-sm py-3 outline-none px-4 font-medium rounded-md flex-shrink-0 whitespace-nowrap w-auto">
               {{ room.name }}
             </button>
           </div>
@@ -44,55 +44,55 @@
           <div v-if="activeTab === 'property-overview'" class="">
 
             <!-- <p class="text-sm text-gray-600">{{ property.description.value ?? 'No description available' }}</p> -->
-            <h2 class="text-base text-[#1D2739] font-semibold mb-2 mt-4 bg-white border-[0.5px] border-gray-50 py-5 px-3 rounded-lg border-gray-50">
+            <h2 data-aos="fade-up"  class="text-base text-[#1D2739] font-medium mb-2 mt-4 bg-white border-[0.5px] border-gray-50 py-5 px-3 rounded-lg border-gray-50">
               Property Description
             </h2>
 
-            <div class="pt-4 bg-white rounded-lg border-gray-50 p-3 py-5 border-[0.5px] mb-6 text-sm">
+            <div data-aos="fade-up"  class="pt-4 bg-white rounded-lg border-gray-50 p-3 py-5 border-[0.5px] mb-6 text-sm">
               <p class="text-[#1D2739] mt-2 leading-snug text-base">
                 {{ isExpanded ? property.description : truncatedText }}
-                <a v-if="property?.description?.length > 50" href="#" @click.prevent="toggleView" class="text-blue-500">
+                <a v-if="property?.description?.length > 50" href="#" @click.prevent="toggleView" class="text-[#326543]">
                   {{ isExpanded ? 'View less' : 'View more' }}
                 </a>
               </p>
             </div>
 
             <!-- Property Highlights -->
-            <h3
-            class="text-base text-[#1D2739] font-semibold mb-2 mt-4 bg-white border-[0.5px] border-gray-50 py-5 px-3 rounded-lg border-gray-50">
+            <h3 data-aos="fade-up" 
+            class="text-base text-[#1D2739] font-medium mb-2 mt-4 bg-white border-[0.5px] border-gray-50 py-5 px-3 rounded-lg border-gray-50">
               Property Highlights</h3>
             <div class="">
               <div class="gap-4 bg-white rounded-lg border-gray-50 border-[0.5px] border-gray-50 text-sm">
-                <div class="flex py-6 justify-between border-b-[0.5px] border-gray-50 px-4 items-center">
+                <div data-aos="fade-up"  class="flex py-6 justify-between border-b-[0.5px] border-gray-50 px-4 items-center">
                   <div class="text-[#667185]">Property size <span class="font-medium text-[#1D2739]">{{ property?.size ??
                       'Nil'}} {{ property?.sizeUnit ?? 'Nil' }}</span></div>
                   <div class="text-[#667185]">Flooring type <span
                       class="font-medium text-[#1D2739]">{{ property?.flooringType?.name ?? 'Nil' }}</span></div>
                 </div>
-                <div class="flex py-6 justify-between border-b-[0.5px] border-gray-50 px-4 items-center">
-                  <div class="text-[#667185]">Number of bedrooms <span
+                <div  data-aos="fade-up" class="flex py-6 justify-between border-b-[0.5px] border-gray-50 px-4 items-center">
+                  <div data-aos="fade-up"  class="text-[#667185]">Number of bedrooms <span
                       class="font-medium text-[#1D2739]">{{ property?.bedroomCount ?? 'Nil' }}</span></div>
-                  <div class="text-[#667185]">Number of bathrooms <span
+                  <div data-aos="fade-up"  class="text-[#667185]">Number of bathrooms <span
                       class="font-medium text-[#1D2739]d">{{ property?.bathroomCount ?? 'Nil' }}</span></div>
                 </div>
-                <div class="text-[#667185] border-gray-50 border-b-[0.5px] px-4 py-6">Floor number <span
+                <div data-aos="fade-up"  class="text-[#667185] border-gray-50 border-b-[0.5px] px-4 py-6">Floor number <span
                     class="font-medium text-[#1D2739]">{{ property?.floorNumber ?? 'Nil' }}</span></div>
-                <div class="flex py-6 justify-between border-b-[0.5px] border-gray-50 px-4 items-center">
-                  <div class="text-[#667185]">Architecture <span
+                <div data-aos="fade-up"  class="flex py-6 justify-between border-b-[0.5px] border-gray-50 px-4 items-center">
+                  <div data-aos="fade-up"  class="text-[#667185]">Architecture <span
                       class="font-medium text-[#1D2739]">{{ property?.houseType?.name ?? 'Nil' }}</span></div>
-                  <div class="text-[#667185]">{{ property?.availableRoomsCount ?? 'Nil' }} rooms available <span
+                  <div data-aos="fade-up"  class="text-[#667185]">{{ property?.availableRoomsCount ?? 'Nil' }} rooms available <span
                       class="text-[#326543]">Now</span></div>
                 </div>
               <div>
               </div>
-              <h2 class="text-sm py-3 font-medium text-[#667185] mt-6 py-3 px-3">
+              <h2 data-aos="fade-up"  class="text-sm py-3 font-medium text-[#667185] mt-6 py-3 px-3">
                 Co-living with <span class="text-[#1D2739]">{{ property?.bedroomCount - 1 }} Persons</span></h2>
-                <table class="w-full mt-2 table-fixed text-sm">
+                <table data-aos="fade-up"  class="w-full mt-2 table-fixed text-sm">
                   <thead>
-                    <tr class="bg-[#F9FAFB] rounded-lg">
-                      <th class="text-left text-sm py-3 pl-6 text-[#1D2739]">Occupants</th>
-                      <th class="text-left text-sm py-3 text-[#1D2739]">Room occupied</th>
-                      <th class="text-left text-sm py-3 text-[#1D2739]">Available from</th>
+                    <tr data-aos="fade-up"  class="bg-[#F9FAFB] rounded-lg">
+                      <th class="text-left text-sm py-3 font-light pl-6 text-[#1D2739]">Occupants</th>
+                      <th class="text-left text-sm py-3 font-light text-[#1D2739]">Room occupied</th>
+                      <th class="text-left text-sm py-3 font-light text-[#1D2739]">Available from</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -109,6 +109,7 @@
             <section class="mt-10">
               <!-- <h2 class="text-sm font-medium text-[#667185] mt-6 border-[0.5px] py-4 px-3 rounded-lg border-gray-50">Property visitation</h2> -->
               <!-- {{ availabilityList }} -->
+              <h2 v-if="!availabilityList?.length" class="text-base text-[#1D2739] font-semibold mb-2 mt-4 bg-white border-[0.5px] border-gray-50 py-5 px-3 rounded-lg border-gray-50">Property visitation</h2>
               <VisitationScheduler v-if="availabilityList?.length" @schedule="showBookingModal = true"
                 :intervals="availabilityList" />
               <div v-else
@@ -124,14 +125,14 @@
             </section>
 
             <!-- House Rules -->
-            <h2 class="text-base text-[#1D2739] font-semibold mb-2 mt-4 bg-white border-[0.5px] border-gray-50 py-5 px-3 rounded-lg border-gray-50">House
+            <h2 data-aos="fade-up"  class="text-base text-[#1D2739] font-medium mb-2 mt-4 bg-white border-[0.5px] border-gray-50 py-5 px-3 rounded-lg border-gray-50">House
               Rules</h2>
-            <div class="">
+            <div data-aos="fade-up"  class="">
               <ul v-if="property?.rules?.length" class="space-y-0.5">
                 <p class="border-[0.5px] rounded-lg border-gray-50 text-[#667185] py-4 text-sm pl-4">{{ property?.rules[0]?.rule }}</p>
                 <p class="border-[0.5px] rounded-lg border-gray-50 text-[#667185] py-4 text-sm pl-4">{{ property?.rules[1]?.rule }}</p>
                 <div v-if="otherRules?.length" class="border-[0.5px] rounded-lg border-gray-50 py-3">
-                  <p class="py-3 text-sm text-[#667185] pl-4">Other rules</p>
+                  <p data-aos="fade-up"  class="py-3 text-sm text-[#667185] pl-4">Other rules</p>
                   <div class="pl-5">
                     <ul class="list-disc ml-5 space-y-4 text-sm">
                       <li v-for="(item, idx) in otherRules" :key="idx" class="text-[#1D2739] font-medium leading-snug">{{ item.rule }}
@@ -143,17 +144,17 @@
             </div>
           </div>
 
-          <div v-if="activeTab === 'common-areas'" class="mb-6 p-4 mt-4">
-            <h3 class="font-semibold text-lg">Common Areas</h3>
-            <p class="text-sm text-gray-600">This section provides details about the shared common areas of the
+          <div v-if="activeTab === 'common-areas'" class="mb-6 lg:p-4 mt-4">
+            <h3 data-aos="fade-up"  class="font-medium text-base">Common Areas</h3>
+            <p  data-aos="fade-up" class="text-sm text-gray-600">This section provides details about the shared common areas of the
               property.</p>
             <div class="space-y-6">
               <!-- Gallery Section -->
               <div @click="previewCommonAreaImages"
-                class="flex cursor-pointer items-center border-[0.5px] border-gray-50 space-x-4 bg-white p-4 rounded-lg">
+                class="flex cursor-pointer items-center mt-4 border-[0.5px] border-gray-50 space-x-4 bg-white lg:px-4 rounded-lg">
                 <img :src="dynamicImage('placeholder.png')" alt="Gallery" class="w-12 h-12 rounded-full">
                 <div class="flex-1">
-                  <h3 class="text-lg font-medium">Gallery</h3>
+                  <h3 class="text-base font-medium">Gallery</h3>
                   <p class="text-gray-500 text-sm">Click to view photos of all common areas</p>
                 </div>
                 <button class="text-gray-500">
@@ -165,8 +166,8 @@
               </div>
 
               <!-- Interior Features Section -->
-              <h2 class="text- pl-4 font-medium bg-white border-[0.5px] py-4 border-gray-50">Interior Features</h2>
-              <div class="bg-white p-6 rounded-lg border-[0.5px] space-y-4 border-gray-50">
+              <h2 data-aos="fade-up"  class="text-base text-[#1D2739] font-medium mb-2 mt-4 bg-white border-[0.5px] border-gray-50 py-5 px-3 rounded-lg border-gray-50">Interior Features</h2>
+              <div data-aos="fade-up"  class="bg-white p-3 lg:p-6 rounded-lg border-[0.5px] space-y-4 border-gray-50">
                 <div class="space-y-2">
                   <p class="font-medium text-sm text-[#667185]">
                     Furnished: <span class="font-medium text-gray-900">{{ property?.isFurnishedCommonArea ? 'Yes' :
@@ -174,29 +175,34 @@
                   </p>
 
                   <div class="space-y-2">
-                    <p class="text-sm font- text-[#667185]">Amenities</p>
+                    <p data-aos="fade-up"  class="text-sm font- text-[#667185]">Amenities</p>
 
                     <!-- Amenities -->
-                    <div class="grid grid-cols-3 gap-3">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
                       <div v-for="item in interiorCommonAreas" :key="item.id"
                         class="flex items-center space-x-2 p-2 bg-white border-[0.5px] border-gray-100 rounded-md">
                         <img :src="dynamicImage('roomBg.png')" alt="Living room" class="w-7 h-7">
                         <p class="text-[#1D2739] text-sm">{{ item.name }}</p>
                       </div>
                     </div>
-                    <button class="mt-2 font-medium text-[#1D2739]">View less</button>
+                    <!-- <button class="mt-2 font-medium text-[#1D2739]">View less</button> -->
+                    <div v-if="rentalObj?.room?.features?.length > 6" class="mt-4">
+                      <button @click="toggleView" class="text-[#2E5C3D] hover:text-[#326543] transition">
+                        {{ showMore ? 'View less' : 'View more' }}
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
 
               <!-- Exterior Features Section -->
-              <h2 class="text- pl-4 font-medium bg-white border-[0.5px] py-4 border-gray-50">Exterior Feature</h2>
-              <div class="bg-white p-6 rounded-lg space-y-4">
-                <div class="space-y-2">
-                  <p class="text-sm font- text-[#667185]">Amenities</p>
+              <h2 data-aos="fade-up"  class="text-base pl-4 font-medium bg-white border-[0.5px] py-4 border-gray-50">Exterior Feature</h2>
+              <div data-aos="fade-up"  class="bg-white lg:p-6 rounded-lg lg:space-y-4">
+                <div class="space-y-2 border-[0.5px] border-gray-100 p-2 rounded-lg">
+                  <p data-aos="fade-up"  class="text-sm font-medium text-[#667185]">Amenities</p>
 
                   <!-- Exterior Amenities -->
-                  <div class="grid grid-cols-3 gap-3">
+                  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
                     <div v-for="item in exteriorCommonAreas" :key="item.id"
                       class="flex items-center space-x-2 p-2 bg-white border-[0.5px] border-gray-100 rounded-md">
                       <img :src="dynamicImage('roomBg.png')" alt="Parking space" class="w-7 h-7">
@@ -208,9 +214,9 @@
             </div>
           </div>
 
-          <div class="p-4" v-if="activeTab !== 'property-overview' && activeTab !== 'common-areas'">
+          <div class="lg:px-4" v-if="activeTab !== 'property-overview' && activeTab !== 'common-areas'">
             <div @click="previewRoomImages(activeTab)"
-              class="flex cursor-pointer mb-3 items-center border-[0.5px] border-gray-50 space-x-4 bg-white p-4 rounded-lg">
+              class="flex cursor-pointer mb-3 items-center mt-5 px-3 py-2.5 border-[0.5px] border-gray-50 space-x-4 bg-white lg:px-4 rounded-lg">
               <img :src="dynamicImage('placeholder.png')" alt="Gallery" class="w-12 h-12 rounded-full">
               <div class="flex-1">
                 <h3 class="text-lg font-medium">Gallery</h3>
@@ -247,7 +253,7 @@
 
                 <!-- Amenities -->
                 <h4 class="text-gray-500 mb-3 text- pl-4">Amenities</h4>
-                <div class="grid grid-cols-3 gap-3 text- p-3">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 text- p-3">
                   <div v-for="(amenity, index) in selectedRoomObj?.features" :key="index"
                     class="flex items-center p-2 border-[0.5px] rounded-lg space-x-2 bg-white hover:shadow transition-shadow duration-150">
                     <div class="w-8 h-8 flex items-center justify-center rounded-md">
@@ -261,7 +267,7 @@
 
               <!-- View More Link -->
               <div v-if="selectedRoomObj?.features?.length > 10" class="mt-4">
-                <button @click="viewMore" class="text-blue-500 text-sm font-medium hover:underline">View more</button>
+                <button @click="viewMore" class="text-[#326543] text-sm font-medium hover:underline">View more</button>
               </div>
             </div>
           </div>
@@ -273,16 +279,16 @@
         <RentalApplicationsAmountCard v-if="property?.rentalApplication" :roomObj="property?.rentalApplication?.room" />
 
         <!-- Property Manager -->
-        <div class="bg-[#F0F2F5] p-6 rounded-md">
+        <div data-aos="fade-up"  class="bg-[#F0F2F5] p-6 rounded-md">
           <div class="flex items-center justify-between space-x-4">
             <!-- {{ property.agent }} -->
-            <div class="flex items-center space-x-2">
+            <div data-aos="fade-up"  class="flex items-center space-x-2">
               <img class="w-10 h-10 rounded-full" v-if="property?.agent?.profilePicture"
                 :src="property.agent.profilePicture" />
               <img v-else src="@/assets/icons/users-avatar.svg" alt="Property Manager" class="w-14 h-14 rounded-full">
               <div>
                 <h3 class="font-bold text-[#1D2739]">{{ property?.agent?.firstName }} {{ property?.agent?.lastName }}</h3>
-                <p class="text-xs text-[#1D2739]">Property Manager</p>
+                <p data-aos="fade-up"  class="text-sm text-[#1D2739]">Property Manager</p>
               </div>
             </div>
             <div class="ml-auto flex space-x-2">
@@ -325,7 +331,7 @@
         </div>
 
         <!-- Neighborhood Amenities -->
-        <h3 class="text-base text-[#1D2739] font-semibold mb-2 mt-4 bg-white border-[0.5px] border-gray-50 py-5 px-3 rounded-lg border-gray-50">
+        <h3 data-aos="fade-up"  class="text-base text-[#1D2739] font-medium mb-2 mt-4 bg-white border-[0.5px] border-gray-50 py-5 px-3 rounded-lg border-gray-50">
           Neighborhood Amenities</h3>
         <div class="px-3">
 
@@ -452,10 +458,10 @@
         </div>
         <!-- <div class="bg-white p-3 border-[0.5px] border-gray-50 rounded-md">
           <div class="mt-2 flex space-x-2">
-            <button class="py-2 text-xs px-4 bg-[#EBE5E0] text-[#292929] font-medium rounded-md">Hospital</button>
-            <button class="py-2 text-xs px-4 bg-white text-[#344054] border border-gray-300 rounded-md">Schools</button>
-            <button class="py-2 text-xs px-4 bg-white text-[#344054] border border-gray-300 rounded-md">Market/Shopping Plaza</button>
-            <button class="py-2 text-xs px-4 bg-white text-[#344054] border border-gray-300 rounded-md">Police Station</button>
+            <button class="py-2 text-sm px-4 bg-[#EBE5E0] text-[#292929] font-medium rounded-md">Hospital</button>
+            <button class="py-2 text-sm px-4 bg-white text-[#344054] border border-gray-300 rounded-md">Schools</button>
+            <button class="py-2 text-sm px-4 bg-white text-[#344054] border border-gray-300 rounded-md">Market/Shopping Plaza</button>
+            <button class="py-2 text-sm px-4 bg-white text-[#344054] border border-gray-300 rounded-md">Police Station</button>
           </div>
 
           <div class="mt-6 space-y-2">
@@ -475,7 +481,7 @@
               <div class="text-sm space-y-0.5">
                 <p class="font-xs text-[#1D2739] font-medium">Glory International Prim/Sec School</p>
                 <p class="text-sm text-[#667185]">10521 Veterans Ademola way</p>
-                <p class="text-xs text-[#667185]">Public school</p>
+                <p class="text-sm text-[#667185]">Public school</p>
               </div>
    </div>
               <p class="text-sm text-[#171717]">20 min drive</p>
@@ -491,7 +497,7 @@
           <h2 class="text-base font-medium">Select the room you're interested in</h2>
           <!-- {{ rooms }} -->
           <button @click="openRentalApplicationModal = false"
-            class="text-[#1D2739] font-semibold text-sm">Cancel</button>
+            class="text-[#1D2739] font-medium text-sm">Cancel</button>
         </div>
         <div class="grid grid-cols-3 gap-4 mb-6">
           <button v-for="(room, index) in rooms" :key="room.id" :disabled="!room.available" :class="[
@@ -504,7 +510,7 @@
               !room.available && 'opacity-50 pointer-events-none'
             ]">{{ room.name }}</h3>
 
-            <p :class="['text-center text-xs', selectedRoom === room.id ? 'text-white' : 'text-[#326543]',
+            <p :class="['text-center text-sm', selectedRoom === room.id ? 'text-white' : 'text-[#326543]',
               !room.available && 'opacity-50 pointer-events-none'
             ]">
               {{ room.price }}
@@ -597,6 +603,7 @@ const otherRules = computed(() => {
 })
 
 
+
 const selectedRoomObj = ref({})
 const openRentalApplicationModal = ref(false)
 
@@ -626,7 +633,7 @@ const sendSms = () => {
 
 const handleSelectedRoom = () => {
   localStorage.setItem('roomId', selectedRoom.value)
-  router.push(`/dashboard/listings/${props?.property?.id}/rental-applications/rules`)
+  router.push(`/property/${props?.property?.id}/rental-applications/rules`)
   openRentalApplicationModal.value = false
 }
 
@@ -731,7 +738,7 @@ const previewRoomImages = (itemTab: any) => {
   const selectedRoom = props.property.rooms.find((room: any) => room?.name === itemTab)
   const allImages = extractRoomImages(selectedRoom);
   localStorage.setItem('selectedImages', JSON.stringify(allImages));
-  router.push(`/dashboard/listings/${props.property.id}/room-interior-images`);
+  router.push(`/property/${props.property.id}/room-interior-images`);
 }
 
 
@@ -751,7 +758,7 @@ const extractCommonAreaImages = (commonAreas: any[]): string[] => {
 const previewCommonAreaImages = () => {
   const allCommonAreaImages = extractCommonAreaImages(props.property.commonAreas);
   localStorage.setItem('selectedImages', JSON.stringify(allCommonAreaImages));
-  router.push(`/dashboard/listings/${props.property.id}/room-interior-images`);
+  router.push(`/property/${props.property.id}/room-interior-images`);
 }
 
 // Reactive state to track if the full text is expanded
@@ -760,7 +767,7 @@ const isExpanded = ref(false);
 // Computed property to get the truncated text
 const truncatedText = computed(() => {
   return props?.property?.description?.length > 50
-    ? props?.property?.description.substring(0, 50) + '...'
+    ? props?.property?.description.substring(0, 200) + '...'
     : props?.property?.description;
 });
 

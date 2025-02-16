@@ -18,7 +18,7 @@ export const useCancelRental = () => {
 				toastType: "success",
 				duration: 3000
 			  });
-			  router.push(`/dashboard/listings/${route.params.id}/rental-applications/cancellation-success`)
+			  router.push(`/property/${route.params.id}/rental-applications/cancellation-success`)
         } else {
 			showToast({
 				title: "Error",

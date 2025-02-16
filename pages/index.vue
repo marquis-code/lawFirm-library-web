@@ -1,14 +1,16 @@
 <template>
 <main>
-  <div class="relative min-h-screen bg-white">
+  <div class="relative  bg-[#FDFCFC]">
     <!-- Navigation Bar -->
     <!-- <Navigation /> -->
 
 
-    <div class="relative pt-20 min-h-screen isolate overflow-hidden">
-      <img src="@/assets/img/hero.svg" alt="" class="absolute hidden lg:block top-8 inset-0 -z-10 size-full h- object-cover">
-      <div class="flex justify-center items-center">
-        <img src="@/assets/img/mobile-hero-bg.svg" alt="" class="absolute lg:hidden top-8 inset-0 -z-10 h-full w-full object-cover">
+    <div class="relative pt-20 min-h-screen isolate overflow-hidden container mx-auto">
+      <div data-aos="fade-up" class="flex justify-center items-center">
+        <img src="@/assets/img/hero.svg" alt="" class="absolute hidden lg:block top-8 inset-0 -z-10 -full h- object-cover">
+      </div>
+      <div data-aos="fade-up" class="flex justify-center items-center">
+        <img src="@/assets/img/mobile-hero-bg.svg" alt="" class="absolute lg:hidden top-8 inset-0 -z-10 h-full w-full">
       </div>
       <!-- <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
         aria-hidden="true">
@@ -18,7 +20,7 @@
         </div>
       </div> -->
 
-      <div class="max-w-7xl mx-auto px-4 py-16 md:py-24">
+      <div class="max-w-7xl mx-auto px-4 pt-10 pb-16 md:pb-24">
         <div class="relative z-10 max-w-3xl mx-auto text-center ">
           <h1 data-aos="fade-up"  class="text-4xl md:text-7xl font-semibold leading-relaxed text-[#292929] mb-6">
             Live Together, Share Comfortably
@@ -26,7 +28,7 @@
           <p data-aos="fade-up"  class="text-lg md:text-xl text-[#1D2739] mb-8">
             Find, Share, and Effortlessly Manage Your Ideal Home in One Place.
           </p>
-          <button @click="handleSignin"
+          <button data-aos="fade-up" @click="handleSignin"
             class="group bg-[#292929] text-white rounded-full inline-flex space-x-6 pl-10 py-1 px-1.5 items-center transition-colors">
             <p>Sign up for free</p>
             <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -49,21 +51,23 @@
   </div>
 
 
-  <PropertiesList type="featured" :properties="computedList" />
   <div class="container mx-auto">
-<TenantSteps />
+    <PropertiesList type="featured" :properties="computedList" />
+  </div>
+  <div class=" bg-[#F9FAFB]">
+      <TenantSteps />
 <!-- <ServiceProviderSection /> -->
-    <Renters />
   </div>
-  <div class="pt-20">
-    <Agents />
+  <div class="pt-20 bg-white">
+    <Renters id="tenants" />
+    <Agents id="agents" />
   </div>
-  <div class="space-y-32">
-    <AboutUs />
+  <div id="about-us"  class="space-y-32">
+    <AboutUs id="about-us" />
+</div>
   <WhyChooseUs />
   <FaqQuestion />
   <GetInTouch />
-  </div>
   <FooterSection />
 </main>
 </template>

@@ -49,7 +49,7 @@ export function useCreateRentalApplication() {
           duration: 3000
         });
         clearLocalStorageExceptUserAndToken();
-        router.push({ path: `/dashboard/listings/${route.params.id}/rental-applications/details`, query: { rentalId: res?.data?.id }})
+        router.push({ path: `/property/${route.params.id}/rental-applications/details`, query: { rentalId: res?.data?.id }})
   
       } else {
         showToast({

@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
     <div class="relative w-full h-56">
       <template v-for="(image, index) in property?.images" :key="index">
         <div 
@@ -11,7 +11,6 @@
             class="absolute top-0 left-0 rounded-lg cursor-pointer object-cover h-full w-full transition-opacity duration-300"
             :alt="`Property image ${index + 1}`"
           />
-          <!-- <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/50 rounded-lg"></div> -->
         </div>
       </template>
 
@@ -90,4 +89,124 @@
     }
   }
 };
+  </script> -->
+
+  <template>
+    <div 
+      class="relative w-full h-56"
+      @touchstart="handleTouchStart"
+      @touchmove="handleTouchMove"
+      @touchend="handleTouchEnd"
+    >
+      <template v-for="(image, index) in property?.images" :key="index">
+        <div 
+          v-show="currentIndex === index"
+          class="absolute top-0 left-0 w-full h-full"
+        >
+          <img
+            :src="image"
+            @click="navigateToDetails"
+            class="absolute top-0 left-0 rounded-lg cursor-pointer object-cover h-full w-full transition-opacity duration-300"
+            :alt="`Property image ${index + 1}`"
+          />
+        </div>
+      </template>
+  
+      <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-10">
+        <button
+          v-for="(_, index) in property?.images"
+          :key="index"
+          @click.stop="currentIndex = index"
+          class="w-2 h-2 rounded-full transition-colors duration-200"
+          :class="currentIndex === index ? 'bg-white' : 'bg-white/50 hover:bg-white/70'"
+          :aria-label="`Go to image ${index + 1}`"
+        />
+      </div>
+    </div>
+  </template>
+  
+  <script setup lang="ts">
+  import { ref, onMounted, onUnmounted } from 'vue'
+  import { useRouter } from 'vue-router'
+  
+  interface Property {
+    id: string;
+    images: string[];
+  }
+  
+  const props = defineProps<{
+    property?: Property;
+  }>();
+  
+  const router = useRouter();
+  const currentIndex = ref(0);
+  
+  // Touch handling
+  const touchStartX = ref(0);
+  const touchEndX = ref(0);
+  const minSwipeDistance = 50; // Minimum distance for a swipe to register
+  let isSwiping = false;
+  
+  const handleTouchStart = (event: TouchEvent) => {
+    touchStartX.value = event.touches[0].clientX;
+    isSwiping = false;
+  };
+  
+  const handleTouchMove = (event: TouchEvent) => {
+    touchEndX.value = event.touches[0].clientX;
+    isSwiping = true;
+  };
+  
+  const handleTouchEnd = () => {
+    const swipeDistance = touchEndX.value - touchStartX.value;
+    
+    if (Math.abs(swipeDistance) >= minSwipeDistance && isSwiping) {
+      if (swipeDistance > 0) {
+        previousImage();
+      } else {
+        nextImage();
+      }
+    }
+    
+    // Reset touch values
+    touchStartX.value = 0;
+    touchEndX.value = 0;
+    isSwiping = false;
+  };
+  
+  const previousImage = () => {
+    if (currentIndex.value > 0) {
+      currentIndex.value--;
+    }
+  };
+  
+  const nextImage = () => {
+    if (props.property?.images && currentIndex.value < props.property.images.length - 1) {
+      currentIndex.value++;
+    }
+  };
+  
+  // Navigation to details
+  const navigateToDetails = () => {
+    if (!isSwiping && props.property?.id) {
+      router.push(`/property/${props.property.id}`);
+    }
+  };
+  
+  // Keyboard navigation
+  onMounted(() => {
+    const handleKeydown = (event: KeyboardEvent) => {
+      if (event.key === 'ArrowLeft') {
+        previousImage();
+      } else if (event.key === 'ArrowRight') {
+        nextImage();
+      }
+    };
+  
+    window.addEventListener('keydown', handleKeydown);
+  
+    onUnmounted(() => {
+      window.removeEventListener('keydown', handleKeydown);
+    });
+  });
   </script>

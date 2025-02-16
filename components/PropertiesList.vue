@@ -1,10 +1,10 @@
 <template>
     <section v-if="!loadingProperties && propertiesList.length" class="py-12 px-4 sm:px-6 lg:px-8">
-      <div class="max-w-7xl mx-auto">
+      <div class="">
         <div class="text-center mb-8">
-          <div class="inline-flex items-center gap-2 gap-x-6 px-3 py-1 rounded-lg">
+          <div data-aos="fade-up" class="inline-flex items-center gap-2 gap-x-6 px-3 py-1 rounded-lg">
             <img src="@/assets/icons/corporate.svg" alt="icon" class="w-10 h-10" />
-            <h2 class="text-2xl font-semibold text-[#1D2739]">Featured Properties</h2>
+            <h2 data-aos="fade-up" class="text-2xl font-semibold text-[#1D2739]">Featured Properties</h2>
           </div>
         </div>
 
@@ -74,8 +74,8 @@
           </div>
         </div>
 
-        <div class="mt-16 text-center w-full">
-          <button @click="handleSignin" class="bg-[#292929] w-full lg:w-auto text-white px-6 py-3.5 text-base rounded-lg font-medium">
+        <div data-aos="fade-up" class="mt-16 text-center w-full">
+          <button data-aos="fade-up" @click="handleSignin" class="bg-[#292929] w-full lg:w-auto text-white px-6 py-3.5 text-base rounded-lg font-medium">
             Browse more properties
           </button>
         </div>

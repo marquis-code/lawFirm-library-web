@@ -16,3 +16,13 @@
 .dark .bg-custom {
   background-color: #1a202c; /* Dark mode background */
 }
+
+
+body {
+  font-family: "Noto Sans", serif;
+  font-optical-sizing: auto;
+  font-weight: 400; /* Change to 500 or 700 as needed */
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+}

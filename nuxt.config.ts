@@ -21,7 +21,7 @@ export default defineNuxtConfig({
       ],
       link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.svg" },    {
         rel: 'stylesheet',
-        href: 'https://fonts.googleapis.com/css2?family=Lexend+Tera:wght@100..900&family=Rethink+Sans:ital,wght@0,400..800;1,400..800&display=swap',
+        href: 'https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lexend+Tera:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Rethink+Sans:ital,wght@0,400..800;1,400..800&display=swap',
       }],
       script: [
         {
@@ -34,13 +34,14 @@ export default defineNuxtConfig({
 
   googleFonts: {
     families: {
-      'Lexend+Tera': [400, 500, 700], // Specify font weights as needed
+      'Noto+Sans': [400, 500, 700], // Specify font weights as needed
     },
-    display: 'swap', // Optional: Controls how the font is displayed
-    prefetch: true, // Optional: Prefetch the font for faster loading
-    preconnect: true, // Optional: Preconnect to the font server
-    preload: true, // Optional: Preload the font
+    display: 'swap', // Controls how the font is displayed
+    prefetch: true, // Prefetch the font for faster loading
+    preconnect: true, // Preconnect to the font server
+    preload: true, // Preload the font
   },
+  
   plugins: ["~/plugins/aos.client.ts"],
   css: ["/assets/css/main.css"],
   modules: ['@kevinmarrec/nuxt-pwa', "@nuxtjs/tailwindcss", '@nuxtjs/google-fonts'],

@@ -21,7 +21,7 @@
       </div>
   
       <!-- Time Slots -->
-      <div v-if="selectedDay !== null && availableTimesForDay?.length" class="grid py-4 rounded-md border-[0.5px] border-gray-50 bg-white grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 -mt-6">
+      <div v-if="selectedDay !== null && availableTimesForDay?.length" class="grid py-4 rounded-md border-[0.5px] border-gray-50 bg-white grid-cols-3 lg:grid-cols-4 gap-6 -mt-6">
         <button
           v-for="time in availableTimesForDay"
           :key="time"
@@ -64,12 +64,14 @@
         >
           Schedule a visit
         </button> -->
-        <!-- <button 
-          @click="emit('schedule')"
+        <button 
+          @click="handleScheduleVisit"
           class="w-full py-3.5 text-sm px-6 font-medium rounded-lg transition-al mt-4 w-full bg-[#292929]  text-white  rounded-md">
           Schedule a visit
-        </button> -->
-        <a class="w-full py-3.5 text-sm px-6 font-medium block py-5 rounded-lg transition-al mt-4 w-full bg-[#292929]  text-white  rounded-md" href="https://tenantblackcountry.vercel.app/"></a>
+        </button>
+        <!-- <a class="w-full py-3.5 text-sm px-6 font-medium block flex justify-c py-5 rounded-lg transition-al mt-4 w-full bg-[#292929]  text-white  rounded-md" href="https://tenantblackcountry.vercel.app/">
+          Schedule a visit
+        </a> -->
       </div>
     </div>
   </template>
@@ -82,6 +84,10 @@
     dayOfWeek: number
     allIntervals: string[]
     // ... other properties
+  }
+
+  const handleScheduleVisit = () => {
+    window.location.href = "https://tenantblackcountry.vercel.app/"
   }
   
   const props = defineProps<{

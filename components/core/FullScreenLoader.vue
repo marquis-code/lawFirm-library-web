@@ -1,7 +1,7 @@
 <template>
     <div
       v-if="visible"
-      class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-100 z-50"
+      class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-100 z-[9999]"
     >
       <div class="relative">
         <!-- Spinner -->

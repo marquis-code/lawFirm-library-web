@@ -16,8 +16,8 @@ export const useCreateVisitation = () => {
         toastType: "success",
         duration: 3000,
       });
-      window.location.href= '/dashboard/listings/booking-schedule-success'
-      // router.push('/dashboard/listings/booking-schedule-success')
+      window.location.href= '/property/booking-schedule-success'
+      // router.push('/property/booking-schedule-success')
     } else {
       showToast({
         title: "Error",

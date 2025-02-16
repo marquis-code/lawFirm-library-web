@@ -25,13 +25,14 @@
                 stroke-linejoin="round"
               />
             </svg>
-            <h1 class="text-gray-800 font-semibold text-sm">
+            <p class="text-gray-800 text-lg font-medium">
               {{ propertyObj.name }}
-            </h1>
+            </p>
           </div>
 
           <!-- Action Icons -->
           <div class="flex items-center space-x-3">
+            <!-- {{ propertyObj?.bookmarked }} -->
             <!-- Share Icon -->
             <button @click="showShareModal = true" class=" ">
               <svg
@@ -65,7 +66,12 @@
               </svg>
             </button>
             <button @click="toggleLike" class=" ">
-              <svg
+              <svg v-if="!propertyObj?.bookmarked" width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="36" height="36" rx="18" fill="#EAEAEA"/>
+<path d="M24.2189 11.3285C21.9842 9.95769 20.0337 10.5101 18.8621 11.39C18.3816 11.7508 18.1414 11.9312 18.0001 11.9312C17.8587 11.9312 17.6186 11.7508 17.1381 11.39C15.9664 10.5101 14.016 9.95769 11.7813 11.3285C8.84847 13.1275 8.18485 19.0624 14.9497 24.0695C16.2382 25.0232 16.8824 25.5 18.0001 25.5C19.1177 25.5 19.762 25.0232 21.0505 24.0695C27.8153 19.0624 27.1517 13.1275 24.2189 11.3285Z" stroke="#1D2739" stroke-width="1.5" stroke-linecap="round"/>
+</svg>
+
+              <!-- <svg
                 v-if="!propertyObj?.bookmarked"
                 width="40"
                 height="40"
@@ -81,7 +87,7 @@
                   stroke-width="1.5"
                   stroke-linecap="round"
                 />
-              </svg>
+              </svg> -->
 
               <svg
                 v-if="propertyObj?.bookmarked"
@@ -162,10 +168,11 @@
         
       </div>
     </section>
-
+    <FaqQuestion />
+    <FooterSection />
     <CoreModal :isOpen="showShareModal" @close="showShareModal = false">
       <div
-        class="bg-white w-full m-14 lg:m-0 rounded-lg relative space-y-10"
+        class=""
         @click.stop
       >
         <div class="space-y-7">
@@ -208,8 +215,7 @@
             >
               <!-- <img src="/instagram-icon.svg" alt="Instagram" class="w-12 h-12 mb-2" /> -->
               <svg
-                width="61"
-                height="60"
+                class="h-14 w-14"
                 viewBox="0 0 61 60"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -305,8 +311,7 @@
             >
               <!-- <img src="/twitter-icon.svg" alt="Twitter" class="w-12 h-12 mb-2" /> -->
               <svg
-                width="61"
-                height="60"
+                class="h-14 w-14"
                 viewBox="0 0 61 60"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -335,8 +340,7 @@
             >
               <!-- <img src="/whatsapp-icon.svg" alt="WhatsApp" class="w-12 h-12 mb-2" /> -->
               <svg
-                width="61"
-                height="60"
+                class="h-14 w-14"
                 viewBox="0 0 32 32"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -385,8 +389,7 @@
             >
               <!-- <img src="/facebook-icon.svg" alt="Facebook" class="w-12 h-12 mb-2" /> -->
               <svg
-                width="61"
-                height="60"
+               class="h-14 w-14"
                 viewBox="0 0 61 60"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -412,12 +415,12 @@
         </div>
 
         <!-- Copy Link -->
-        <div class="pt-4">
-          <h3 class="font-medium mb-2 text-[#1D2739]">Copy Link</h3>
+        <div class="pt-10">
+          <h3 class="font-medium mb-2 text-sm lg:text-base text-[#1D2739]">Copy Link</h3>
           <div class="relative">
             <input
               type="text"
-              class="border-[0.5px] rounded-lg w-full py-4 px-4 text-[#667185] bg-[#E4E7EC]"
+              class="border-[0.5px] outline-none rounded-lg w-full py-4 px-4 text-[#667185] bg-[#E4E7EC]"
               :value="shareLink"
               readonly
             />

@@ -59,8 +59,8 @@ const router = useRouter()
         responseObj.value = res.data;
         // console.log(res, 'paymewnr res')
         if(res?.status == 201){
-          router.push(`/dashboard/listings/${route?.query?.rentalId}/rental-applications/payment-success`);
-          window.location.href = `/dashboard/listings/${route?.query?.rentalId}/rental-applications/payment-success`
+          router.push(`/property/${route?.query?.rentalId}/rental-applications/payment-success`);
+          window.location.href = `/property/${route?.query?.rentalId}/rental-applications/payment-success`
         }
         // 
 

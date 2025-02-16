@@ -1,7 +1,7 @@
 <template>
 <main>
     <div  class="flex items-center justify-between px-4">
-        <div class="text-lg font-medium text-gray-900">{{propertyObj?.name}}</div>
+        <!-- <div class="text-lg font-medium text-gray-900">{{propertyObj?.name}}</div> -->
         <div class="flex items-center space-x-2 ">
           <!-- Dots Icon Button -->
           <button @click="downloadDropdown = true" class="p-2 rounded-lg bg-[#E4E7EC] hover:bg-gray-300">
