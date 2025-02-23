@@ -4,7 +4,7 @@
         <h1 class="text-4xl md:text-6xl font-bold text-gray-900 leading-tight">
           Live Together, Share Comfortably
         </h1>
-        <p class="text-gray-600 mt-4 text-lg md:text-xl">
+        <p class="text-[#1D2739] mt-4 text-lg md:text-xl">
           Find, Share, and Effortlessly Manage Your Ideal Home in One Place.
         </p>
         <div class="mt-6">

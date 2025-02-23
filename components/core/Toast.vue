@@ -19,7 +19,7 @@
 
       <div class="ml-4">
         <p class="font-semibold text-gray-800">{{ toastData.title }}</p>
-        <p class="text-sm text-gray-600">{{ toastData.message }}</p>
+        <p class="text-sm text-[#1D2739]">{{ toastData.message }}</p>
       </div>
     </div>
   </transition>

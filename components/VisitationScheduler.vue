@@ -12,7 +12,7 @@
             'text-xs font-medium flex justify-center items-center rounded-lg p-2.5  transition-all',
             selectedDay === day.value 
               ? 'bg-white border border-[#326543] text-[#326543]' 
-              : 'bg-[#F9FAFB] text-[#1D2739]'
+              : 'bg-[#FDFCFC] text-[#1D2739]'
           ]"
           @click="selectDay(day.value)"
         >
@@ -69,7 +69,7 @@
           class="w-full py-3.5 text-sm px-6 font-medium rounded-lg transition-al mt-4 w-full bg-[#292929]  text-white  rounded-md">
           Schedule a visit
         </button>
-        <!-- <a class="w-full py-3.5 text-sm px-6 font-medium block flex justify-c py-5 rounded-lg transition-al mt-4 w-full bg-[#292929]  text-white  rounded-md" href="https://tenantblackcountry.vercel.app/">
+        <!-- <a class="w-full py-3.5 text-sm px-6 font-medium block flex justify-c py-5 rounded-lg transition-al mt-4 w-full bg-[#292929]  text-white  rounded-md" href="https://tenantblackcountry.vercel.app/login/">
           Schedule a visit
         </a> -->
       </div>
@@ -87,7 +87,7 @@
   }
 
   const handleScheduleVisit = () => {
-    window.location.href = "https://tenantblackcountry.vercel.app/"
+    window.location.href = "https://tenantblackcountry.vercel.app/login/"
   }
   
   const props = defineProps<{

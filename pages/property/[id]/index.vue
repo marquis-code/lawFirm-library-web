@@ -3,13 +3,12 @@
     <section v-if="!loading">
       <section>
         <div
-          class="flex justify-between max-w-7xl mx-auto items-center pt-3 px-3.5"
+          class="flex justify-between max-w-7xl mx-auto items-center pt-3 px-4 lg:px-6"
         >
           <!-- Breadcrumb -->
           <div class="flex items-center space-x-4">
-            <svg
-              @click="router.back()"
-              class="cursor-pointer"
+            <NuxtLink to="/">
+              <svg
               width="36"
               height="36"
               viewBox="0 0 36 36"
@@ -25,7 +24,8 @@
                 stroke-linejoin="round"
               />
             </svg>
-            <p class="text-gray-800 text-lg font-medium">
+            </NuxtLink>
+            <p class="text-gray-800 text-base lg:text-sm font-medium">
               {{ propertyObj.name }}
             </p>
           </div>
@@ -67,9 +67,9 @@
             </button>
             <button @click="toggleLike" class=" ">
               <svg v-if="!propertyObj?.bookmarked" width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="36" height="36" rx="18" fill="#EAEAEA"/>
-<path d="M24.2189 11.3285C21.9842 9.95769 20.0337 10.5101 18.8621 11.39C18.3816 11.7508 18.1414 11.9312 18.0001 11.9312C17.8587 11.9312 17.6186 11.7508 17.1381 11.39C15.9664 10.5101 14.016 9.95769 11.7813 11.3285C8.84847 13.1275 8.18485 19.0624 14.9497 24.0695C16.2382 25.0232 16.8824 25.5 18.0001 25.5C19.1177 25.5 19.762 25.0232 21.0505 24.0695C27.8153 19.0624 27.1517 13.1275 24.2189 11.3285Z" stroke="#1D2739" stroke-width="1.5" stroke-linecap="round"/>
-</svg>
+                <rect width="36" height="36" rx="18" fill="#EAEAEA"/>
+                <path d="M24.2189 11.3285C21.9842 9.95769 20.0337 10.5101 18.8621 11.39C18.3816 11.7508 18.1414 11.9312 18.0001 11.9312C17.8587 11.9312 17.6186 11.7508 17.1381 11.39C15.9664 10.5101 14.016 9.95769 11.7813 11.3285C8.84847 13.1275 8.18485 19.0624 14.9497 24.0695C16.2382 25.0232 16.8824 25.5 18.0001 25.5C19.1177 25.5 19.762 25.0232 21.0505 24.0695C27.8153 19.0624 27.1517 13.1275 24.2189 11.3285Z" stroke="#1D2739" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
 
               <!-- <svg
                 v-if="!propertyObj?.bookmarked"
@@ -115,7 +115,7 @@
           </div>
         </div>
       </section>
-      <div class="max-w-7xl mx-auto pt-4 pb-8">
+      <div class="max-w-7xl mx-auto lg:px-6 pt-4 pb-8">
         <section v-if="!loading">
           <ImageGallery
             :loading="loading"
@@ -505,7 +505,8 @@ const copyLink = async () => {
 };
 
 const toggleLike = () => {
-  bookmarkProperty(propertyObj.value.id);
+  window.location.href = "https://tenantblackcountry.vercel.app/login"
+  // bookmarkProperty(propertyObj.value.id);
 };
 
 // Define the link and text you want to share

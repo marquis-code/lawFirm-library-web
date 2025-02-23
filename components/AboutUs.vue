@@ -1,8 +1,8 @@
 <!-- components/AboutSection.vue -->
 <template>
   <!--  -->
-<main class="bg-[#F9FAFB]">
-  <section class="container mx-auto px-6 lg:px-10 py-12 md:py-16">
+<main class="bg-[#FDFCFC] lg:pt-32">
+  <section class="max-w-7xl mx-auto px-10 2xl:px-6 py-12 md:py-16">
     <div class="flex flex-col md:flex-row">
       <!-- Left Column -->
       <div class="md:w-2/3 mb-8 md:mb-0 flex flex-col items-center md:items-start">
@@ -16,7 +16,7 @@
       <div class="md:w-2/3 md:pl-8">
         <!-- Mission Statement -->
         <div class="mb-12">
-          <p data-aos="fade-up" class="text-gray-600 text-lg">
+          <p data-aos="fade-up" class="text-[#1D2739] text-lg">
             Mission statement Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
             Suspendisse varius enim in eros elementum tristique. Duis cursus, 
             mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero erat.
@@ -28,7 +28,7 @@
           <!-- Core Value 1 -->
           <div>
             <h3 data-aos="fade-up" class="text-xl font-semibold text-gray-900 mb-2">Core value 1</h3>
-            <p data-aos="fade-up" class="text-gray-600">
+            <p data-aos="fade-up" class="text-[#1D2739]">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.
             </p>
           </div>
@@ -36,7 +36,7 @@
           <!-- Core Value 2 -->
           <div>
             <h3 data-aos="fade-up" class="text-xl font-semibold text-gray-900 mb-2">Core value 2</h3>
-            <p data-aos="fade-up" class="text-gray-600">
+            <p data-aos="fade-up" class="text-[#1D2739]">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.
             </p>
           </div>

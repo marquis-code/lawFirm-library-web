@@ -80,8 +80,8 @@ const toggleQuestion = (index: number) => {
 </script>
 
 <template>
-<main class="bg-[#F9FAFB]">
-  <div class="max-w-3xl bg-[#F9FAFB] mx-auto p-6 py-20">
+<main class="bg-[#FDFCFC]">
+  <div class="max-w-3xl bg-[#FDFCFC] mx-auto p-6 py-20">
     <h2 data-aos="fade-up" class="text-xl text-[#1D2739] md:text-2xl font-semibold text-center mb-6">Frequently Asked Questions</h2>
     
     <!-- <div data-aos="fade-up" class="flex justify-center lg:gap-4 mb-6">

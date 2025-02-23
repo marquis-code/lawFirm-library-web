@@ -116,7 +116,7 @@ function closeModal() {
        </div>
 
         <div v-if="isModalOpen" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-            <div class="bg-[#F9FAFB] rounded-lg shadow-lg max-w-md w-full pb-6">
+            <div class="bg-[#FDFCFC] rounded-lg shadow-lg max-w-md w-full pb-6">
                 <div>
                 <div class="flex justify-between items-center bg-white p-4 rounded-t-xl">
                     <h3 class="text-lg font-medium text-[#1D2739] mb-2">{{ fee?.additionalCharge?.name }}</h3>

@@ -43,7 +43,7 @@
 
           <div v-if="activeTab === 'property-overview'" class="">
 
-            <!-- <p class="text-sm text-gray-600">{{ property.description.value ?? 'No description available' }}</p> -->
+            <!-- <p class="text-sm text-[#1D2739]">{{ property.description.value ?? 'No description available' }}</p> -->
             <h2 data-aos="fade-up"  class="text-base text-[#1D2739] font-medium mb-2 mt-4 bg-white border-[0.5px] border-gray-50 py-5 px-3 rounded-lg border-gray-50">
               Property Description
             </h2>
@@ -89,7 +89,7 @@
                 Co-living with <span class="text-[#1D2739]">{{ property?.bedroomCount - 1 }} Persons</span></h2>
                 <table data-aos="fade-up"  class="w-full mt-2 table-fixed text-sm">
                   <thead>
-                    <tr data-aos="fade-up"  class="bg-[#F9FAFB] rounded-lg">
+                    <tr data-aos="fade-up"  class="bg-[#FDFCFC] rounded-lg">
                       <th class="text-left text-sm py-3 font-light pl-6 text-[#1D2739]">Occupants</th>
                       <th class="text-left text-sm py-3 font-light text-[#1D2739]">Room occupied</th>
                       <th class="text-left text-sm py-3 font-light text-[#1D2739]">Available from</th>
@@ -146,7 +146,7 @@
 
           <div v-if="activeTab === 'common-areas'" class="mb-6 lg:p-4 mt-4">
             <h3 data-aos="fade-up"  class="font-medium text-base">Common Areas</h3>
-            <p  data-aos="fade-up" class="text-sm text-gray-600">This section provides details about the shared common areas of the
+            <p  data-aos="fade-up" class="text-sm text-[#1D2739]">This section provides details about the shared common areas of the
               property.</p>
             <div class="space-y-6">
               <!-- Gallery Section -->
@@ -326,7 +326,7 @@
               @click="openRentalApplicationModal = true"
               class="mt-4 w-full disabled:cursor-not-allowed disabled:opacity-25 bg-[#292929] text-white py-3 text-sm rounded-md">Send
               application</button> -->
-              <a  class="mt-4 w-full block w-full text-center disabled:cursor-not-allowed disabled:opacity-25 bg-[#292929] text-white py-4 text-sm rounded-md" href="https://tenantblackcountry.vercel.app/">Send application</a>
+              <a  class="mt-4 w-full block w-full text-center disabled:cursor-not-allowed disabled:opacity-25 bg-[#292929] text-white py-4 text-sm rounded-md" href="https://tenantblackcountry.vercel.app/login/">Send application</a>
           </div>
         </div>
 

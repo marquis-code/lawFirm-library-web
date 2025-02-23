@@ -18,6 +18,8 @@ module.exports = {
         marquee: 'marquee linear infinite',
       },
       colors: {
+        primary: '#D86D4B',
+        'primary-dark': '#C25B3A',
         gray: {
           25:  "#fafafa",
           50:  "#f2f2f2",

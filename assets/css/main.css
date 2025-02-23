@@ -26,3 +26,12 @@ body {
   font-variation-settings:
     "wdth" 100;
 }
+
+
+.section-overlay {
+  @apply absolute inset-0 bg-black/40;
+}
+
+.glass-panel {
+  @apply bg-black/70 backdrop-blur-sm rounded-2xl p-8;
+}

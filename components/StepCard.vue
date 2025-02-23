@@ -6,7 +6,7 @@
       </div>
       <div class="ml-4">
         <h4 class="text-lg font-semibold text-gray-900">{{ title }}</h4>
-        <p class="text-gray-600 text-sm">{{ description }}</p>
+        <p class="text-[#1D2739] text-sm">{{ description }}</p>
       </div>
     </div>
   </template>

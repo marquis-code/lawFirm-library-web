@@ -45,7 +45,7 @@ export const useGetProperties = () => {
     loadingProperties.value = true;
 
     const res = await $_fetch_properties(currentPage.value, perPage.value, searchQuery.value, segmentId.value) as any;
-
+    console.log(res, 'properties res here')
     if (res.type !== 'ERROR') {
       const properties = res?.data?.result ?? [];
       propertiesList.value = sortProperties(properties); // Sort the properties before setting them

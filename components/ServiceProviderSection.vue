@@ -12,7 +12,7 @@
               </div>
               <div>
                 <h3 class="text-xl font-semibold mb-2">Take the First Step</h3>
-                <p class="text-gray-600">Show your interest by contacting us. Join our network and and provide reliable home services.</p>
+                <p class="text-[#1D2739]">Show your interest by contacting us. Join our network and and provide reliable home services.</p>
               </div>
             </div>
           </div>
@@ -25,7 +25,7 @@
               </div>
               <div>
                 <h3 class="text-xl font-semibold mb-2">Accept Invitation</h3>
-                <p class="text-gray-600">Join the platform through invitation from the property manager</p>
+                <p class="text-[#1D2739]">Join the platform through invitation from the property manager</p>
               </div>
             </div>
           </div>
@@ -38,7 +38,7 @@
               </div>
               <div>
                 <h3 class="text-xl font-semibold mb-2">Manage Requests</h3>
-                <p class="text-gray-600">Handle requests and service appointments</p>
+                <p class="text-[#1D2739]">Handle requests and service appointments</p>
               </div>
             </div>
           </div>
@@ -51,7 +51,7 @@
               </div>
               <div>
                 <h3 class="text-xl font-semibold mb-2">Invoice and payments</h3>
-                <p class="text-gray-600">Submit invoices and receive payments for services rendered</p>
+                <p class="text-[#1D2739]">Submit invoices and receive payments for services rendered</p>
               </div>
             </div>
           </div>
@@ -61,7 +61,7 @@
         <div class="order-1 md:order-2 mb-8 md:mb-0 flex flex-col">
           <div class="mb-6">
             <h2 class="text-3xl font-bold mb-4">Want to become a service provider at BlackCountry?</h2>
-            <p class="text-gray-600 mb-6">
+            <p class="text-[#1D2739] mb-6">
               Offer your services to tenants in need of maintenance and home solutions. Manage requests, provide timely assistance, and ensure a well-maintained living space—all while growing your business.
             </p>
             <button class="bg-gray-900 text-white px-6 py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors">

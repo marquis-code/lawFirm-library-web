@@ -1,10 +1,10 @@
 <template>
 <main>
-  <section class="pt-32 pb-10">
+  <section class="pt-20 pb-10">
     <div class="flex justify-center items-center min-h-screen  px-4">
-    <div class="bg-white p-6 w-full max-w-lg">
+    <div class="bg-white p-6 w-full max-w-xl">
       <h2 class="text-3xl lg:text-5xl font-semibold text-center text-[#292929]">Get in touch</h2>
-      <p class="text-center text-gray-600 mb-6 mt-6">We’d love to hear from you. Please fill out this form.</p>
+      <p class="text-center text-[#1D2739] mb-6 mt-6">We’d love to hear from you. Please fill out this form.</p>
       <form @submit.prevent="submitForm">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
@@ -26,20 +26,36 @@
         </div>
         <div class="mt-4">
           <label class="block text-gray-700 mb-1 text-sm">What best describes you?</label>
-          <select placeholder="Enter your response" v-model="form.role" class="w-full p-4 border-[0.5px] border-gray-20 outline-none text-sm rounded-md  bg-[#E4E7EC] ">
-            <option>Agent</option>
-            <option>Service Provider</option>
+          <!-- <select placeholder="Enter your response" v-model="form.role" class="w-full p-4 border-[0.5px] border-gray-20 outline-none text-sm rounded-md  bg-[#E4E7EC] ">
+            <option value="">Enter your response</option>
+            <option value="agent">Agent</option>
+            <option value="service-provider">Service Provider</option>
+          </select> -->
+          <select v-model="form.role" class="w-full p-4 border-[0.5px] border-gray-20 outline-none text-sm rounded-md bg-[#E4E7EC]">
+            <option value="" disabled selected>Enter your response</option>
+            <option value="agent">Agent</option>
+            <option value="service-provider">Service Provider</option>
           </select>
+
         </div>
-        <div v-if="form.role === 'Service Provider'" class="mt-4">
+        <div v-if="form.role === 'service-provider'" class="mt-4">
           <label class="block text-gray-700 mb-1 text-sm">What service do you offer?</label>
-          <select placeholder="Enter your service title" v-model="form.service" class="w-full p-4 border border-gray-25 rounded-md focus:outline-none bg-[#E4E7EC]">
+          <!-- <select placeholder="Enter your service title" v-model="form.service" class="w-full p-4 border border-gray-25 rounded-md focus:outline-none bg-[#E4E7EC]">
+            <option disabled value="">Enter your service title</option>
             <option>Photography</option>
             <option>Event Planning</option>
             <option>Catering</option>
             <option>Consulting</option>
             <option>Marketing</option>
-          </select>
+          </select> -->
+          <select v-model="form.service" class="w-full text-sm p-4 border border-gray-25 rounded-md focus:outline-none bg-[#E4E7EC]">
+              <option disabled value="">Enter your service title</option>
+              <option value="Photography">Photography</option>
+              <option value="Event Planning">Event Planning</option>
+              <option value="Catering">Catering</option>
+              <option value="Consulting">Consulting</option>
+              <option value="Marketing">Marketing</option>
+            </select>
         </div>
         <div class="mt-4">
           <label class="block text-gray-700 mb-1 text-sm">Message</label>
@@ -47,9 +63,15 @@
         </div>
         <div class="flex items-center mt-4">
           <input type="checkbox" v-model="form.agreed" class="mr-2">
-          <label class="text-[#667085] text-sm">You agree to our <a href="#" class="text-blue-600">Terms of Use</a> and <a href="#" class="text-blue-600">privacy policy</a>.</label>
+          <label class="text-[#667085] text-sm">You agree to our 
+            <NuxtLink class="text-[#326543] font-semibold" :to="form.role === 'agent' ? '/agent-terms' : 'service-provider-terms'" >Terms Of Use</NuxtLink>
+            and 
+            <NuxtLink class="text-[#326543] font-semibold" to="/privacy">Privacy Policy</NuxtLink>
+            .</label>
         </div>
-        <button type="submit" class="mt-6 w-full bg-[#292929] text-white py-3.5 rounded-md text-center">Send Message</button>
+        <div class="pt-5">
+          <button type="submit" class="mt-6 w-full bg-[#D75626] text-white py-3.5 rounded-md text-center">Send Message</button>
+        </div>
       </form>
     </div>
   </div>
@@ -67,7 +89,7 @@ const form = ref({
   lastName: '',
   email: '',
   phone: '',
-  role: 'Agent',
+  role: '',
   service: '',
   message: '',
   agreed: false
