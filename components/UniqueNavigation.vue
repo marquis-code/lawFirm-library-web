@@ -39,7 +39,7 @@
                   <img src="@/assets/icons/more-caret.svg" />
                 </p>
               </a>
-              <a href="https://blackcountry-agent.vercel.app" @click="handleRedirect('agent')" class="block px-4 cursor-pointer py- pb-4 text-[#1D2739] border-b-[0.5px] border-gray-100 font-semibold flex justify-between items-center">
+              <a href="https://living.blackcountry.africa/agent/" @click="handleRedirect('agent')" class="block px-4 cursor-pointer py- pb-4 text-[#1D2739] border-b-[0.5px] border-gray-100 font-semibold flex justify-between items-center">
                 <div class="flex items-center gap-x-2 text-sm">
                   <img src="@/assets/icons/user-type.svg" />
   
@@ -50,7 +50,7 @@
                   <img src="@/assets/icons/more-caret.svg" />
                 </p>
               </a>
-              <a href="https://blackcountry-serviceprovider.vercel.app" @click="handleRedirect('service-provider')" class="block px-4 cursor-pointer  text-[#1D2739] font-semibold flex justify-between items-center">
+              <a href="https://living.blackcountry.africa/service-provider/" @click="handleRedirect('service-provider')" class="block px-4 cursor-pointer  text-[#1D2739] font-semibold flex justify-between items-center">
                 <div class="flex items-center gap-x-2 text-sm">
                   <img src="@/assets/icons/user-type.svg" />
   

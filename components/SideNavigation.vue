@@ -57,13 +57,13 @@
                                         <span>Tenant</span>
                                     </div>
                                 </a>
-                                <a href="https://blackcountryagent.vercel.app/" @click="handleRedirect('agents')" class="block px-4 cursor-pointer py-2 pb-4 text-[#1D2739] border-b-[0.5px] border-gray-100 font-semibold flex justify-between items-center">
+                                <a href="https://living.blackcountry.africa/agent/" @click="handleRedirect('agents')" class="block px-4 cursor-pointer py-2 pb-4 text-[#1D2739] border-b-[0.5px] border-gray-100 font-semibold flex justify-between items-center">
                                     <div class="flex items-center gap-x-2 text-sm">
                                         <img src="@/assets/icons/user-type.svg" />
                                         <span>Agent</span>
                                     </div>
                                 </a>
-                                <a href="https://blackcountryserviceproviders.vercel.app/" @click="handleRedirect('service-providers')" class="block px-4 cursor-pointer text-[#1D2739] font-semibold flex justify-between items-center">
+                                <a href="https://living.blackcountry.africa/service-provider/" @click="handleRedirect('service-providers')" class="block px-4 cursor-pointer text-[#1D2739] font-semibold flex justify-between items-center">
                                     <div class="flex items-center gap-x-2 text-sm">
                                         <img src="@/assets/icons/user-type.svg" />
                                         <span>Service Provider</span>
