@@ -1,7 +1,7 @@
 import { defineNuxtConfig } from "nuxt/config";
 
 export default defineNuxtConfig({
-  target: 'static',
+  ssr: false,
   postcss: {
     plugins: {
       "postcss-import": {},
@@ -12,17 +12,29 @@ export default defineNuxtConfig({
   },
   app: {
     head: {
-      title: "BlackCountry - Live Together, Share Comfortably",
+      title: "ChurchRemit - The Future of Church Administration and Finance",
       htmlAttrs: { lang: "en" },
       meta: [
         { charset: "utf-8" },
         { name: "viewport", content: "width=device-width, initial-scale=1" },
         { name: "format-detection", content: "telephone=no" },
+        {
+          hid: "description",
+          name: "description",
+          content:
+            "A revolutionary platform designed to simplify church operations, enhance financial transparency, and streamline payments.",
+        },
+        { name: "theme-color", content: "#4f46e5" },
       ],
-      link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.svg" },    {
-        rel: 'stylesheet',
-        href: 'https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lexend+Tera:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Rethink+Sans:ital,wght@0,400..800;1,400..800&display=swap',
-      }],
+      link: [
+        { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
+        { rel: "preconnect", href: "https://fonts.googleapis.com" },
+        { rel: "preconnect", href: "https://fonts.gstatic.com", crossorigin: "" },
+        {
+          rel: "stylesheet",
+          href: "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap",
+        },
+      ],
       script: [
         {
           src: "https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js",

@@ -14,6 +14,7 @@
   },
   "devDependencies": {
     "@kevinmarrec/nuxt-pwa": "^0.17.0",
+    "@nuxt/kit": "^3.15.4",
     "@types/lodash": "^4.17.15",
     "autoprefixer": "^10.4.15",
     "nuxt": "^v3.7.3",
@@ -26,12 +27,15 @@
     "@nuxtjs/pwa": "^3.3.5",
     "@nuxtjs/tailwindcss": "^6.12.2",
     "@vueuse/core": "^12.6.1",
+    "@vueuse/motion": "^2.2.6",
     "aos": "^3.0.0-beta.6",
     "axios": "^1.7.9",
     "dayjs": "^1.11.13",
     "lodash": "^4.17.21",
+    "lucide-vue-next": "^0.477.0",
     "moment": "^2.30.1",
     "vue3-toastify": "^0.2.1",
     "vue3-touch-events": "^5.0.13"
-  }
+  },
+  "packageManager": "yarn@4.7.0+sha512.5a0afa1d4c1d844b3447ee3319633797bcd6385d9a44be07993ae52ff4facabccafb4af5dcd1c2f9a94ac113e5e9ff56f6130431905884414229e284e37bb7c9"
 }

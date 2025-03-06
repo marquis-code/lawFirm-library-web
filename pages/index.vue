@@ -1,431 +1,500 @@
-<!-- <template>
-<main>
-  <div class="relative bg-[#FDFCFC]">
-    <div class="relative pb-12 md:pt-20 min-h-[85vh] isolate max-w-7xl mx-auto">
-      <div data-aos="fade-up" class="flex justify-center items-center">
-        <img src="@/assets/img/hero.svg" alt="" class="absolute hidden lg:block top-14 inset-0 -z-10 object-cover">
-      </div>
-      <div data-aos="fade-up" class="flex justify-center items-center">
-        <img src="@/assets/img/mobile-hero-bg.svg" alt="" class="absolute lg:hidden top-8 inset-0 -z-10 w-full object-cover">
-      </div>
-      <div class="max-w-7xl mx-auto px-4 pt-20  pb-12">
-        <div class="relative z-10 max-w-3xl pt-16 lg:pt-0 mx-auto text-center">
-          <h1 data-aos="fade-up" class="text-4xl md:text-7xl font-semibold leading-relaxed text-[#292929] mb-6">
-            Live Together, Share Comfortably
-          </h1>
-          <p data-aos="fade-up" class="text-lg md:text-xl text-[#1D2739] mb-8">
-            Find, Share, and Effortlessly Manage Your Ideal Home in One Place.
-          </p>
-       <div class="">
-        <button data-aos="fade-up" @click="handleSignin"
-            class="group bg-[#292929] text-white rounded-full inline-flex space-x-6 pl-10 py-1 px-1.5 items-center transition-colors">
-            <p>Sign up for free</p>
-            <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <g clip-path="url(#clip0_12983_227128)">
-                <rect width="44" height="44" rx="22" fill="#326543"/>
-                <path d="M28.6666 22H15.3333" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M24.5 26.1667C24.5 26.1667 28.6667 23.098 28.6667 22C28.6667 20.902 24.5 17.8333 24.5 17.8333" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </g>
-              <defs>
-                <clipPath id="clip0_12983_227128">
-                  <rect width="44" height="44" rx="22" fill="white"/>
-                </clipPath>
-              </defs>
-            </svg>
+<template>
+  <div class="font-sans">
+    <!-- Hero Section -->
+
+    <section class="min-h-screen relative overflow-hidden">
+    <div class="absolute inset-0 w-full h-full">
+      <video
+        class="object-cover w-full h-full"
+        autoplay
+        loop
+        muted
+        playsinline
+        poster="/church2.mp4"
+      >
+        <source src="/church2.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <div class="absolute inset-0 bg-black/50"></div>
+    </div>
+
+    <ChurchNavbar />
+
+    <div class="relative container mx-auto px-4 pt-32 pb-20">
+      <div
+        class="max-w-4xl mx-auto text-center text-white"
+        v-motion
+        :initial="{ opacity: 0, y: 100 }"
+        :enter="{ opacity: 1, y: 0, transition: { delay: 200, duration: 800 } }"
+      >
+        <h1 class="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-300 to-purple-300 bg-clip-text text-transparent">
+          ChurchRemit
+        </h1>
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">
+          The Future of Church Administration and Finance is Here
+        </h2>
+        <p class="text-xl mb-10 leading-relaxed">
+          A revolutionary platform designed to simplify church operations, enhance financial transparency, and
+          streamline payments. Join our waitlist now to be among the first to experience seamless church admin
+          management.
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center gap-4">
+          <button
+            @click="scrollToWaitlist"
+            class="px-8 py-4 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transform hover:scale-105 transition-all duration-300 shadow-lg"
+          >
+            Join Waitlist
           </button>
-       </div>
+          <button
+            @click="scrollToFeatures"
+            class="px-8 py-4 bg-white text-blue-600 border border-blue-600 rounded-lg font-semibold hover:bg-blue-50 transform hover:scale-105 transition-all duration-300"
+          >
+            Explore Features
+          </button>
         </div>
       </div>
     </div>
-  </div>
 
-  <div class="max-w-7xl pt-20  mx-auto lg:px-6">
+    <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+      <button @click="scrollToWaitlistBenefits" class="text-white">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+        </svg>
+      </button>
+    </div>
 
-    <PropertiesList type="featured" :properties="computedList" />
-  </div>
-  <div id="tenants" class=" bg-[#FDFCFC]">
-      <TenantSteps />
+    <button
+      @click="toggleVideo"
+      class="absolute bottom-4 right-4 bg-white/20 hover:bg-white/30 text-white p-2 rounded-full transition-colors duration-300"
+    >
+      <PauseIcon v-if="isPlaying" class="h-6 w-6" />
+      <PlayIcon v-else class="h-6 w-6" />
+    </button>
+  </section>
 
-  </div>
-  <div class="bg-white">
-    <Renters id="agents" />
-    <Agents id="service-providers" />
-  </div>
-  <div id="about-us"  class="space-y-32">
-    <AboutUs id="about-us" />
-   </div>
-  <WhyChooseUs />
-  <FaqQuestion />
-  <GetInTouch />
-  <FooterSection id="footer" />
-</main>
-</template>
-
-<script setup lang="ts">
-  import moment from "moment";
-  import { useGetProperties } from "@/composables/modules/property/fetchProperties";
-  const { propertiesList } = useGetProperties();
-  const router = useRouter()
-
-  const computedList = computed(() => {
-    return propertiesList.value.slice(0, 8)
-  })
-
-  const handleSignin = () => {
-    window.location.href = "https://tenantblackcountry.vercel.app/login"
-  }
-
-  // Add smooth scroll to top on mount
-onMounted(() => {
-  window.scrollTo({
-    top: 0,
-    behavior: 'smooth'
-  });
-});
-  </script>
-
-<style scoped>
-html {
-  scroll-behavior: smooth;
-}
-</style> -->
-
-<template>
-  <div class="min-h-screen bg-white">
-    <section class="relative min-h-screen">
-      <div class="absolute inset-0 bg-black/50 z-10"></div>
-      <img 
-        src="@/assets/img/new-hero.svg"
-        alt="Hero background" 
-        class="absolute inset-0 w-full h-full object-cover"
-      />
-      <div class="relative z-20 container mx-auto px-4 pt-44">
-        <div class="max-w-5xl">
-          <h1 data-aos="fade-up" class="text-4xl sm:text-5xl md:text-[80px] font-bold leading-snug text-white mb-6">
-            Live Together, Share Comfortably
-          </h1>
-          <p data-aos="fade-up" class="text-xl text-white mb-8">
-            Find, Share, and Effortlessly Manage Your Ideal Home in One Place.
-          </p>
-          <!-- <button class="bg-[#D86D4B] text-white px-10 py-3 rounded-md hover:bg-[#C25B3A] transition-colors flex items-center gap-2">
-            Sign up for free
-            <span class="ml-2">→</span>
-          </button> -->
-          <button @click="handleSignin" data-aos="fade-up"
-          class="group bg-[#292929] text-white rounded-full inline-flex space-x-6 pl-10 py-1 px-1.5 items-center transition-colors">
-          <p>Sign up for free</p>
-          <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g clip-path="url(#clip0_12983_227128)">
-              <rect width="44" height="44" rx="22" fill="#D75626"/>
-              <path d="M28.6666 22H15.3333" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M24.5 26.1667C24.5 26.1667 28.6667 23.098 28.6667 22C28.6667 20.902 24.5 17.8333 24.5 17.8333" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </g>
-            <defs>
-              <clipPath id="clip0_12983_227128">
-                <rect width="44" height="44" rx="22" fill="white"/>
-              </clipPath>
-            </defs>
-          </svg>
-        </button>
+  <!-- <AnimatedSection /> -->
+     
+    <!-- Waitlist Benefits Section -->
+    <section ref="waitlistBenefits" class="py-20 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-3xl font-bold mb-12 text-center" v-motion :initial="{ opacity: 0, y: 50 }" :visible="{ opacity: 1, y: 0, transition: { duration: 800 } }">
+            Why Join the Waitlist?
+          </h2>
+          
+          <div class="space-y-8">
+            <div class="flex items-start gap-6" v-motion :initial="{ opacity: 0, x: -50 }" :visible="{ opacity: 1, x: 0, transition: { duration: 800 } }">
+              <div class="flex-shrink-0 bg-blue-100 p-4 rounded-full">
+                <span class="text-2xl">🚀</span>
+              </div>
+              <div>
+                <h3 class="text-xl font-semibold mb-2">Exclusive Early Access</h3>
+                <p class="text-gray-600">Be the first to explore our powerful features and get a head start on transforming your church administration.</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start gap-6" v-motion :initial="{ opacity: 0, x: -50 }" :visible="{ opacity: 1, x: 0, transition: { duration: 800, delay: 200 } }">
+              <div class="flex-shrink-0 bg-yellow-100 p-4 rounded-full">
+                <span class="text-2xl">💡</span>
+              </div>
+              <div>
+                <h3 class="text-xl font-semibold mb-2">Influence Development</h3>
+                <p class="text-gray-600">Share feedback and shape the platform to better meet the specific needs of your church community.</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start gap-6" v-motion :initial="{ opacity: 0, x: -50 }" :visible="{ opacity: 1, x: 0, transition: { duration: 800, delay: 400 } }">
+              <div class="flex-shrink-0 bg-red-100 p-4 rounded-full">
+                <span class="text-2xl">🎁</span>
+              </div>
+              <div>
+                <h3 class="text-xl font-semibold mb-2">Special Launch Offers</h3>
+                <p class="text-gray-600">Enjoy exclusive perks, discounts, and benefits available only to our early adopters.</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <div class="max-w-7xl pt-20  mx-auto lg:px-6">
-  <!-- <p>Hello world</p> -->
-      <PropertiesList type="featured" :properties="computedList" />
-    </div>
-
-   <section id="tenants">
-    <div class="text-center pb-10 pt-20">
-        <div class="inline-flex items-center gap-2 gap-x-6 px-3 py-1 rounded-lg">
-          <img src="@/assets/icons/corporate.svg" alt="icon" class="w-10 h-10" />
-          <h2 class="text-2xl font-semibold text-[#1D2739]">Tenants</h2>
-        </div>
-      </div>
-
-    <section class="relative">
-      <div class="absolute inset-0 bg-black/50 z-10"></div>
-      <img 
-        src="@/assets/img/new-tenants.svg"
-        alt="Journey background" 
-        class="absolute inset-0 w-full h-full object-cover"
-      />
-      <div class="relative z-20 container flex justify-start  items-start flex-col mx-auto px-4 py-20">
-        <div class="max-w-xl mb-12">
-          <h2 data-aos="fade-up" class="text-4xl md:text-5xl font-bold text-white mb-8">
-            Your journey to<br />a new home
-          </h2>
-          <div data-aos="fade-up" class="flex flex-col sm:flex-row gap-4">
-            <button @click="handleSignin" class="bg-[#D75626] text-white px-10 py-3 rounded-lg transition-colors">
-              Sign up for free
-            </button>
-            <a href="#footer" class="bg-white px-10 py-3 text-[#292929] rounded-lg  transition-colors">
-              Download Our App
-            </a>
+    <!-- Features Section -->
+    <section ref="features" class="py-20 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold mb-16 text-center" v-motion :initial="{ opacity: 0, y: 50 }" :visible="{ opacity: 1, y: 0, transition: { duration: 800 } }">
+          Key Features
+        </h2>
+        
+        <div class="grid md:grid-cols-2 gap-16">
+          <!-- Church Operations & Administration -->
+          <div class="bg-white p-8 rounded-xl shadow-lg transform hover:scale-105 transition-all duration-500" v-motion :initial="{ opacity: 0, y: 100 }" :visible="{ opacity: 1, y: 0, transition: { duration: 800 } }">
+            <h3 class="text-2xl font-bold mb-6 text-blue-600">Church Operations & Administration</h3>
+            <ul class="space-y-4">
+              <li class="flex items-start gap-3">
+                <CheckCircleIcon class="h-6 w-6 text-green-500 flex-shrink-0 mt-1" />
+                <span>Centralised management for multi-branch churches.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <CheckCircleIcon class="h-6 w-6 text-green-500 flex-shrink-0 mt-1" />
+                <span>Membership directory with role-based access.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <CheckCircleIcon class="h-6 w-6 text-green-500 flex-shrink-0 mt-1" />
+                <span>Event scheduling and workflow automation.</span>
+              </li>
+            </ul>
+          </div>
+          
+          <!-- Payments & Remittances -->
+          <div class="bg-white p-8 rounded-xl shadow-lg transform hover:scale-105 transition-all duration-500" v-motion :initial="{ opacity: 0, y: 100 }" :visible="{ opacity: 1, y: 0, transition: { duration: 800, delay: 200 } }">
+            <h3 class="text-2xl font-bold mb-6 text-blue-600">Payments & Remittances</h3>
+            <ul class="space-y-4">
+              <li class="flex items-start gap-3">
+                <CheckCircleIcon class="h-6 w-6 text-green-500 flex-shrink-0 mt-1" />
+                <span>Accept tithes, offerings, and donations via bank transfers, USSD, and mobile wallets.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <CheckCircleIcon class="h-6 w-6 text-green-500 flex-shrink-0 mt-1" />
+                <span>Making donations or payments to your church from any payment, banking or fintech platform.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <CheckCircleIcon class="h-6 w-6 text-green-500 flex-shrink-0 mt-1" />
+                <span>Automated transaction receipts and donor tracking.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <CheckCircleIcon class="h-6 w-6 text-green-500 flex-shrink-0 mt-1" />
+                <span>Real-time remittance monitoring for full transparency.</span>
+              </li>
+            </ul>
+          </div>
+          
+          <!-- Payroll & Expense Management -->
+          <div class="bg-white p-8 rounded-xl shadow-lg transform hover:scale-105 transition-all duration-500" v-motion :initial="{ opacity: 0, y: 100 }" :visible="{ opacity: 1, y: 0, transition: { duration: 800, delay: 300 } }">
+            <h3 class="text-2xl font-bold mb-6 text-blue-600">Payroll & Expense Management</h3>
+            <ul class="space-y-4">
+              <li class="flex items-start gap-3">
+                <CheckCircleIcon class="h-6 w-6 text-green-500 flex-shrink-0 mt-1" />
+                <span>Automated salary payments for clergy and staff.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <CheckCircleIcon class="h-6 w-6 text-green-500 flex-shrink-0 mt-1" />
+                <span>Tax compliance, benefits tracking, and payslip generation.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <CheckCircleIcon class="h-6 w-6 text-green-500 flex-shrink-0 mt-1" />
+                <span>Secure approval workflows for accurate disbursements.</span>
+              </li>
+            </ul>
+          </div>
+          
+          <!-- Corporate Banking & Compliance -->
+          <div class="bg-white p-8 rounded-xl shadow-lg transform hover:scale-105 transition-all duration-500" v-motion :initial="{ opacity: 0, y: 100 }" :visible="{ opacity: 1, y: 0, transition: { duration: 800, delay: 400 } }">
+            <h3 class="text-2xl font-bold mb-6 text-blue-600">Corporate Banking & Compliance</h3>
+            <ul class="space-y-4">
+              <li class="flex items-start gap-3">
+                <CheckCircleIcon class="h-6 w-6 text-green-500 flex-shrink-0 mt-1" />
+                <span>Direct integration with banking platforms for secure fund management.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <CheckCircleIcon class="h-6 w-6 text-green-500 flex-shrink-0 mt-1" />
+                <span>Access to Payroll-linked loans and salary advances for your staff.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <CheckCircleIcon class="h-6 w-6 text-green-500 flex-shrink-0 mt-1" />
+                <span>Access to Treasury management and investment products.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <CheckCircleIcon class="h-6 w-6 text-green-500 flex-shrink-0 mt-1" />
+                <span>Real-time financial reporting and audit logs.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <CheckCircleIcon class="h-6 w-6 text-green-500 flex-shrink-0 mt-1" />
+                <span>Compliance with financial regulations to protect church finances.</span>
+              </li>
+            </ul>
           </div>
         </div>
         
-        <div data-aos="fade-up" class="bg-black/50 backdrop-blur-sm -mb-10 mt-44 pb-20  rounded-2xl p-8 sm:p-10 md:p-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <div v-for="(step, index) in steps" :key="index" class="text-white">
-            <div class="bg-[#D75626] w-10 h-10 rounded-lg flex items-center justify-center mb-4">
-              {{ index + 1 }}
-            </div>
-            <h3 class="text-xl text-white font-medium mb-3">{{ step.title }}</h3>
-            <p class="text-white font-light text-sm">{{ step.description }}</p>
+        <!-- Advanced Reporting & Analytics -->
+        <div class="mt-16 bg-white p-8 rounded-xl shadow-lg max-w-4xl mx-auto" v-motion :initial="{ opacity: 0, y: 100 }" :visible="{ opacity: 1, y: 0, transition: { duration: 800, delay: 500 } }">
+          <h3 class="text-2xl font-bold mb-6 text-blue-600">Advanced Reporting & Analytics</h3>
+          <ul class="space-y-4">
+            <li class="flex items-start gap-3">
+              <CheckCircleIcon class="h-6 w-6 text-green-500 flex-shrink-0 mt-1" />
+              <span>Real-time financial dashboards for income and expenses.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <CheckCircleIcon class="h-6 w-6 text-green-500 flex-shrink-0 mt-1" />
+              <span>Donation trend analysis and financial forecasting.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <CheckCircleIcon class="h-6 w-6 text-green-500 flex-shrink-0 mt-1" />
+              <span>Secure data encryption and fraud detection mechanisms.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Choose ChurchRemit Section -->
+    <section class="py-20 bg-white">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold mb-8 text-center" v-motion :initial="{ opacity: 0, y: 50 }" :visible="{ opacity: 1, y: 0, transition: { duration: 800 } }">
+          Why Choose ChurchRemit?
+        </h2>
+        
+        <p class="text-xl text-center text-gray-600 mb-16 max-w-4xl mx-auto" v-motion :initial="{ opacity: 0, y: 50 }" :visible="{ opacity: 1, y: 0, transition: { duration: 800, delay: 200 } }">
+          At ChurchRemit, we recognize the value in every solution for church management. Here's how
+          ChurchRemit takes church financial management to the next level:
+        </p>
+        
+        <div class="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+          <div class="bg-blue-50 p-8 rounded-xl" v-motion :initial="{ opacity: 0, x: -50 }" :visible="{ opacity: 1, x: 0, transition: { duration: 800 } }">
+            <h3 class="text-xl font-bold mb-4 text-blue-700">Superior Banking Integration</h3>
+            <p class="text-gray-700">
+              Our platform directly connects with leading banking platforms and payment aggregators. This
+              ensures real-time remittance monitoring and secure, efficient transactions.
+            </p>
+          </div>
+          
+          <div class="bg-purple-50 p-8 rounded-xl" v-motion :initial="{ opacity: 0, x: 50 }" :visible="{ opacity: 1, x: 0, transition: { duration: 800 } }">
+            <h3 class="text-xl font-bold mb-4 text-purple-700">Advanced Payroll & Expense Management</h3>
+            <p class="text-gray-700">
+              Beyond basic donation tracking, ChurchRemit offers automated salary disbursement, tax
+              compliance, and multi-level approval workflows. This robust payroll management means you can
+              focus on ministry while we handle the complexities.
+            </p>
+          </div>
+          
+          <div class="bg-green-50 p-8 rounded-xl" v-motion :initial="{ opacity: 0, x: -50 }" :visible="{ opacity: 1, x: 0, transition: { duration: 800, delay: 200 } }">
+            <h3 class="text-xl font-bold mb-4 text-green-700">Comprehensive Financial Transparency</h3>
+            <p class="text-gray-700">
+              Enjoy a real-time financial dashboard that delivers instant insights into donations, expenditures, and
+              overall financial health. Our advanced reporting and analytics provide greater clarity and
+              accountability compared to standard solutions.
+            </p>
+          </div>
+          
+          <div class="bg-yellow-50 p-8 rounded-xl" v-motion :initial="{ opacity: 0, x: 50 }" :visible="{ opacity: 1, x: 0, transition: { duration: 800, delay: 200 } }">
+            <h3 class="text-xl font-bold mb-4 text-yellow-700">Scalability and Security</h3>
+            <p class="text-gray-700">
+              Built on a modern cloud infrastructure, ChurchRemit guarantees high performance, reliability, and
+              state-of-the-art security measures. This robust foundation supports the growth and evolving needs
+              of your church.
+            </p>
+          </div>
+          
+          <div class="bg-red-50 p-8 rounded-xl md:col-span-2" v-motion :initial="{ opacity: 0, y: 50 }" :visible="{ opacity: 1, y: 0, transition: { duration: 800, delay: 400 } }">
+            <h3 class="text-xl font-bold mb-4 text-red-700">Exclusive Early Access & Community Influence</h3>
+            <p class="text-gray-700">
+              By joining our waitlist, you'll gain exclusive early access, special launch offers, and the opportunity
+              to shape the platform's development with your feedback.
+            </p>
           </div>
         </div>
       </div>
     </section>
-   </section>
 
-   <section id="agents">
-    <div data-aos="fade-up" class="text-center pb-10 pt-32">
-        <div class="inline-flex items-center gap-2 gap-x-6 px-3 py-1 rounded-lg">
-          <img src="@/assets/icons/corporate.svg" alt="icon" class="w-10 h-10" />
-          <h2 class="text-2xl font-semibold text-[#1D2739]">Agents</h2>
-        </div>
-      </div>
-
-    <section class="relative min-h-screen">
-      <div class="absolute inset-0 bg-black/50 z-10"></div>
-      <img 
-        src="@/assets/img/new-agents.svg"
-        alt="Connect background" 
-        class="absolute inset-0 w-full h-full object-cover"
-      />
-      <div class="relative z-20 container mx-auto px-4 py-20">
-        <div class="max-w-2xl -mb-10">
-          <h2 data-aos="fade-up" class="text-4xl md:text-5xl font-bold text-white mb-4">
-            Connect with renters effortlessly
-          </h2>
-          <h3 data-aos="fade-up" class="text-2xl text-white mb-4">
-            Want to become an agent at BlacCountry?
-          </h3>
-          <p data-aos="fade-up" class="text-white leading-relaxed mb-8">
-            Help tenants find the perfect shared living space by managing property viewings, providing expert guidance, and ensuring a smooth move-in process—all while earning commissions for successful rentals.
-          </p>
-          <button @click="router.push('/contact-us')" data-aos="fade-up" class="bg-[#D75626] text-white px-10 py-3 rounded-lg  transition-colors">
-            Contact us
-          </button>
-        </div>
-
-        <div data-aos="fade-up" class="bg-black/50 backdrop-blur-sm mt-44 -mb-16 rounded-2xl p-8 sm:p-10 md:p-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <div v-for="(step, index) in  agentSteps" :key="index" class="text-white">
-            <div class="bg-[#D75626] w-10 h-10 rounded-lg flex items-center justify-center mb-4">
-              {{ index + 1 }}
+    <!-- Waitlist CTA Section -->
+    <section ref="waitlist" class="py-20 bg-gradient-to-br from-blue-600 to-purple-700 text-white">
+      <div class="container mx-auto px-4 text-center">
+        <h2 class="text-4xl font-bold mb-6" v-motion :initial="{ opacity: 0, y: 50 }" :visible="{ opacity: 1, y: 0, transition: { duration: 800 } }">
+          Join the Waitlist Now!
+        </h2>
+        
+        <p class="text-xl mb-12 max-w-3xl mx-auto" v-motion :initial="{ opacity: 0, y: 50 }" :visible="{ opacity: 1, y: 0, transition: { duration: 800, delay: 200 } }">
+          Be part of the future of church financial management. Sign up today and get early access before our official
+          launch!
+        </p>
+        
+        <div class="max-w-md mx-auto bg-white rounded-lg p-6 shadow-lg" v-motion :initial="{ opacity: 0, scale: 0.9 }" :visible="{ opacity: 1, scale: 1, transition: { duration: 800, delay: 400 } }">
+          <form @submit.prevent="submitWaitlist" class="space-y-4">
+            <div>
+              <label for="name" class="block text-start text-gray-700 mb-2">Full Name</label>
+              <input 
+                type="text" 
+                id="name" 
+                v-model="waitlistForm.name" 
+                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900"
+                placeholder="Your Name"
+                required
+              />
             </div>
-            <h3 class="text-xl text-white font-medium mb-3">{{ step.title }}</h3>
-            <p class="text-white font-light text-sm">{{ step.description }}</p>
-          </div>
-        </div>
-        <!-- <div class="bg-black/70 backdrop-blur-sm rounded-2xl p-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <div v-for="(step, index) in agentSteps" :key="index" class="text-white">
-            <div class="bg-[#D86D4B] w-10 h-10 rounded-lg flex items-center justify-center mb-4">
-              {{ index + 1 }}
+            
+            <div>
+              <label for="email" class="block text-start text-gray-700 mb-2">Email Address</label>
+              <input 
+                type="email" 
+                id="email" 
+                v-model="waitlistForm.email" 
+                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900"
+                placeholder="your@email.com"
+                required
+              />
             </div>
-            <h3 class="text-xl font-semibold mb-3">{{ step.title }}</h3>
-            <p class="text-gray-300">{{ step.description }}</p>
-          </div>
-        </div> -->
+            
+            <div>
+              <label for="church" class="block text-start text-gray-700 mb-2">Church Name</label>
+              <input 
+                type="text" 
+                id="church" 
+                v-model="waitlistForm.church" 
+                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900"
+                placeholder="Your Church"
+                required
+              />
+            </div>
+            
+            <button 
+              type="submit" 
+              class="w-full py-3 px-6 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-lg hover:from-blue-700 hover:to-purple-700 transform hover:scale-105 transition-all duration-300"
+              :class="{ 'opacity-75 cursor-not-allowed': isSubmitting }"
+              :disabled="isSubmitting"
+            >
+              <span v-if="isSubmitting">
+                <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                  <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                Processing...
+              </span>
+              <span v-else>Join Waitlist</span>
+            </button>
+          </form>
+        </div>
+        
+        <div class="mt-12 flex flex-wrap justify-center gap-6" v-motion :initial="{ opacity: 0, y: 50 }" :visible="{ opacity: 1, y: 0, transition: { duration: 800, delay: 600 } }">
+          <a href="#" class="flex items-center gap-2 text-white hover:text-blue-200 transition-colors">
+            <!-- <EnvelopeIcon class="h-6 w-6" /> -->
+            <span>Sign Up for Early Access</span>
+          </a>
+          <a href="#" class="flex items-center gap-2 text-white hover:text-blue-200 transition-colors">
+            <PhoneIcon class="h-6 w-6" />
+            <span>Contact Us</span>
+          </a>
+          <a href="#" class="flex items-center gap-2 text-white hover:text-blue-200 transition-colors">
+            <!-- <GlobeAltIcon class="h-6 w-6" /> -->
+            <span>Visit Our Website</span>
+          </a>
+        </div>
+        
+        <p class="mt-8 text-blue-200">+234 816 817 6267</p>
       </div>
     </section>
-   </section>
 
-   <section id="service-providers">
-    <div data-aos="fade-up" class="text-center pb-10 pt-32">
-        <div class="inline-flex items-center gap-2 gap-x-6 px-3 py-1 rounded-lg">
-          <img src="@/assets/icons/corporate.svg" alt="icon" class="w-10 h-10" />
-          <h2 class="text-2xl font-semibold text-[#1D2739]">Service Providers</h2>
-        </div>
-      </div>
-
-    <section class="relative min-h-screen">
-      <div class="absolute inset-0 bg-black/50 z-10"></div>
-      <img 
-        src="@/assets/img/new-service-provider.svg"
-        alt="Connect background" 
-        class="absolute inset-0 w-full h-full object-cover"
-      />
-      <div class="relative z-20 container mx-auto px-4 py-20">
-        <div data-aos="fade-up" class="max-w-2xl mb-12">
-          <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">
-              Join our network of trusted Service Providers
-          </h2>
-          <h3 data-aos="fade-up" class="text-2xl text-white mb-4">
-              Want to become a service provider at BlackCountry?
-          </h3>
-          <p data-aos="fade-up" class="text-white leading-relaxed mb-8">
-              Offer your services to tenants in need of maintenance and home solutions. Manage requests, provide timely assistance, and ensure a well-maintained living space—all while growing your business.
-          </p>
-          <button @click="router.push('/contact-us')" data-aos="fade-up" class="bg-[#D75626] text-white px-10 py-3 rounded-md transition-colors">
-            Contact us
-          </button>
-        </div>
-
-        <div data-aos="fade-up" class="bg-black/50 backdrop-blur-sm mt-60 -mb-16  rounded-2xl p-8 sm:p-10 md:p-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <div v-for="(step, index) in  serviceProviderSteps" :key="index" class="text-white">
-            <div class="bg-[#D75626] w-10 h-10 rounded-lg flex items-center justify-center mb-4">
-              {{ index + 1 }}
-            </div>
-            <h3 class="text-xl text-white font-medium mb-3">{{ step.title }}</h3>
-            <p class="text-white font-light text-sm">{{ step.description }}</p>
-          </div>
-        </div>
-
-      </div>
-    </section>
-   </section>
-
-    <div id="about-us"  class="space-y-32">
-  <AboutUs id="about-us" />
- </div>
-<WhyChooseUs />
-<FaqQuestion />
-<GetInTouch />
-<FooterSection id="footer" />
+    <ChurchAppFooter />
   </div>
-
-<SideNavigation @close="handleClose" v-if="openNav" />
 </template>
 
 <script setup lang="ts">
-import moment from "moment";
-import { onClickOutside } from '@vueuse/core'
-import { ref } from 'vue'
-const isDropdownOpen = ref(false);
-const dropdownRef = ref(null);
-const router = useRouter()
-  import { useGetProperties } from "@/composables/modules/property/fetchProperties";
-  const { propertiesList } = useGetProperties();
-const steps = [
-  {
-    title: 'Find your ideal home and apply',
-    description: 'Sign up or log in, search with filters, browse listings, schedule a tour, and submit your application.'
-  },
-  {
-    title: 'Secure your lease',
-    description: 'Review the approved lease agreement, sign it digitally, and get ready to move in'
-  },
-  {
-    title: 'Make your first payment',
-    description: 'Receive a payment notification, pay rent and the security deposit, and get instant confirmation.'
-  },
-  {
-    title: 'Move in & manage your room',
-    description: 'Pay rent, request maintenance, communicate with your property manager, and renew or move out.'
-  }
-]
+import { ref, onMounted } from 'vue';
+import { useMotion } from '@vueuse/motion';
+import { 
+  CheckCircleIcon, 
+  // EnvelopeIcon, 
+  PhoneIcon, 
+  // GlobeAltIcon 
+} from 'lucide-vue-next';
+import AnimatedSection from '../components/AnimatedSection.vue';
+// import ChurchAppFooter from '../components/ChurchAppFooter.vue';
 
-const agentSteps = [
-  {
-    title: 'Take the First Step',
-    description: 'Show your interest by sending us an email. Help tenants find the perfect home, manage property viewings, and earn commissions for successful rentals.'
-  },
-  {
-    title: 'Accept Invitation',
-    description: 'Join the platform through invitation from the property manager'
-  },
-  {
-    title: 'Manage Requests',
-    description: 'Get properties assigned by property managers, Schedule available dates and times for property viewings'
-  },
-  {
-    title: 'Invoice and payments',
-    description: 'Conduct and assist potential tenants, Get paid for successfully renting out properties'
-  }
-]
+// Refs for scroll targets
+const waitlistBenefits = ref<HTMLElement | null>(null);
+const features = ref<HTMLElement | null>(null);
+const waitlist = ref<HTMLElement | null>(null);
 
-const serviceProviderSteps = [
-  {
-    title: 'Take the First Step',
-    description: 'Show your interest by contacting us. Join our network and and provide reliable home services.'
-  },
-  {
-    title: 'Accept Invitation',
-    description: 'Review the approved lease agreement, sign it digitally, and get ready to move in'
-  },
-  {
-    title: 'Manage Requests',
-    description: 'Receive a payment notification, pay rent and the security deposit, and get instant confirmation.'
-  },
-  {
-    title: 'Invoice and payments',
-    description: 'Pay rent, request maintenance, communicate with your property manager, and renew or move out.'
-  }
-]
-
-
-  // const router = useRouter()
-
-  const computedList = computed(() => {
-    return propertiesList.value.slice(0, 8)
-  })
-
-const handleRedirect = (item: any) => {
-if(item === 'tenant') {
-  //  window.location.href = "https://tenantblackcountry.vercel.app/login/"
-   isDropdownOpen.value = false
-}
-
-if(item === 'agent') {
-  //  window.location.href = "https://blackcountry-agent.vercel.app/"
-   isDropdownOpen.value = false
-}
-
-if(item === 'service-provider') {
-  //  window.location.href = "https://blackcountry-serviceprovider.vercel.app/"
-   isDropdownOpen.value = false
-}
-// router.push('/contact-us')
-// isDropdownOpen.value = false
-}
-
-const openNav = ref(false)
-
-const handleClose = () => {
-openNav.value = false
-}
-
-// Close dropdown when clicking outside
-onClickOutside(dropdownRef, () => {
-isDropdownOpen.value = false;
+// Form state
+const waitlistForm = ref({
+  name: '',
+  email: '',
+  church: ''
 });
+const isSubmitting = ref(false);
+const showSuccess = ref(false);
 
-const toggleDropdown = () => {
-isDropdownOpen.value = !isDropdownOpen.value;
+// Scroll functions
+const scrollToWaitlistBenefits = () => {
+  waitlistBenefits.value?.scrollIntoView({ behavior: 'smooth' });
 };
 
-const handleNavigate = (item: any) => {
-router.push('/')
-}
+const scrollToFeatures = () => {
+  features.value?.scrollIntoView({ behavior: 'smooth' });
+};
 
-const handleSignin = () => {
-  window.location.href = "https://tenantblackcountry.vercel.app/login"
-}
+const scrollToWaitlist = () => {
+  waitlist.value?.scrollIntoView({ behavior: 'smooth' });
+};
 
-// Add smooth scroll to top on mount
+// Form submission
+const submitWaitlist = () => {
+  isSubmitting.value = true;
+  
+  // Simulate API call
+  setTimeout(() => {
+    isSubmitting.value = false;
+    showSuccess.value = true;
+    waitlistForm.value = {
+      name: '',
+      email: '',
+      church: ''
+    };
+    
+    // Show success message
+    alert('Thank you for joining our waitlist! We will contact you soon with exclusive early access information.');
+  }, 1500);
+};
+
+// Intersection observer for animations
 onMounted(() => {
-window.scrollTo({
-  top: 0,
-  behavior: 'smooth'
-});
+  // Initialize animations
+  useMotion();
+  
+  // Add scroll reveal animations for elements
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate-fade-in');
+      }
+    });
+  }, { threshold: 0.1 });
+  
+  document.querySelectorAll('.animate-on-scroll').forEach(el => {
+    observer.observe(el);
+  });
 });
 </script>
 
 <style>
-.wavy-pattern {
-  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='rgba(255,255,255,0.1)' fill-rule='evenodd'/%3E%3C/svg%3E");
+.animate-fade-in {
+  animation: fadeIn 1s ease-in-out forwards;
 }
 
-/* Ensure smooth dropdown animation */
-.dropdown-enter-active,
-.dropdown-leave-active {
-transition: opacity 0.2s ease-in-out;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.dropdown-enter,
-.dropdown-leave-to {
-opacity: 0;
+/* Gradient text animation */
+.bg-gradient-to-r {
+  background-size: 200% 200%;
+  animation: gradientShift 8s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 </style>
+
