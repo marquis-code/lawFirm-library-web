@@ -2,6 +2,7 @@ import { defineNuxtConfig } from "nuxt/config";
 
 export default defineNuxtConfig({
   ssr: false,
+
   postcss: {
     plugins: {
       "postcss-import": {},
@@ -10,9 +11,10 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
+
   app: {
     head: {
-      title: "ChurchRemit - The Future of Church Administration and Finance",
+      title: "CONVENANT UNIVERSITY | Empowering Every Student To Realize Their Boldest Career Dreams.",
       htmlAttrs: { lang: "en" },
       meta: [
         { charset: "utf-8" },
@@ -42,6 +44,7 @@ export default defineNuxtConfig({
         },
       ],
     },
+    pageTransition: { name: "page", mode: "out-in" },
   },
 
   googleFonts: {
@@ -53,21 +56,22 @@ export default defineNuxtConfig({
     preconnect: true, // Preconnect to the font server
     preload: true, // Preload the font
   },
-  
+
   plugins: ["~/plugins/aos.client.ts"],
   css: ["/assets/css/main.css"],
   modules: ['@kevinmarrec/nuxt-pwa', "@nuxtjs/tailwindcss", '@nuxtjs/google-fonts'],
+
   pwa: {
     workbox: {
       enabled: true
     },
     meta: {
-      title: "BlackCountry - Live Together, Share Comfortably",
+      title: "CONVENANT UNIVERSITY | Empowering Every Student To Realize Their Boldest Career  Dreams.",
       author: "Marquis",
       mobileAppIOS: false,
       mobileApp: true,
       description:
-        "Find, Share, and Effortlessly Manage Your Ideal Home in One Place..",
+        "Empowering Every Student To Realize Their Boldest Career  Dreams.",
       theme_color: "#27396B",
       background_color: "#27396B",
       display: "standalone",
@@ -78,7 +82,7 @@ export default defineNuxtConfig({
       sizes: [64, 120, 144, 152, 192, 384, 512],
     },
     manifest: {
-      name: "Achilles Drill",
+      name: "Marquis",
       lang: "fa",
       useWebmanifestExtension: false,
     },
@@ -109,6 +113,7 @@ export default defineNuxtConfig({
       },
     ],
   },
+
   vite: {
     optimizeDeps: {
       include: ['fast-deep-equal']
@@ -131,4 +136,6 @@ export default defineNuxtConfig({
     //   },
     // },
   },
+
+  compatibilityDate: "2025-03-08",
 });
