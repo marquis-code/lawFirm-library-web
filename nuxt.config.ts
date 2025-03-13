@@ -17,16 +17,9 @@ export default defineNuxtConfig({
       title: "CONVENANT UNIVERSITY | Empowering Every Student To Realize Their Boldest Career Dreams.",
       htmlAttrs: { lang: "en" },
       meta: [
-        { charset: "utf-8" },
-        { name: "viewport", content: "width=device-width, initial-scale=1" },
-        { name: "format-detection", content: "telephone=no" },
-        {
-          hid: "description",
-          name: "description",
-          content:
-            "A revolutionary platform designed to simplify church operations, enhance financial transparency, and streamline payments.",
-        },
-        { name: "theme-color", content: "#4f46e5" },
+        { charset: 'utf-8' },
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        { hid: 'description', name: 'description', content: 'Rocksmith Chambers Law Library - Your gateway to legal knowledge and research' }
       ],
       link: [
         { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
@@ -36,6 +29,7 @@ export default defineNuxtConfig({
           rel: "stylesheet",
           href: "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap",
         },
+        { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap' }
       ],
       script: [
         {
@@ -113,7 +107,32 @@ export default defineNuxtConfig({
       },
     ],
   },
-
+  tailwindcss: {
+    config: {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            serif: ['Playfair Display', 'serif'],
+          },
+          colors: {
+            green: {
+              50: '#f0f9f0',
+              100: '#dcf0dc',
+              200: '#bae2ba',
+              300: '#8fcf8f',
+              400: '#5cb85c',
+              500: '#48a148',
+              600: '#3c8a3c',
+              700: '#2f6e2f',
+              800: '#295a29',
+              900: '#244a24',
+            },
+          },
+        },
+      },
+    },
+  },
   vite: {
     optimizeDeps: {
       include: ['fast-deep-equal']

@@ -1,132 +1,111 @@
 <template>
     <div>
-      <!-- Stats cards -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-        <div class="bg-white rounded-xl shadow p-6 flex items-center justify-center">
-          <div class="relative">
-            <svg class="w-32 h-32">
-              <circle
-                cx="64"
-                cy="64"
-                r="54"
-                fill="none"
-                stroke="#e6e6e6"
-                stroke-width="10"
-              />
-              <circle
-                cx="64"
-                cy="64"
-                r="54"
-                fill="none"
-                stroke="#2e7d32"
-                stroke-width="10"
-                stroke-dasharray="339.3"
-                :stroke-dashoffset="calculateOffset(2000, 3000)"
-                transform="rotate(-90, 64, 64)"
-                class="transition-all duration-1000 ease-out"
-              />
-            </svg>
-            <div class="absolute inset-0 flex flex-col items-center justify-center">
-              <div class="text-2xl font-bold text-green-700">2000</div>
-              <div class="text-sm text-gray-600">Counselor</div>
-            </div>
+      <!-- Summary Cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4 mb-8">
+        <!-- Users Card -->
+        <div class="bg-white rounded-lg shadow p-4">
+          <div class="flex justify-between items-center mb-2">
+            <h3 class="text-gray-700">Users</h3>
+            <span class="text-green-500 font-medium">{{ totalUsers }}</span>
+          </div>
+          <div class="w-full bg-gray-200 rounded-full h-2.5">
+            <div class="bg-green-400 h-2.5 rounded-full" style="width: 70%"></div>
           </div>
         </div>
-  
-        <div class="bg-white rounded-xl shadow p-6 flex items-center justify-center">
-          <div class="relative">
-            <svg class="w-32 h-32">
-              <circle
-                cx="64"
-                cy="64"
-                r="54"
-                fill="none"
-                stroke="#e6e6e6"
-                stroke-width="10"
-              />
-              <circle
-                cx="64"
-                cy="64"
-                r="54"
-                fill="none"
-                stroke="#9c27b0"
-                stroke-width="10"
-                stroke-dasharray="339.3"
-                :stroke-dashoffset="calculateOffset(2500, 3000)"
-                transform="rotate(-90, 64, 64)"
-                class="transition-all duration-1000 ease-out"
-              />
-            </svg>
-            <div class="absolute inset-0 flex flex-col items-center justify-center">
-              <div class="text-2xl font-bold text-purple-600">2500</div>
-              <div class="text-sm text-gray-600">Advisor</div>
-            </div>
+        
+        <!-- Law Reports Card -->
+        <div class="bg-white rounded-lg shadow p-4">
+          <div class="flex justify-between items-center mb-2">
+            <h3 class="text-gray-700">Law reports</h3>
+            <span class="text-blue-500 font-medium">{{ totalLawReports }}</span>
+          </div>
+          <div class="w-full bg-gray-200 rounded-full h-2.5">
+            <div class="bg-blue-400 h-2.5 rounded-full" style="width: 60%"></div>
           </div>
         </div>
-  
-        <div class="bg-white rounded-xl shadow p-6 flex items-center justify-center">
-          <div class="relative">
-            <svg class="w-32 h-32">
-              <circle
-                cx="64"
-                cy="64"
-                r="54"
-                fill="none"
-                stroke="#e6e6e6"
-                stroke-width="10"
-              />
-              <circle
-                cx="64"
-                cy="64"
-                r="54"
-                fill="none"
-                stroke="#2196f3"
-                stroke-width="10"
-                stroke-dasharray="339.3"
-                :stroke-dashoffset="calculateOffset(3000, 3000)"
-                transform="rotate(-90, 64, 64)"
-                class="transition-all duration-1000 ease-out"
-              />
-            </svg>
-            <div class="absolute inset-0 flex flex-col items-center justify-center">
-              <div class="text-2xl font-bold text-blue-500">3000</div>
-              <div class="text-sm text-gray-600">Users</div>
-            </div>
+        
+        <!-- Books Card -->
+        <div class="bg-white rounded-lg shadow p-4">
+          <div class="flex justify-between items-center mb-2">
+            <h3 class="text-gray-700">Books</h3>
+            <span class="text-purple-500 font-medium">{{ totalBooks }}</span>
+          </div>
+          <div class="w-full bg-gray-200 rounded-full h-2.5">
+            <div class="bg-purple-400 h-2.5 rounded-full" style="width: 80%"></div>
+          </div>
+        </div>
+        
+        <!-- Articles Card -->
+        <div class="bg-white rounded-lg shadow p-4">
+          <div class="flex justify-between items-center mb-2">
+            <h3 class="text-gray-700">Articles</h3>
+            <span class="text-cyan-500 font-medium">{{ totalArticles }}</span>
+          </div>
+          <div class="w-full bg-gray-200 rounded-full h-2.5">
+            <div class="bg-cyan-400 h-2.5 rounded-full" style="width: 40%"></div>
+          </div>
+        </div>
+        
+        <!-- Client Files Card -->
+        <div class="bg-white rounded-lg shadow p-4">
+          <div class="flex justify-between items-center mb-2">
+            <h3 class="text-gray-700">Client files</h3>
+            <span class="text-red-500 font-medium">{{ totalClientFiles }}</span>
+          </div>
+          <div class="w-full bg-gray-200 rounded-full h-2.5">
+            <div class="bg-red-400 h-2.5 rounded-full" style="width: 70%"></div>
+          </div>
+        </div>
+        
+        <!-- Statues Card -->
+        <div class="bg-white rounded-lg shadow p-4">
+          <div class="flex justify-between items-center mb-2">
+            <h3 class="text-gray-700">Statues</h3>
+            <span class="text-yellow-500 font-medium">{{ totalStatues }}</span>
+          </div>
+          <div class="w-full bg-gray-200 rounded-full h-2.5">
+            <div class="bg-yellow-400 h-2.5 rounded-full" style="width: 60%"></div>
           </div>
         </div>
       </div>
-  
-      <!-- Users table -->
-      <div class="bg-white rounded-xl shadow overflow-hidden">
-        <div class="p-4 flex items-center justify-between">
-          <h2 class="text-lg font-semibold">All Users</h2>
-          <div>
-            <input
-              type="text"
-              placeholder="Search"
-              class="px-4 py-2 border rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500"
-            />
-          </div>
+      
+      <!-- Recent Records Table -->
+      <div class="bg-white rounded-lg shadow overflow-hidden">
+        <div class="px-6 py-4 border-b border-gray-200">
+          <h2 class="text-xl font-medium text-green-700">Recent records</h2>
         </div>
-  
+        
         <div class="overflow-x-auto">
           <table class="min-w-full divide-y divide-gray-200">
-            <thead class="bg-gray-100">
+            <thead class="bg-gray-50">
               <tr>
-                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">S/N</th>
-                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
-                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Roles</th>
-                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
-                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Phone No</th>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">S/N</th>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Type</th>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Catalog number</th>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Author</th>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Description</th>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Title</th>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Location</th>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Action</th>
               </tr>
             </thead>
             <tbody class="bg-white divide-y divide-gray-200">
-              <tr v-for="(user, index) in users" :key="index" class="hover:bg-gray-50">
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ user.id }}</td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ user.name }}</td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ user.role }}</td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ user.email }}</td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ user.phone }}</td>
+              <tr v-for="(record, index) in recentRecords" :key="record.id">
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ index + 1 }}</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ record.type }}</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ record.catalogNumber }}</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ record.author }}</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ record.description?.substring(0, 30) }}{{ record.description?.length > 30 ? '...' : '' }}</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ record.title }}</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ record.location }}</td>
+                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                  <button 
+                    class="bg-green-700 hover:bg-green-800 text-white px-3 py-1 rounded text-xs"
+                    @click="viewRecord(record)"
+                  >
+                    View
+                  </button>
+                </td>
               </tr>
             </tbody>
           </table>
@@ -136,33 +115,41 @@
   </template>
   
   <script setup lang="ts">
-  import { ref, onMounted } from 'vue';
+  import { computed } from 'vue';
+  import { useRouter } from 'vue-router';
+  import { useLibraryStore } from '~/stores/library';
   
-  // Mock data
-  const users = ref([
-    { id: 1, name: 'Ayo Olafioye', role: 'Student', email: 'ayoolafioye@gmail.com', phone: '08101675291' },
-    { id: 2, name: 'Ayo Olafioye', role: 'Student', email: 'ayoolafioye@gmail.com', phone: '08101675291' },
-    { id: 3, name: 'Ayo Olafioye', role: 'Student', email: 'ayoolafioye@gmail.com', phone: '08101675291' },
-    { id: 4, name: 'Ayo Olafioye', role: 'Student', email: 'ayoolafioye@gmail.com', phone: '08101675291' },
-    { id: 5, name: 'Ayo Olafioye', role: 'Student', email: 'ayoolafioye@gmail.com', phone: '08101675291' },
-    { id: 6, name: 'Ayo Olafioye', role: 'Student', email: 'ayoolafioye@gmail.com', phone: '08101675291' },
-    { id: 7, name: 'Ayo Olafioye', role: 'Student', email: 'ayoolafioye@gmail.com', phone: '08101675291' },
-    { id: 8, name: 'Ayo Olafioye', role: 'Student', email: 'ayoolafioye@gmail.com', phone: '08101675291' },
-  ]);
+  const router = useRouter();
+  const libraryStore = useLibraryStore();
   
-  // Calculate the offset for the circular progress
-  const calculateOffset = (value: number, max: number) => {
-    const circumference = 2 * Math.PI * 54; // 2πr
-    const progressPercentage = (value / max);
-    return circumference - (circumference * progressPercentage);
+  // Get data from store
+  const totalUsers = computed(() => libraryStore.totalUsers);
+  const totalLawReports = computed(() => libraryStore.totalLawReports);
+  const totalBooks = computed(() => libraryStore.totalBooks);
+  const totalArticles = computed(() => libraryStore.totalArticles);
+  const totalClientFiles = computed(() => libraryStore.totalClientFiles);
+  const totalStatues = computed(() => libraryStore.totalStatues);
+  const recentRecords = computed(() => libraryStore.recentRecords);
+  
+  // View record
+  const viewRecord = (record: any) => {
+    // Navigate to the appropriate page based on record type
+    switch (record.type) {
+      case 'Books':
+        router.push(`/dashboard/books?id=${record.id}`);
+        break;
+      case 'Law report':
+        router.push(`/dashboard/law-reports?id=${record.id}`);
+        break;
+      case 'Articles':
+        router.push(`/dashboard/articles?id=${record.id}`);
+        break;
+      case 'Client file':
+        router.push(`/dashboard/client-files?id=${record.id}`);
+        break;
+      case 'Statues':
+        router.push(`/dashboard/statues?id=${record.id}`);
+        break;
+    }
   };
-  
-  // Animation for the charts
-  onMounted(() => {
-    // The animation is handled by the transition-all class
-  });
-
-  definePageMeta({
-      layout: 'dashboard'
-  })
   </script>

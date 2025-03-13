@@ -1,96 +1,73 @@
 <template>
-  <div
-    class="min-h-screen w-full bg-gradient-to-br from-pink-100 to-purple-100 flex flex-col"
-  >
-    <!-- Header with logo -->
-    <div class="w-full flex justify-center py-4 bg-[#FBD9F3]">
-      <div class="flex items-center">
-        <img
-          src="@/assets/img/logo.png"
-          alt="Covenant University Logo"
-          class="h-16"
-        />
-      </div>
-    </div>
-
-    <!-- Main content -->
-    <div class="flex-1 flex items-center justify-center px-4 md:px-0">
-      <div class="w-full max-w-6xl grid md:grid-cols-2 gap-8 items-center relative">
-        <!-- Login form -->
-        <div class="bg-white rounded-xl shadow-lg overflow-hidden">
-          <div class="bg-[#470A34] text-white p-4">
-            <h2 class="text-base text-center py-3">
-              Kindly Login with your
-              <span class="text-[#47CA56]">Username/Email</span> and
-              <span class="text-[#47CA56]">Password</span>
-            </h2>
-          </div>
-          <div class="p-8">
-            <form @submit.prevent="handleLogin">
-              <div class="mb-6">
-                <label for="username" class="block text-[#470A34] text-lg mb-2"
-                  >Username/Email</label
-                >
-                <input
-                  id="username"
-                  v-model="username"
-                  type="text"
-                  placeholder="e.g ilemoragbenga@gmail.com"
-                  class="w-full p-3 border rounded-xl border-[#BEBEBE] focus:outline-none focus:ring-2 focus:ring-purple-500"
-                />
-              </div>
-              <div class="mb-4">
-                <label for="password" class="block text-[#470A34] text-lg mb-2"
-                  >Password</label
-                >
-                <input
-                  id="password"
-                  v-model="password"
-                  type="password"
-                  placeholder="********"
-                  class="w-full p-3 border rounded-xl border-[#BEBEBE] focus:outline-none focus:ring-2 focus:ring-purple-500"
-                />
-              </div>
-              <div class="flex justify-end mb-6">
-                <a href="#" class="text-[#4555FF] font-medium hover:underline"
-                  >Forgot Password?</a
-                >
-              </div>
-              <div class="pt-5">
-                <button
-                  type="submit"
-                  class="w-full bg-[#470A34] font-semibold text-white py-3.5 rounded-xl hover:bg-purple-800 transition-colors duration-300"
-                >
-                  Log in
-                </button>
-              </div>
-            </form>
+    <div class="min-h-screen bg-green-50 flex flex-col md:flex-row">
+      <!-- Logo Section -->
+      <div class="w-full md:w-1/2 bg-green-50 flex items-center justify-center p-8 border-r border-green-200">
+        <div class="max-w-md">
+          <div class="flex items-center justify-center mb-8">
+            <img src="@/assets/icons/logo.svg" alt="Rocksmith Chambers Logo" class="h-20 mr-4" />
           </div>
         </div>
-        <div class="hidden md:flex flex-col items-center justify-center">
-          <img
-            src="@/assets/img/school.png"
-            alt="Desktop Interface"
-            class="h-auto w-96 rounded-3xl absolute -right-32 -bottom-32"
-          />
+      </div>
+      
+      <!-- Login Form -->
+      <div class="w-full md:w-1/2 flex items-center justify-center p-8">
+        <div class="max-w-md w-full">
+          <div class="text-center mb-8">
+            <h1 class="text-3xl font-serif text-green-800 mb-2">Welcome</h1>
+            <p class="text-gray-600">Please Login to Admin Dashboard</p>
+          </div>
+          
+          <form @submit.prevent="handleLogin" class="space-y-6">
+            <div>
+              <input 
+                v-model="username" 
+                type="text" 
+                placeholder="Username" 
+                class="w-full px-4 py-3 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500"
+                required
+              />
+            </div>
+            
+            <div>
+              <input 
+                v-model="password" 
+                type="password" 
+                placeholder="Password" 
+                class="w-full px-4 py-3 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500"
+                required
+              />
+            </div>
+            
+            <div class="text-right">
+              <a href="#" class="text-green-500 hover:underline">Forgot password?</a>
+            </div>
+            
+            <button 
+              type="submit" 
+              class="w-full bg-green-700 hover:bg-green-800 text-white py-3 rounded transition-colors"
+            >
+              Login
+            </button>
+          </form>
         </div>
       </div>
     </div>
-  </div>
-</template>
-
-<script setup lang="ts">
-import { ref } from "vue";
-import { useRouter } from "nuxt/app";
-
-const router = useRouter();
-const username = ref("");
-const password = ref("");
-
-const handleLogin = () => {
-  // In a real app, you would validate and authenticate here
-  if (username.value && password.value) {
-    router.push("/dashboard");
-  }
-};
-</script>
+  </template>
+  
+  <script setup lang="ts">
+  import { ref } from 'vue';
+  
+  const username = ref('');
+  const password = ref('');
+  
+  const handleLogin = () => {
+    // In a real app, this would call an authentication API
+    console.log('Logging in with:', username.value, password.value);
+    
+    // Simulate successful login and redirect
+    if (username.value && password.value) {
+      // Navigate to dashboard or home page
+      navigateTo('/');
+    }
+  };
+  </script>

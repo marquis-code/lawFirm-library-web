@@ -1,146 +1,217 @@
 <template>
-    <div class="flex h-screen bg-white">
-      <!-- Sidebar -->
-      <div 
-        :class="[
-          'bg-[#470A34] text-white w-64 flex flex-col transition-all duration-300 fixed md:relative h-full z-50',
-          isMobileMenuOpen ? 'left-0' : '-left-64 md:left-0'
-        ]"
-      >
-        <!-- Logo -->
-        <div class="p-4 border-b border-purple-800 flex items-center">
-          <img src="@/assets/img/logo.png" alt="Covenant University Logo" class="h-10" />
-        </div>
-  
-        <!-- Navigation -->
-        <div class="flex-1 overflow-y-auto">
-          <div class="p-4 text-sm text-purple-300">Main</div>
-          <nav class="space-y-1 px-2">
-            <NuxtLink 
-              to="/dashboard" 
-              class="flex items-center p-3 rounded-xl transition-colors duration-200"
-              :class="{ 'bg-purple-800 text-white': currentRoute === 'dashboard', 'hover:bg-purple-800/50': currentRoute !== 'dashboard' }"
-            >
-              <LayoutGrid class="h-5 w-5 mr-3" />
-              Dashboard
-            </NuxtLink>
-            <NuxtLink 
-              to="/dashboard/user" 
-              class="flex items-center p-3 rounded-xl transition-colors duration-200"
-              :class="{ 'bg-purple-800 text-white': currentRoute === 'user', 'hover:bg-purple-800/50': currentRoute !== 'user' }"
-            >
-              <User class="h-5 w-5 mr-3" />
-              User
-            </NuxtLink>
-            <NuxtLink 
-              to="/dashboard/roles" 
-              class="flex items-center p-3 rounded-xl transition-colors duration-200"
-              :class="{ 'bg-purple-800 text-white': currentRoute === 'roles', 'hover:bg-purple-800/50': currentRoute !== 'roles' }"
-            >
-              <ShieldCheck class="h-5 w-5 mr-3" />
-              Roles
-            </NuxtLink>
-            <NuxtLink 
-              to="/dashboard/knowledge-base" 
-              class="flex items-center p-3 rounded-xl transition-colors duration-200"
-              :class="{ 'bg-purple-800 text-white': currentRoute === 'knowledge-base', 'hover:bg-purple-800/50': currentRoute !== 'knowledge-base' }"
-            >
-              <BookOpen class="h-5 w-5 mr-3" />
-              Knowledge Base
-            </NuxtLink>
-          </nav>
-        </div>
-  
-        <!-- Logout -->
-        <div class="p-4 border-t border-purple-800">
-          <button 
-            @click="logout" 
-            class="flex items-center w-full p-3 rounded-xl text-white hover:bg-purple-800/50 transition-colors duration-200"
-          >
-            <LogOut class="h-5 w-5 mr-3 text-red-400" />
-            Logout
-          </button>
+  <div class="flex h-screen bg-gray-100">
+    <!-- Sidebar -->
+    <div class="w-64 bg-green-700 text-white flex flex-col">
+      <!-- Logo -->
+      <div class="p-4 border-b border-green-600">
+        <div class="flex items-center">
+          <img src="@/assets/icons/logo.svg" alt="Rocksmith Chambers Logo" class="h-10 mr-2" />
+          <div>
+            <div class="text-sm font-medium">Rocksmith Chambers</div>
+            <div class="text-xs text-green-300">Law Library.</div>
+          </div>
         </div>
       </div>
-  
-      <!-- Main content -->
-      <div class="flex-1 flex flex-col overflow-hidden">
-        <!-- Header -->
-        <header class="bg-white border-b flex items-center justify-between p-4">
+      
+      <!-- User Profile -->
+      <div class="p-4 border-b border-green-600 flex flex-col items-center">
+        <div class="w-24 h-24 rounded-full overflow-hidden mb-2 border-2 border-white">
+          <img src="@/assets/img/male-avatar.png" alt="User Profile" class="w-full h-full object-cover" />
+        </div>
+        <div class="text-center">
+          <div class="font-medium">{{ user.name }}</div>
+          <div class="text-sm text-green-300">{{ user.role }}</div>
+        </div>
+      </div>
+      
+      <!-- Navigation -->
+      <div class="flex-1 overflow-y-auto py-4">
+        <div class="px-4 mb-4 text-sm font-medium text-green-300">Main</div>
+        
+        <nav class="space-y-1">
+          <NuxtLink 
+            to="/dashboard" 
+            class="flex items-center px-4 py-2 text-sm hover:bg-green-600 transition-colors"
+            :class="{ 'bg-green-600': $route.path === '/dashboard' }"
+          >
+            <LayoutDashboardIcon class="h-5 w-5 mr-3" />
+            Dashboard
+          </NuxtLink>
+          
+          <NuxtLink 
+            to="/dashboard/users" 
+            class="flex items-center px-4 py-2 text-sm hover:bg-green-600 transition-colors"
+            :class="{ 'bg-green-600': $route.path === '/dashboard/users' }"
+          >
+            <UserIcon class="h-5 w-5 mr-3" />
+            User
+          </NuxtLink>
+          
+          <NuxtLink 
+            to="/dashboard/books" 
+            class="flex items-center px-4 py-2 text-sm hover:bg-green-600 transition-colors"
+            :class="{ 'bg-green-600': $route.path.includes('/dashboard/books') }"
+          >
+            <BookOpenIcon class="h-5 w-5 mr-3" />
+            Books
+          </NuxtLink>
+          
+          <NuxtLink 
+            to="/dashboard/law-reports" 
+            class="flex items-center px-4 py-2 text-sm hover:bg-green-600 transition-colors"
+            :class="{ 'bg-green-600': $route.path.includes('/dashboard/law-reports') }"
+          >
+            <ScaleIcon class="h-5 w-5 mr-3" />
+            Law report
+          </NuxtLink>
+          
+          <NuxtLink 
+            to="/dashboard/articles" 
+            class="flex items-center px-4 py-2 text-sm hover:bg-green-600 transition-colors"
+            :class="{ 'bg-green-600': $route.path.includes('/dashboard/articles') }"
+          >
+            <FileTextIcon class="h-5 w-5 mr-3" />
+            Article/Journal
+          </NuxtLink>
+          
+          <NuxtLink 
+            to="/dashboard/client-files" 
+            class="flex items-center px-4 py-2 text-sm hover:bg-green-600 transition-colors"
+            :class="{ 'bg-green-600': $route.path.includes('/dashboard/client-files') }"
+          >
+            <FolderIcon class="h-5 w-5 mr-3" />
+            Client files
+          </NuxtLink>
+          
+          <NuxtLink 
+            to="/dashboard/statues" 
+            class="flex items-center px-4 py-2 text-sm hover:bg-green-600 transition-colors"
+            :class="{ 'bg-green-600': $route.path.includes('/dashboard/statues') }"
+          >
+            <LandmarkIcon class="h-5 w-5 mr-3" />
+            Statues
+          </NuxtLink>
+          
+          <NuxtLink 
+            to="/dashboard/profile" 
+            class="flex items-center px-4 py-2 text-sm hover:bg-green-600 transition-colors"
+            :class="{ 'bg-green-600': $route.path === '/dashboard/profile' }"
+          >
+            <UserCircleIcon class="h-5 w-5 mr-3" />
+            Profile
+          </NuxtLink>
+        </nav>
+      </div>
+      
+      <!-- Logout -->
+      <div class="p-4 border-t border-green-600">
+        <button 
+          @click="logout" 
+          class="flex items-center w-full px-4 py-2 text-sm hover:bg-green-600 transition-colors rounded"
+        >
+          <LogOutIcon class="h-5 w-5 mr-3" />
+          Logout
+        </button>
+      </div>
+    </div>
+    
+    <!-- Main Content -->
+    <div class="flex-1 flex flex-col overflow-hidden">
+      <!-- Header -->
+      <header class="bg-white shadow-sm z-10">
+        <div class="flex items-center justify-between px-6 py-4">
+          <h1 class="text-2xl font-medium text-green-700">{{ pageTitle }}</h1>
+          
           <div class="flex items-center">
-            <button 
-              @click="toggleMobileMenu" 
-              class="md:hidden mr-2 text-gray-600"
-            >
-              <Menu class="h-6 w-6" />
-            </button>
-            <h1 class="text-xl font-semibold text-gray-800">{{ pageTitle }}</h1>
-          </div>
-          <div class="flex items-center">
-            <NuxtLink to="/dashboard" class="mr-4">
-              <Home class="h-5 w-5 text-gray-600" />
-            </NuxtLink>
-            <div class="flex items-center">
-              <img 
-                src="@/assets/img/avatar.png" 
-                alt="User Avatar" 
-                class="h-10 w-10 rounded-full border-2 border-purple-500"
+            <NuxtLink to="/" class="text-green-700 hover:text-green-600 mr-4">Home</NuxtLink>
+            <div class="relative">
+              <input 
+                type="text" 
+                placeholder="Search..." 
+                class="w-64 px-4 py-2 rounded-md bg-gray-100 focus:outline-none focus:ring-2 focus:ring-green-500"
               />
-              <div class="ml-2 hidden md:block">
-                <p class="text-sm font-medium">Micheal George</p>
-                <p class="text-xs text-gray-500">Admin</p>
-              </div>
+              <SearchIcon class="absolute right-3 top-2.5 h-5 w-5 text-gray-400" />
             </div>
           </div>
-        </header>
-  
-        <!-- Page content -->
-        <main class="flex-1 overflow-y-auto bg-gray-50 p-4">
-          <slot />
-        </main>
-      </div>
-  
-      <!-- Mobile menu overlay -->
-      <div 
-        v-if="isMobileMenuOpen" 
-        @click="toggleMobileMenu"
-        class="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden"
-      ></div>
+        </div>
+      </header>
+      
+      <!-- Page Content -->
+      <main class="flex-1 overflow-y-auto bg-gray-100 p-6">
+        <slot />
+      </main>
     </div>
-  </template>
-  
-  <script setup lang="ts">
-  import { ref, computed } from 'vue';
-  import { useRoute, useRouter } from 'nuxt/app';
-  import { LayoutGrid, User, ShieldCheck, BookOpen, LogOut, Menu, Home } from 'lucide-vue-next';
-  
-  const route = useRoute();
-  const router = useRouter();
-  const isMobileMenuOpen = ref(false);
-  
-  const currentRoute = computed(() => {
-    const path = route.path;
-    if (path.includes('/dashboard')) return 'dashboard';
-    if (path.includes('/dashboard/user')) return 'user';
-    if (path.includes('/dashboard/roles')) return 'roles';
-    if (path.includes('/dashboard/knowledge-base')) return 'knowledge-base';
-    return '';
-  });
-  
-  const pageTitle = computed(() => {
-    const path = route.path;
-    if (path.includes('/dashboard')) return 'Dashboard';
-    if (path.includes('/dashboard/user')) return 'User';
-    if (path.includes('/dashboard/roles')) return 'Roles';
-    if (path.includes('/dashboard/knowledge-base')) return 'Knowledge Base';
-    return 'Covenant University';
-  });
-  
-  const toggleMobileMenu = () => {
-    isMobileMenuOpen.value = !isMobileMenuOpen.value;
-  };
-  
-  const logout = () => {
-    router.push('/login');
-  };
-  </script>
+    
+    <!-- Edit Modal -->
+    <EditModal 
+      v-if="showEditModal" 
+      :item="currentItem" 
+      :type="currentItemType"
+      @close="closeEditModal" 
+      @save="saveItem"
+    />
+  </div>
+</template>
+
+<script setup lang="ts">
+import { ref, computed } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
+import { 
+  LayoutDashboardIcon, 
+  UserIcon, 
+  BookOpenIcon, 
+  ScaleIcon, 
+  FileTextIcon, 
+  FolderIcon, 
+  LandmarkIcon, 
+  UserCircleIcon, 
+  LogOutIcon,
+  SearchIcon
+} from 'lucide-vue-next';
+import { useLibraryStore } from '~/stores/library';
+
+const route = useRoute();
+const router = useRouter();
+const libraryStore = useLibraryStore();
+
+// User data
+const user = ref({
+  name: 'Micheal George',
+  role: 'Admin',
+  avatar: '/images/profile.jpg'
+});
+
+// Page title based on route
+const pageTitle = computed(() => {
+  const path = route.path;
+  if (path === '/dashboard') return 'Dashboard';
+  if (path === '/dashboard/users') return 'Users';
+  if (path === '/dashboard/books') return 'Books';
+  if (path === '/dashboard/law-reports') return 'Law Reports';
+  if (path === '/dashboard/articles') return 'Articles';
+  if (path === '/dashboard/client-files') return 'Client Files';
+  if (path === '/dashboard/statues') return 'Statues';
+  if (path === '/dashboard/profile') return 'Profile';
+  return 'Dashboard';
+});
+
+// Edit modal state
+const showEditModal = computed(() => libraryStore.showEditModal);
+const currentItem = computed(() => libraryStore.currentItem);
+const currentItemType = computed(() => libraryStore.currentItemType);
+
+// Methods
+const logout = () => {
+  // Handle logout logic
+  router.push('/login');
+};
+
+const closeEditModal = () => {
+  libraryStore.closeEditModal();
+};
+
+const saveItem = (item: any) => {
+  libraryStore.updateItem(item);
+  libraryStore.closeEditModal();
+};
+</script>
