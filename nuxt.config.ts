@@ -14,7 +14,7 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      title: "CONVENANT UNIVERSITY | Empowering Every Student To Realize Their Boldest Career Dreams.",
+      title: "Rock-Smith Chambers | Discover a comprehensive collection of case law, statutes, and regulations.",
       htmlAttrs: { lang: "en" },
       meta: [
         { charset: 'utf-8' },
@@ -60,12 +60,12 @@ export default defineNuxtConfig({
       enabled: true
     },
     meta: {
-      title: "CONVENANT UNIVERSITY | Empowering Every Student To Realize Their Boldest Career  Dreams.",
+      title: "Rock-Smith Chambers | Discover a comprehensive collection of case law, statutes, and regulations.",
       author: "Marquis",
       mobileAppIOS: false,
       mobileApp: true,
       description:
-        "Empowering Every Student To Realize Their Boldest Career  Dreams.",
+       "Discover a comprehensive collection of case law, statutes, and regulations.",
       theme_color: "#27396B",
       background_color: "#27396B",
       display: "standalone",

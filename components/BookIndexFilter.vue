@@ -1,5 +1,5 @@
 <template>
-    <div class="w-full max-w-4xl mx-auto">
+    <div class="w-full max-w-4xl mx-auto my-10">
       <div class="bg-white rounded-lg shadow p-4 mb-8">
         <div class="grid grid-cols-13 gap-2 text-center">
           <button
@@ -22,7 +22,7 @@
             :key="letter"
             @click="setLetterFilter(letter)"
             :class="[
-              'px-3 py-2 rounded transition-colors',
+              'px-3 py-2 rounded block transition-colors',
               activeLetterFilter === letter
                 ? 'bg-green-700 text-white'
                 : 'hover:bg-green-50 text-green-700'
