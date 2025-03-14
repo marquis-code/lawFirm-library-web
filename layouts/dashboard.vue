@@ -6,10 +6,6 @@
       <div class="p-4 border-b border-green-600">
         <div class="flex items-center">
           <img src="@/assets/icons/logo.svg" alt="Rocksmith Chambers Logo" class="h-10 mr-2" />
-          <div>
-            <div class="text-sm font-medium">Rocksmith Chambers</div>
-            <div class="text-xs text-green-300">Law Library.</div>
-          </div>
         </div>
       </div>
       
@@ -168,11 +164,11 @@ import {
   LogOutIcon,
   SearchIcon
 } from 'lucide-vue-next';
-import { useLibraryStore } from '~/stores/library';
 
 const route = useRoute();
 const router = useRouter();
-const libraryStore = useLibraryStore();
+const { updateItem } = useLibrary();
+const { showEditModal, currentItem, currentItemType, closeEditModal } = useModal();
 
 // User data
 const user = ref({
@@ -195,23 +191,14 @@ const pageTitle = computed(() => {
   return 'Dashboard';
 });
 
-// Edit modal state
-const showEditModal = computed(() => libraryStore.showEditModal);
-const currentItem = computed(() => libraryStore.currentItem);
-const currentItemType = computed(() => libraryStore.currentItemType);
-
 // Methods
 const logout = () => {
   // Handle logout logic
   router.push('/login');
 };
 
-const closeEditModal = () => {
-  libraryStore.closeEditModal();
-};
-
 const saveItem = (item: any) => {
-  libraryStore.updateItem(item);
-  libraryStore.closeEditModal();
+  updateItem(item, currentItemType.value);
+  closeEditModal();
 };
 </script>

@@ -38,13 +38,16 @@
           </div>
         </div>
       </div>
-  
+
+      <div class="bg-[#D6FEE8]">
+        <Catalog />
+      </div>  
       <!-- Catalogs Section -->
-      <div class="py-16 px-4 bg-green-50">
+      <!-- <div class="py-16 px-4 bg-green-50">
         <h2 class="text-4xl font-serif text-green-800 text-center mb-16">Our Catalogs.</h2>
         
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-          <!-- Books -->
+
           <div class="bg-white rounded-lg overflow-hidden shadow-md transition-transform hover:scale-105">
             <div class="h-48 overflow-hidden">
               <img src="@/assets/img/catalogue1.png" alt="Books" class="w-full h-full object-cover" />
@@ -60,7 +63,7 @@
             </div>
           </div>
           
-          <!-- Law Reports -->
+
           <div class="bg-white rounded-lg overflow-hidden shadow-md transition-transform hover:scale-105 md:col-span-2 lg:col-span-1">
             <div class="h-48 overflow-hidden">
               <img src="@/assets/img/catalogue1.png" alt="Law Reports" class="w-full h-full object-cover" />
@@ -76,7 +79,7 @@
             </div>
           </div>
           
-          <!-- Statutes -->
+
           <div class="bg-white rounded-lg overflow-hidden shadow-md transition-transform hover:scale-105">
             <div class="h-48 overflow-hidden">
               <img src="@/assets/img/catalogue1.png" alt="Statutes" class="w-full h-full object-cover" />
@@ -92,7 +95,7 @@
             </div>
           </div>
           
-          <!-- Articles/Journals -->
+
           <div class="bg-white rounded-lg overflow-hidden shadow-md transition-transform hover:scale-105">
             <div class="h-48 overflow-hidden">
               <img src="@/assets/img/catalogue1.png" alt="Articles and Journals" class="w-full h-full object-cover" />
@@ -108,7 +111,7 @@
             </div>
           </div>
           
-          <!-- Client Files -->
+
           <div class="bg-white rounded-lg overflow-hidden shadow-md transition-transform hover:scale-105">
             <div class="h-48 overflow-hidden">
               <img src="@/assets/img/catalogue1.png" alt="Client Files" class="w-full h-full object-cover" />
@@ -124,7 +127,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
   </template>
   
