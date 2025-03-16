@@ -9,7 +9,7 @@
             <img src="@/assets/img/book-store1.jpg" alt="Books" class="catalog-image" />
           </div>
           <div class="catalog-content">
-            <h2 class="catalog-name">Books <span class="catalog-count">(1200+)</span></h2>
+            <h2 class="catalog-name">Books <span class="catalog-count">({{catalogueCountObj?.books ?? '0'}})</span></h2>
             <p class="catalog-description">
               Delve into a world of legal information, including statutes, case law, and scholarly articles, to support your legal analysis.
             </p>
@@ -23,7 +23,7 @@
             <img src="@/assets/img/book-store1.jpg" alt="Statutes" class="catalog-image" />
           </div>
           <div class="catalog-content">
-            <h2 class="catalog-name">Statutes <span class="catalog-count">(2,000+)</span></h2>
+            <h2 class="catalog-name">Statutes <span class="catalog-count">({{catalogueCountObj?.statutes ?? '0'}})</span></h2>
             <p class="catalog-description">
               Delve into a world of legal information, including statutes, case law, and scholarly articles, to support your legal analysis.
             </p>
@@ -37,7 +37,7 @@
             <img src="@/assets/img/book-store1.jpg" alt="Law Reports" class="catalog-image" />
           </div>
           <div class="catalog-content">
-            <h2 class="catalog-name">Law Reports <span class="catalog-count">(4000+)</span></h2>
+            <h2 class="catalog-name">Law Reports <span class="catalog-count">({{catalogueCountObj?.lawReports ?? '0'}})</span></h2>
             <p class="catalog-description">
               Delve into a world of legal information, including statutes, case law, and scholarly articles, to support your legal analysis.
             </p>
@@ -51,7 +51,7 @@
             <img src="@/assets/img/book-store1.jpg" alt="Articles and Journals" class="catalog-image" />
           </div>
           <div class="catalog-content">
-            <h2 class="catalog-name">Articles/Journals <span class="catalog-count">(4200+)</span></h2>
+            <h2 class="catalog-name">Articles/Journals <span class="catalog-count">({{catalogueCountObj?.articles ?? '0'}})</span></h2>
             <p class="catalog-description">
               Delve into a world of legal information, including statutes, case law, and scholarly articles, to support your legal analysis.
             </p>
@@ -65,7 +65,7 @@
             <img src="@/assets/img/book-store1.jpg" alt="Client Files" class="catalog-image" />
           </div>
           <div class="catalog-content">
-            <h2 class="catalog-name">Client Files <span class="catalog-count">(2500+)</span></h2>
+            <h2 class="catalog-name">Client Files <span class="catalog-count">({{catalogueCountObj?.clientFiles ?? '0'}})</span></h2>
             <p class="catalog-description">
               Delve into a world of legal information, including statutes, case law, and scholarly articles, to support your legal analysis.
             </p>
@@ -77,6 +77,10 @@
   </template>
   
   <script setup lang="ts">
+  import { useFetchBookCataloges } from '@/composables/modules/home/useFetchBookCatalogue'
+  import { useFetchCatalogueCount } from '@/composables/modules/home/useFetchCatalogueCounts'
+  const {  bookCategoriesList, loading } = useFetchBookCataloges()
+  const { catalogueCountObj, loading:fetchingCatalogueCount} = useFetchCatalogueCount()
   // TypeScript setup using Composition API
   </script>
   

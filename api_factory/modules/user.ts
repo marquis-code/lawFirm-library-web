@@ -9,7 +9,7 @@ export const user_api = {
         const url = '/user/profile';
         return GATEWAY_ENDPOINT.get(url);
       },
-      $_search_book: (filters: { category_id: string | any, str: string | any}) => {
+      $_search_book: (filters: any) => {
         const url  =  `/user/search?str=${filters.str}&category_id=${filters.category_id}`
         return GATEWAY_ENDPOINT.get(url);
       },

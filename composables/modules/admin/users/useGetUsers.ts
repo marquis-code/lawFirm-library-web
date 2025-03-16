@@ -11,15 +11,18 @@ export const useGetUsers = () => {
   const getUsers = async () => {
     loading.value = true;
     const res = (await admin_api.$_get_users(metadata.value)) as any;
+    console.log(res, 'ueres List')
     if (res.type !== "ERROR") {
-      users.value = res.data.data;
-    }
-    return res.data;
+      users.value = res?.data?.data?.rows || [];
+      metadata.value = res?.data?.data?.meta
+      }
+      loading.value = false
   };
 
-  watch(() => metadata, () => {
+
+  onMounted(() => {
     getUsers()
-  }, { deep: true})
+  })
 
   return {
     getUsers,

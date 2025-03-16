@@ -1,10 +1,10 @@
 import { home_api } from "@/api_factory/modules/home";
 
-export const useFetchBookCategories = () => {
+export const useFetchBookCataloges = () => {
   const loading = ref(false);
   const bookCategoriesList = ref({});
 
-  const getBookCategories = async () => {
+  const getBookCatalogue = async () => {
     loading.value = true;
     const res = (await home_api.$_fetch_book_catalog()) as any;
     if (res.type !== "ERROR") {
@@ -14,11 +14,11 @@ export const useFetchBookCategories = () => {
   };
 
 onMounted(() => {
-    getBookCategories()
+  getBookCatalogue()
 })
 
   return {
-    getBookCategories,
+    getBookCatalogue,
     bookCategoriesList,
     loading,
   };

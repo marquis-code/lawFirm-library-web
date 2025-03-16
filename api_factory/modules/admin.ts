@@ -21,8 +21,35 @@ export const admin_api = {
         const url = `/auth/categories`;
         return GATEWAY_ENDPOINT.get(url);
       },
-      $_get_book_by_categry_id: (category_id: string | any, search?: string | any, metadata?: { page: string | number, limit: string | number}) => {
-        const url = `/auth/books?page=${metadata?.page}&limit=${metadata?.limit}&category_id=${category_id}&search=${search}`
+      $_get_books: (
+        categoryId?: string | null, 
+        search?: string | null, 
+        metadata?: { page?: string | number, limit?: string | number }
+      ) => {
+        // Create a URLSearchParams object for clean URL parameter handling
+        const params = new URLSearchParams();
+        
+        // Only add parameters if they are defined and not empty
+        if (metadata?.page) {
+          params.append('page', metadata.page.toString());
+        }
+        
+        if (metadata?.limit) {
+          params.append('limit', metadata.limit.toString());
+        }
+        
+        if (categoryId) {
+          params.append('category_id', categoryId.toString());
+        }
+        
+        if (search) {
+          params.append('search', search);
+        }
+        
+        // Construct the URL with the parameters
+        const queryString = params.toString();
+        const url = `/auth/books${queryString ? `?${queryString}` : ''}`;
+        
         return GATEWAY_ENDPOINT.get(url);
       },
       $_add_book: (payload: any) => {

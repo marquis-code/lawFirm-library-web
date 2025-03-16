@@ -8,9 +8,9 @@ export const useFetchProfile = () => {
     loading.value = true;
     const res = (await admin_api.$_get_admin_profile()) as any;
     if (res.type !== "ERROR") {
-      adminProfileObj.value = res.data.data;
+      adminProfileObj.value = res?.data?.data || {};
     }
-    return res.data;
+    loading.value = false
   };
 
 onMounted(() => {

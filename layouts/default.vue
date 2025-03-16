@@ -59,10 +59,6 @@
           <div>
             <div class="flex items-center mb-4">
               <img src="@/assets/icons/logo.svg" alt="Rocksmith Chambers Logo" class="h-12 mr-2" />
-              <div>
-                <div class="text-xl font-serif">Rocksmith Chambers</div>
-                <div class="text-lg">Law Library.</div>
-              </div>
             </div>
             <address class="not-italic">
               <p>12, Water Brooks off Jakande Road,</p>

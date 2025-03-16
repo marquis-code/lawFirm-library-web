@@ -56,7 +56,7 @@
   </template>
   
   <script setup lang="ts">
-  import { useLogin } from "@/composables/modules/user/useLogin"
+  import { useLogin } from '@/composables/modules/admin/auth/useLogin';
   import { ref } from 'vue';
   const { login, loading } = useLogin()
   
@@ -70,7 +70,7 @@
     // Simulate successful login and redirect
     if (username.value && password.value) {
       // Navigate to dashboard or home page
-      await login({type: 'user', email: username.value, password: password.value})
+      await login({type: 'admin', email: username.value, password: password.value})
       // navigateTo('/');
     }
   };

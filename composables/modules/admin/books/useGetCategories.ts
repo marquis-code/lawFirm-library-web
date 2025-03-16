@@ -6,11 +6,16 @@ export const useGetBookCategories = () => {
   const getBookCategories = async () => {
     loading.value = true;
     const res = (await admin_api.$_get_book_categories()) as any;
+    console.log(res, 'fetching categories')
     if (res.type !== "ERROR") {
-      categories.value = res.data.data;
+      categories.value = res?.data?.data || [];
     }
-    return res.data;
+    loading.value = false
   };
+
+  onMounted(() => {
+    getBookCategories()
+  })
 
   return {
     getBookCategories,

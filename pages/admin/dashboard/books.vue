@@ -12,7 +12,7 @@
     </div>
     
     <!-- Books Table -->
-    <div class="bg-white rounded-lg shadow overflow-hidden">
+    <div class="bg-white rounded-xl shadow overflow-hidden">
       <div class="px-6 py-4 border-b border-gray-200">
         <h2 class="text-xl font-medium text-green-700">Recent records</h2>
       </div>
@@ -63,7 +63,7 @@
       ></div>
       
       <!-- Modal Content -->
-      <div class="bg-white rounded-lg shadow-xl w-full max-w-2xl z-10 relative">
+      <div class="bg-white rounded-xl shadow-xl w-full max-w-2xl z-10 relative">
         <div class="p-6">
           <div class="flex justify-between items-center mb-6">
             <h2 class="text-xl font-medium text-gray-800">Add New Book</h2>

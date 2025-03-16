@@ -1,21 +1,22 @@
 // useLogin.ts
 import { user_api } from "@/api_factory/modules/user";
 import { useCustomToast } from "@/composables/core/useCustomToast";
+import { useUser } from "@/composables/modules/auth/user";
 import { ref } from "vue";
 
 export const useLogin = () => {
+  const { createUser } = useUser()
   const loading = ref(false);
   const { showToast } = useCustomToast();
-  const payload = ref({
+  const login = async (payload: {
     type: "user",
-    email: "",
-    password: ""
-  })
-
-  const login = async () => {
+    email: string,
+    password: string
+  }) => {
     loading.value = true;
-    const res = (await user_api.$_user_login(payload.value)) as any;
+    const res = (await user_api.$_user_login(payload)) as any;
     if (res.type !== "ERROR") {
+      createUser (res.data)
       showToast({
         title: "Success",
         message: "Login successful",
@@ -29,6 +30,5 @@ export const useLogin = () => {
   return {
     login,
     loading,
-    payload
   };
 };

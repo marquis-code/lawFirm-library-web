@@ -7,6 +7,7 @@ export const useFetchCatalogueCount = () => {
   const getCatalogueCount = async () => {
     loading.value = true;
     const res = (await home_api.$_fetch_catalog_counts()) as any;
+    console.log(res, 'reshere')
     if (res.type !== "ERROR") {
       catalogueCountObj.value = res.data.data;
     }

@@ -12,14 +12,14 @@ export const useGetClientFiles = () => {
     loading.value = true;
     const res = (await admin_api.$_get_client_files(metadata.value)) as any;
     if (res.type !== "ERROR") {
-      clientFilesList.value = res.data.data;
+      clientFilesList.value = res.data.data.rows;
     }
-    return res.data;
+    loading.value = false
   };
 
-  watch(() => metadata, () => {
+  onMounted(() => {
     getClientFiles()
-  }, { deep: true})
+  })
 
   return {
     getClientFiles,
