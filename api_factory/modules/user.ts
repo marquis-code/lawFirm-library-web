@@ -19,6 +19,6 @@ export const user_api = {
       },
       $_update_password: (payload: any) => {
         const url = '/user/update-password'
-        return GATEWAY_ENDPOINT.get(url, payload);
+        return GATEWAY_ENDPOINT.post(url, payload);
       },
 };
