@@ -1,8 +1,5 @@
 <template>
   <div>
-    <!-- {{categories}} -->
-     <!-- {{bookList}} -->
-    <!-- Summary Cards -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
       <!-- Users Card -->
       <div class="bg-white rounded-xl shadow p-4">
@@ -109,46 +106,7 @@
     
     <!-- Recent Records Table -->
     <div class="bg-white rounded-xl shadow overflow-hidden">
-      <!-- <div class="px-6 py-4 border-b border-gray-200">
-        <h2 class="text-xl font-medium text-green-700">Recent records</h2>
-      </div> -->
-      <!-- {{bookList}} -->
       <BooksTable :bookList="bookList" :loading="fetchingBooks" />
-      <!-- <div class="overflow-x-auto">
-        <table class="min-w-full divide-y divide-gray-200">
-          <thead class="bg-gray-50">
-            <tr>
-              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">S/N</th>
-              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Type</th>
-              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Catalog number</th>
-              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Author</th>
-              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Description</th>
-              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Title</th>
-              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Location</th>
-              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Action</th>
-            </tr>
-          </thead>
-          <tbody class="bg-white divide-y divide-gray-200">
-            <tr v-for="(record, index) in recentRecords" :key="record.id">
-              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ index + 1 }}</td>
-              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ record.type }}</td>
-              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ record.catalogNumber }}</td>
-              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ record.author }}</td>
-              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ record.description?.substring(0, 30) }}{{ record.description?.length > 30 ? '...' : '' }}</td>
-              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ record.title }}</td>
-              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ record.location }}</td>
-              <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                <button 
-                  class="bg-green-700 hover:bg-green-800 text-white px-3 py-1 rounded text-xs"
-                  @click="viewRecord(record)"
-                >
-                  View
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div> -->
     </div>
   </div>
 </template>
