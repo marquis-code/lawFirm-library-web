@@ -8,6 +8,7 @@ export const useLogin = () => {
   const { createUser } = useUser()
   const loading = ref(false);
   const { showToast } = useCustomToast();
+  const router = useRouter()
   const login = async (payload: {
     type: "user",
     email: string,
@@ -16,13 +17,14 @@ export const useLogin = () => {
     loading.value = true;
     const res = (await user_api.$_user_login(payload)) as any;
     if (res.type !== "ERROR") {
-      createUser (res.data)
+      createUser (res.data.data)
       showToast({
         title: "Success",
         message: "Login successful",
         toastType: "success",
         duration: 3000,
       });
+      router.push('/')
     }
     loading.value = false;
   };

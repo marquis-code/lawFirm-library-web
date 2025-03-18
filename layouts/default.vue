@@ -40,9 +40,14 @@
         </div>
         
         <!-- Login Button -->
-        <NuxtLink to="/login" class="hidden md:block bg-green-700 hover:bg-green-800 text-white px-6 py-3 rounded transition-colors">
+        <NuxtLink v-if="!Object.keys(adminProfileObj).length"  to="/login" class="hidden md:block bg-green-700 hover:bg-green-800 text-white px-6 py-3 rounded transition-colors">
           Log in
         </NuxtLink>
+        <div v-else class="h-32 w-32 rounded-full border-4 border-white bg-green-100 flex items-center justify-center shadow-lg">
+            <span class="text-4xl font-bold text-green-700">
+                  {{ getInitials(adminProfileObj?.firstname, adminProfileObj?.lastname) }}
+          </span>
+        </div>
       </div>
     </header>
 
@@ -119,11 +124,23 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
+import { useFetchProfile } from '@/composables/modules/admin/settings/useFetchProfile';
 import { MenuIcon, XIcon, InstagramIcon, TwitterIcon, LinkedinIcon, SendIcon } from 'lucide-vue-next';
 
 const mobileMenuOpen = ref(false);
+const { adminProfileObj, loading } = useFetchProfile();
 
 const toggleMobileMenu = () => {
   mobileMenuOpen.value = !mobileMenuOpen.value;
 };
+
+  // Helper functions
+  const getInitials = (firstName?: string, lastName?: string): string => {
+    if (!firstName && !lastName) return 'U';
+    
+    const firstInitial = firstName ? firstName.charAt(0).toUpperCase() : '';
+    const lastInitial = lastName ? lastName.charAt(0).toUpperCase() : '';
+    
+    return `${firstInitial}${lastInitial}`;
+  };
 </script>

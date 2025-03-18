@@ -74,6 +74,7 @@ export const useUser = () => {
   };
   const createUser = (user: any) => {
     runtimeData.user.value = user;
+    localStorageData.user.value = user;
     localStorageData.token.value = user?.accessToken;
     runtimeData.token.value = user?.accessToken;
   };
