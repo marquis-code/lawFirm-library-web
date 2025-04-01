@@ -25,8 +25,8 @@ export const useLogin = () => {
         toastType: "success",
         duration: 3000,
       });
-      router.push('/admin/dashboard')
-      // window.location.href = "/admin/dashboard"
+      router.push('/dashboard')
+      // window.location.href = "/dashboard"
     }
     loading.value = false;
   };

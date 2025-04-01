@@ -10,7 +10,7 @@ export const useLogin = () => {
   const { showToast } = useCustomToast();
   const router = useRouter()
   const login = async (payload: {
-    type: "user",
+    // type: "user",
     email: string,
     password: string
   }) => {
@@ -24,7 +24,13 @@ export const useLogin = () => {
         toastType: "success",
         duration: 3000,
       });
-      router.push('/')
+      // router.push('/')
+
+      if(res.data.data.role === 'admin'){
+        router.push('/dashboard')
+      } else {
+        router.push('/')
+      }
     }
     loading.value = false;
   };

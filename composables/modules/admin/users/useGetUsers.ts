@@ -5,7 +5,7 @@ export const useGetUsers = () => {
   const users = ref([]);
   const metadata = ref({
     page: 1,
-    limit: 10,
+    limit: 100000000,
   });
 
   const getUsers = async () => {

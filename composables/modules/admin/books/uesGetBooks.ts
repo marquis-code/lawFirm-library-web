@@ -6,7 +6,7 @@ export const useGetBooks = () => {
   const bookList = ref([]);
   const metadata = ref({
     page: 1,
-    limit: 10
+    limit: 10000000
   });
   const filters = ref({
     searchTerm: "",

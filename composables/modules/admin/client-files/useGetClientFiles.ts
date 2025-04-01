@@ -5,7 +5,7 @@ export const useGetClientFiles = () => {
   const clientFilesList = ref([]);
   const metadata = ref({
     page: 1,
-    limit: 10,
+    limit: 10000000,
   });
 
   const getClientFiles = async () => {
