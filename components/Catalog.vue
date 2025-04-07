@@ -1,6 +1,8 @@
 <template>
     <div class="catalog-container">
       <h1 class="catalog-title">Our Catalogs.</h1>
+      <!-- {{catalogueCountObj}} -->
+      <!-- {{bookCategoriesList}} -->
       
       <div class="catalog-grid">
         <!-- Books catalog -->
@@ -13,7 +15,7 @@
             <p class="catalog-description">
               Delve into a world of legal information, including statutes, case law, and scholarly articles, to support your legal analysis.
             </p>
-            <button class="view-button">View</button>
+            <button @click="handleCatalog('books')" class="view-button">View</button>
           </div>
         </div>
         
@@ -27,7 +29,7 @@
             <p class="catalog-description">
               Delve into a world of legal information, including statutes, case law, and scholarly articles, to support your legal analysis.
             </p>
-            <button class="view-button">View</button>
+            <button @click="handleCatalog('statutes')" class="view-button">View</button>
           </div>
         </div>
         
@@ -41,7 +43,7 @@
             <p class="catalog-description">
               Delve into a world of legal information, including statutes, case law, and scholarly articles, to support your legal analysis.
             </p>
-            <button class="view-button">View</button>
+            <button @click="handleCatalog('law-reports')" class="view-button">View</button>
           </div>
         </div>
         
@@ -55,7 +57,7 @@
             <p class="catalog-description">
               Delve into a world of legal information, including statutes, case law, and scholarly articles, to support your legal analysis.
             </p>
-            <button class="view-button">View</button>
+            <button @click="handleCatalog('articles-journals')" class="view-button">View</button>
           </div>
         </div>
         
@@ -69,7 +71,7 @@
             <p class="catalog-description">
               Delve into a world of legal information, including statutes, case law, and scholarly articles, to support your legal analysis.
             </p>
-            <button class="view-button">View</button>
+            <button @click="handleCatalog('client-files')" class="view-button">View</button>
           </div>
         </div>
       </div>
@@ -81,7 +83,56 @@
   import { useFetchCatalogueCount } from '@/composables/modules/home/useFetchCatalogueCounts'
   const {  bookCategoriesList, loading } = useFetchBookCataloges()
   const { catalogueCountObj, loading:fetchingCatalogueCount} = useFetchCatalogueCount()
+  const router = useRouter()
   // TypeScript setup using Composition API
+
+  const handleCatalog = (item: string) => {
+  const categoryMap = {
+    books: bookCategoriesList.value[3],
+    statutes: bookCategoriesList.value[0],
+    'law-reports': bookCategoriesList.value[2],
+    'articles-journals': bookCategoriesList.value[1],
+    'client-files': 0, // Same category as 'statutes'
+  };
+
+  const categoryIndex = categoryMap[item];
+  
+  if (categoryIndex !== undefined) {
+    const categoryObj = bookCategoriesList.value[categoryIndex];
+    router.push(`/catalog?caregoryId=${categoryObj.uuid}`);
+  } else {
+    console.error(`Invalid category: ${item}`);
+  }
+}
+
+
+  // const handleCatalog = (item:any) => {
+  //   const statuesObj = bookCategoriesList.value[0]
+  //   const articleObj = bookCategoriesList.value[1]
+  //   const lawObj = bookCategoriesList.value[2]
+  //   const bookObj = bookCategoriesList.value[3]
+  //   if(item === 'books'){
+  //     router.push(`/catalog?caregoryId=${bookObj.uuid}`)
+  //   }
+
+  //   if(item === 'statutes'){
+  //     router.push(`/catalog?caregoryId=${statuesObj.uuid}`)
+  //   }
+
+  //   if(item === 'law-reports'){
+  //     router.push(`/catalog?caregoryId=${lawObj.uuid}`)
+  //   }
+
+
+  //   if(item === 'articles-journals'){
+  //     router.push(`/catalog?caregoryId=${articleObj.uuid}`)
+  //   }
+
+  //   if(item === 'client-files'){
+  //     router.push(`/catalog?caregoryId=${statuesObj.uuid}`)
+  //   }
+
+  // }
   </script>
   
   <style scoped>
