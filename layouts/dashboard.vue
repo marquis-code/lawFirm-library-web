@@ -63,9 +63,9 @@
           
           <nav class="space-y-1">
             <NuxtLink 
-              to="/dashboard" 
+              to="/admin/dashboard" 
               class="flex items-center px-4 py-2 text-sm hover:bg-green-600 transition-all duration-200"
-              :class="{ 'bg-green-600': $route.path === '/dashboard' }"
+              :class="{ 'bg-green-600': $route.path === '/admin/dashboard' }"
               @click="isMobile && toggleSidebar()"
             >
               <LayoutDashboardIcon class="h-5 w-5 mr-3" />
@@ -73,9 +73,9 @@
             </NuxtLink>
             
             <NuxtLink 
-              to="/dashboard/users" 
+              to="/admin/dashboard/users" 
               class="flex items-center px-4 py-2 text-sm hover:bg-green-600 transition-all duration-200"
-              :class="{ 'bg-green-600': $route.path === '/dashboard/users' }"
+              :class="{ 'bg-green-600': $route.path === '/admin/dashboard/users' }"
               @click="isMobile && toggleSidebar()"
             >
               <UserIcon class="h-5 w-5 mr-3" />
@@ -83,9 +83,9 @@
             </NuxtLink>
             
             <NuxtLink 
-              to="/dashboard/book" 
+              to="/admin/dashboard/book" 
               class="flex items-center px-4 py-2 text-sm hover:bg-green-600 transition-all duration-200"
-              :class="{ 'bg-green-600': $route.path.includes('/dashboard/book') }"
+              :class="{ 'bg-green-600': $route.path.includes('/admin/dashboard/book') }"
               @click="isMobile && toggleSidebar()"
             >
               <BookOpenIcon class="h-5 w-5 mr-3" />
@@ -93,9 +93,9 @@
             </NuxtLink>
             
             <NuxtLink 
-              to="/dashboard/client-files" 
+              to="/admin/dashboard/client-files" 
               class="flex items-center px-4 py-2 text-sm hover:bg-green-600 transition-all duration-200"
-              :class="{ 'bg-green-600': $route.path.includes('/dashboard/client-files') }"
+              :class="{ 'bg-green-600': $route.path.includes('/admin/dashboard/client-files') }"
               @click="isMobile && toggleSidebar()"
             >
               <FolderIcon class="h-5 w-5 mr-3" />
@@ -103,9 +103,9 @@
             </NuxtLink>
             
             <NuxtLink 
-              to="/dashboard/profile" 
+              to="/admin/dashboard/profile" 
               class="flex items-center px-4 py-2 text-sm hover:bg-green-600 transition-all duration-200"
-              :class="{ 'bg-green-600': $route.path === '/dashboard/profile' }"
+              :class="{ 'bg-green-600': $route.path === '/admin/dashboard/profile' }"
               @click="isMobile && toggleSidebar()"
             >
               <UserCircleIcon class="h-5 w-5 mr-3" />
@@ -188,7 +188,7 @@
                   class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 ring-1 ring-black ring-opacity-5"
                 >
                   <NuxtLink 
-                    to="/dashboard/profile" 
+                    to="/admin/dashboard/profile" 
                     class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                     @click="isUserMenuOpen = false"
                   >
@@ -306,11 +306,11 @@ const handleClickOutside = (event: MouseEvent) => {
 // Page title based on route
 const pageTitle = computed(() => {
   const path = route.path;
-  if (path === '/dashboard') return 'Dashboard';
-  if (path === '/dashboard/users') return 'Users';
-  if (path === '/dashboard/book') return 'Books';
-  if (path === '/dashboard/client-files') return 'Client Files';
-  if (path === '/dashboard/profile') return 'Profile';
+  if (path === '/admin/dashboard') return 'Dashboard';
+  if (path === '/admin/dashboard/users') return 'Users';
+  if (path === '/admin/dashboard/book') return 'Books';
+  if (path === '/admin/dashboard/client-files') return 'Client Files';
+  if (path === '/admin/dashboard/profile') return 'Profile';
   return 'Dashboard';
 });
 

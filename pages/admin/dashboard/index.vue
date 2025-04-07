@@ -153,19 +153,19 @@ const viewRecord = (record: any) => {
   // Navigate to the appropriate page based on record type
   switch (record.type) {
     case 'Books':
-      router.push(`/dashboard/books?id=${record.id}`);
+      router.push(`/admin/dashboard/books?id=${record.id}`);
       break;
     case 'Law report':
-      router.push(`/dashboard/law-reports?id=${record.id}`);
+      router.push(`/admin/dashboard/law-reports?id=${record.id}`);
       break;
     case 'Articles':
-      router.push(`/dashboard/articles?id=${record.id}`);
+      router.push(`/admin/dashboard/articles?id=${record.id}`);
       break;
     case 'Client file':
-      router.push(`/dashboard/client-files?id=${record.id}`);
+      router.push(`/admin/dashboard/client-files?id=${record.id}`);
       break;
     case 'Statues':
-      router.push(`/dashboard/statues?id=${record.id}`);
+      router.push(`/admin/dashboard/statues?id=${record.id}`);
       break;
   }
 };

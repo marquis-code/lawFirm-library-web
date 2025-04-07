@@ -2,7 +2,7 @@
     <div>
       <!-- Hero Section with Carousel -->
       <div class="relative">
-        <div class="carousel-container relative h-[500px] overflow-hidden">
+        <div class="carousel-container relative h-[700px] overflow-hidden">
           <transition-group name="fade" tag="div" class="h-full">
             <div 
               v-for="(image, index) in carouselImages" 

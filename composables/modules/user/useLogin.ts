@@ -10,7 +10,7 @@ export const useLogin = () => {
   const { showToast } = useCustomToast();
   const router = useRouter()
   const login = async (payload: {
-    // type: "user",
+    type: "user",
     email: string,
     password: string
   }) => {
@@ -27,7 +27,7 @@ export const useLogin = () => {
       // router.push('/')
 
       if(res.data.data.role === 'admin'){
-        router.push('/dashboard')
+        router.push('/admin/dashboard')
       } else {
         router.push('/')
       }

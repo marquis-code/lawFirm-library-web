@@ -43,8 +43,8 @@
         <NuxtLink v-if="!Object.keys(adminProfileObj).length"  to="/login" class="hidden md:block bg-green-700 hover:bg-green-800 text-white px-6 py-3 rounded transition-colors">
           Log in
         </NuxtLink>
-        <div v-else class="h-32 w-32 rounded-full border-4 border-white bg-green-100 flex items-center justify-center shadow-lg">
-            <span class="text-4xl font-bold text-green-700">
+        <div v-else class="h-12 w-12 rounded-full border-4 border-white bg-green-100 flex items-center justify-center shadow-lg">
+            <span class="text-lg font-bold text-green-700">
                   {{ getInitials(adminProfileObj?.firstname, adminProfileObj?.lastname) }}
           </span>
         </div>

@@ -3,7 +3,7 @@
       <!-- Logo Section -->
       <div class="w-full md:w-1/2 bg-green-50 flex items-center justify-center p-8 border-r border-green-200">
         <div class="max-w-md">
-          <div class="flex hidden lg:block items-center justify-center mb-8">
+          <div class="lg:flex hidden items-center justify-center mb-8">
             <img src="@/assets/icons/logo.svg" alt="Rocksmith Chambers Logo" class="h-20 mr-4" />
           </div>
         </div>
@@ -65,7 +65,7 @@
   </template>
   
   <script setup lang="ts">
-  import { useLogin } from "@/composables/modules/user/useLogin"
+  import { useLogin } from "@/composables/modules/admin/auth/useLogin"
   import { EyeIcon, EyeOffIcon } from 'lucide-vue-next';
   import { ref } from 'vue';
   const { login, loading } = useLogin()
@@ -80,7 +80,7 @@
     // Simulate successful login and redirect
     if (username.value && password.value) {
       // Navigate to dashboard or home page
-      await login({ type: 'user', email: username.value, password: password.value})
+      await login({ type: "admin", email: username.value, password: password.value})
       // navigateTo('/');
     }
   };

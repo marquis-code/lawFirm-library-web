@@ -21,4 +21,16 @@ export const user_api = {
         const url = '/user/update-password'
         return GATEWAY_ENDPOINT.post(url, payload);
       },
+      $_get_index_alphabetically: (categoryId: string, order: string) => {
+        const url  =  `/user/search?category_id=${categoryId}&order=${order}`
+        return GATEWAY_ENDPOINT.get(url);
+      },
+      $_save_list: (payload: any) => {
+        const url  =  `/user/save-list`
+        return GATEWAY_ENDPOINT.post(url, payload);
+      },
+      $_get_list: () => {
+        const url  =  `/user/get-list`
+        return GATEWAY_ENDPOINT.get(url);
+      },
 };
