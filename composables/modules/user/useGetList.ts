@@ -13,6 +13,10 @@ export const useFetchBookList = () => {
     return res.data;
   };
 
+  onMounted(() => {
+    fetchBookList()
+  })
+
   return {
     fetchBookList,
     booksList,

@@ -237,6 +237,7 @@
           </button>
         </div>
       </div>
+      
     </Teleport>
   </div>
 </template>
@@ -247,11 +248,15 @@ import { useFetchBookCataloges } from '@/composables/modules/home/useFetchBookCa
 import { useRoute, useRouter } from '#app';
 import { SearchIcon, ChevronDownIcon, Loader2 as LoaderIcon, List as ListIcon, X as XIcon } from 'lucide-vue-next';
 import { useSearchBook } from '@/composables/modules/user/useSearchBook';
+import { useFetchBookList } from "@/composables/modules/user/useGetList"
 const { bookCategoriesList, loading: fetching } = useFetchBookCataloges()
+import { useSaveList } from '@/composables/modules/user/useSaveList'
 
 const route = useRoute();
 const router = useRouter();
 const { searchBook, bookList, loading } = useSearchBook();
+const { saveList, loading: addingToList} = useSaveList()
+const { } = useFetchBookList()
 
 // Search state
 const searchQuery = ref('');
@@ -352,11 +357,14 @@ const performSearch = async () => {
 };
 
 // Add book to list
-const addToList = (book: any) => {
+const addToList = async (book: any) => {
   // Implement add to list functionality
   console.log('Adding to list:', book);
+  await saveList({
+  book_id: book.uuid
+})
   // Show a toast notification
-  alert('Added to list: ' + book.title);
+  // alert('Added to list: ' + book.title);
 };
 
 // View book details

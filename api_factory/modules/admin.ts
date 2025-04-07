@@ -6,7 +6,7 @@ export const admin_api = {
         return GATEWAY_ENDPOINT.post(url, payload);
       },
       $_get_users: (metadata: { page: string | number, limit: string | number}) => {
-        const url = `/auth/users?page=${metadata.page}&limit=${metadata.page}`;
+        const url = `/auth/users?page=${metadata.page}&limit=${metadata.limit}`;
         return GATEWAY_ENDPOINT.get(url);
       },
       $_add_user: (payload: any) => {
