@@ -7,10 +7,13 @@ export const useFetchBookList = () => {
   const fetchBookList = async () => {
     loading.value = true;
     const res = await user_api.$_get_list() as any
-    if (res.type !== "ERROR") {
+    console.log(res, 'res ')
+    if (res.status === 200 || res.status === 201) {
         booksList.value = res.data.data;
+        return res.data.data
     }
-    return res.data;
+    loading.value = false
+    // return res.data;
   };
 
   onMounted(() => {

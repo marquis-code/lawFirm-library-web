@@ -87,22 +87,46 @@
   // TypeScript setup using Composition API
 
   const handleCatalog = (item: string) => {
+    console.log(item,'itemhere',bookCategoriesList.value[0].uuid)
   const categoryMap = {
-    books: bookCategoriesList.value[3],
-    statutes: bookCategoriesList.value[0],
-    'law-reports': bookCategoriesList.value[2],
-    'articles-journals': bookCategoriesList.value[1],
+    books: bookCategoriesList.value[3].uuid,
+    statutes: bookCategoriesList.value[0].uuid,
+    'law-reports': bookCategoriesList.value[2].uuid,
+    'articles-journals': bookCategoriesList.value[1].uuid,
     'client-files': 0, // Same category as 'statutes'
   };
+  console.log(categoryMap)
 
-  const categoryIndex = categoryMap[item];
+      if(item === 'books'){
+      router.push(`/catalog?caregoryId=${bookCategoriesList.value[3].uuid}&name=${bookCategoriesList.value[3].type}`)
+    }
+
+    if(item === 'statutes'){
+      router.push(`/catalog?caregoryId=${bookCategoriesList.value[0].uuid}&name=${bookCategoriesList.value[0].type}`)
+    }
+
+    if(item === 'law-reports'){
+      router.push(`/catalog?caregoryId=${bookCategoriesList.value[2].uuid}&name=${bookCategoriesList.value[2].type}`)
+    }
+
+
+    if(item === 'articles-journals'){
+      router.push(`/catalog?caregoryId=${bookCategoriesList.value[1].uuid}&name=${bookCategoriesList.value[1].type}`)
+    }
+
+    // if(item === 'client-files'){
+    //   router.push(`/catalog?caregoryId=${statuesObj.uuid}`)
+    // }
+
+  // const categoryIndex = categoryMap[item];
+  // console.log(categoryIndex, 'herro')
   
-  if (categoryIndex !== undefined) {
-    const categoryObj = bookCategoriesList.value[categoryIndex];
-    router.push(`/catalog?caregoryId=${categoryObj.uuid}`);
-  } else {
-    console.error(`Invalid category: ${item}`);
-  }
+  // if (categoryIndex !== undefined) {
+  //   const categoryObj = bookCategoriesList.value[categoryIndex];
+  //   router.push(`/catalog?caregoryId=${categoryObj}`);
+  // } else {
+  //   console.error(`Invalid category: ${item}`);
+  // }
 }
 
 
