@@ -13,8 +13,13 @@ export const useFetchProfile = () => {
     return res.data;
   };
 
+ const userObj = localStorage.getItem('user')as any
+ const parsedObj = JSON.parse(userObj)
+
 onMounted(() => {
+  if(Object.keys(parsedObj).length){
     getAdminProfile()
+  }
 })
 
   return {

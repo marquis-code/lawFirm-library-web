@@ -11,7 +11,7 @@ export const useSaveList = () => {
     if (res.type !== "ERROR") {
         showToast({
             title: "Success",
-            message: "Item was added to listsuccessfully",
+            message: "Item was added to list successfully",
             toastType: "success",
             duration: 3000,
           });

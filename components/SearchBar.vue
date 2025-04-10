@@ -145,6 +145,7 @@ const toggleKeywordDropdown = () => {
 };
 
 const selectSearchType = (option: string) => {
+  console.log(option, 'option here')
   selectedCategory.value = option.uuid
   selectedSearchType.value = option?.name;
   showKeywordDropdown.value = false;
@@ -163,6 +164,7 @@ const handleResultClick = (book: any) => {
   router.push({
     path: '/search',
     query: {
+      keyword: selectedSearchType.value,
       type: selectedSearchType.value.toLowerCase(),
       q: searchQuery.value,
       category_id: book.category_id || ''
@@ -172,10 +174,12 @@ const handleResultClick = (book: any) => {
 };
 
 const handleSearch = () => {
+  console.log(selectedCategory.value)
   if (searchQuery.value) {
     router.push({
       path: '/search',
       query: {
+        keyword: selectedSearchType.value,
         type: selectedSearchType.value.toLowerCase(),
         q: searchQuery.value,
         category_id: selectedCategory.value

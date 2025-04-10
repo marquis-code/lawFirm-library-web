@@ -117,11 +117,11 @@
     <Teleport to="body">
       <div 
         v-if="showBookDetails" 
-        class="fixed inset-0 w-full bg-black bg-opacity-50 flex items-center justify-center p-4 z-50"
+        class="fixed inset-0 top-10 w-full h-screen bg-black bg-opacity-50 flex items-center justify-center p-4 z-50 overflow-auto"
         @click="closeBookDetails"
       >
         <div 
-          class="relative w-[500px]"
+          class="relative w-full max-w-lg mx-auto"
           @click.stop
         >
           <!-- Flip Card Container -->
@@ -153,10 +153,6 @@
                     </div>
                   </div>
                 </div>
-                <button class="text-green-700 hover:text-green-800">
-                  <ListIcon class="h-6 w-6" />
-                  <span class="text-xs block">Add to list</span>
-                </button>
               </div>
               
               <div class="border-t border-gray-200 pt-4 mt-4">
@@ -237,7 +233,6 @@
           </button>
         </div>
       </div>
-      
     </Teleport>
   </div>
 </template>
@@ -260,7 +255,7 @@ const { } = useFetchBookList()
 
 // Search state
 const searchQuery = ref('');
-const selectedSearchType = ref('Keyword');
+const selectedSearchType = ref('');
 const showKeywordDropdown = ref(false);
 const initialLoad = ref(true);
 const debounceTimer = ref<NodeJS.Timeout | null>(null);
@@ -276,6 +271,7 @@ const selectedBookIndex = ref(0);
 onMounted(async () => {
   const query = route.query.q as string;
   const type = route.query.type as string;
+  selectedSearchType.value = route?.query?.keyword
   const categoryId = route.query.category_id as string;
 
   // Fix: Check if bookCategoriesList.value is an array before using map

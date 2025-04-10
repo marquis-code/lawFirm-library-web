@@ -1,8 +1,13 @@
 <template>
   <div class="container mx-auto px-4 py-8">
+    <div class="flex justify-start items-start my-8">
+      <button @click="router.back()" class="bg-green-700 hover:bg-green-800 text-white px-4 py-2 rounded transition-colors">
+        Previous page
+      </button>
+    </div>
     <!-- Header -->
     <div class="bg-green-700 text-white py-6 px-8 rounded-lg mb-8">
-      <h1 class="text-3xl font-serif">{{route.query.name}} Reports</h1>
+      <h1 class="text-3xl font-serif uppercase">{{route.query.name}}</h1>
     </div>
     
     <!-- NWLR Info -->
@@ -37,7 +42,7 @@
     
     <!-- Loading State -->
     <div v-if="loading" class="text-center py-8">
-      <p class="text-gray-500 text-lg">Loading reports...</p>
+      <p class="text-gray-500 text-lg">Loading {{route.query.name}}...</p>
     </div>
     
     <!-- Law Reports List -->
@@ -50,16 +55,16 @@
         </ul>
       </div>
       <div v-else class="text-center py-8">
-        <p class="text-gray-500 text-lg">No reports found starting with '{{ selectedLetter }}'</p>
+        <p class="text-gray-500 text-lg">No {{route.query.name}} found starting with '{{ selectedLetter }}'</p>
       </div>
     </div>
     
     <!-- Pagination -->
-    <div class="flex justify-end mt-8">
-      <button class="bg-green-700 hover:bg-green-800 text-white px-4 py-2 rounded transition-colors">
+    <!-- <div class="flex justify-end mt-8">
+      <button @click="router.back()" class="bg-green-700 hover:bg-green-800 text-white px-4 py-2 rounded transition-colors">
         Previous page
       </button>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -69,6 +74,8 @@ import { ref, computed, onMounted, watch } from 'vue';
 
 const route = useRoute();
 const { bookCategoriesList, loading, fetchIndexAlphabetically } = useFetchIndexAlphabetically();
+
+const router = useRouter()
 
 // Get category ID from URL
 const categoryId = computed(() => {

@@ -40,9 +40,10 @@
         </div>
         
         <!-- Login Button -->
-         <!-- {{adminProfileObj}} -->
+         <!-- {{userProfileObj}} -->
     <div class="flex items-center gap-x-3">
-      <NuxtLink  v-if="!Object.keys(parsed).length"  class="text-green-700 font-semibold" to="/book-list">
+      <!-- {{parsed}} -->
+      <NuxtLink  v-if="Object.keys(parsed).length"  class="text-green-700 font-semibold" to="/book-list">
               Book List
           </NuxtLink>
         <NuxtLink v-if="!Object.keys(parsed).length"  to="/login" class="hidden md:block bg-green-700 hover:bg-green-800 text-white px-6 py-3 rounded transition-colors">
@@ -50,7 +51,7 @@
         </NuxtLink>
         <div v-else class="h-12 w-12 rounded-full border-4 border-white bg-green-100 flex items-center justify-center shadow-lg">
             <span class="text-lg font-bold text-green-700">
-                  {{ getInitials(adminProfileObj?.firstname, adminProfileObj?.lastname) || User }}
+                  {{ getInitials(userProfileObj?.firstname, userProfileObj?.lastname) || User }}
           </span>
         </div>
     </div>
@@ -130,11 +131,11 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import { useFetchProfile } from '@/composables/modules/admin/settings/useFetchProfile';
+import { useFetchProfile } from '@/composables/modules/user/useFetchProfile';
 import { MenuIcon, XIcon, InstagramIcon, TwitterIcon, LinkedinIcon, SendIcon } from 'lucide-vue-next';
 
 const mobileMenuOpen = ref(false);
-const { adminProfileObj, loading } = useFetchProfile();
+const { userProfileObj, loading } = useFetchProfile();
 const userObj = window.localStorage.getItem('user') as any
 const parsed = JSON.parse(userObj) as any
 

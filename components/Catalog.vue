@@ -13,7 +13,8 @@
           <div class="catalog-content">
             <h2 class="catalog-name">Books <span class="catalog-count">({{catalogueCountObj?.books ?? '0'}})</span></h2>
             <p class="catalog-description">
-              Delve into a world of legal information, including statutes, case law, and scholarly articles, to support your legal analysis.
+              This section contains records of legal books, commentaries, and academic publications available in our library. These cover a wide range of legal subjects, from core principles to specialized areas of law.
+
             </p>
             <button @click="handleCatalog('books')" class="view-button">View</button>
           </div>
@@ -27,7 +28,8 @@
           <div class="catalog-content">
             <h2 class="catalog-name">Statutes <span class="catalog-count">({{catalogueCountObj?.statutes ?? '0'}})</span></h2>
             <p class="catalog-description">
-              Delve into a world of legal information, including statutes, case law, and scholarly articles, to support your legal analysis.
+              Browse through records of statutory materials housed in our library, including acts of parliament, statutory instruments, and other legislative documents relevant to legal practice.
+
             </p>
             <button @click="handleCatalog('statutes')" class="view-button">View</button>
           </div>
@@ -41,7 +43,8 @@
           <div class="catalog-content">
             <h2 class="catalog-name">Law Reports <span class="catalog-count">({{catalogueCountObj?.lawReports ?? '0'}})</span></h2>
             <p class="catalog-description">
-              Delve into a world of legal information, including statutes, case law, and scholarly articles, to support your legal analysis.
+              This catalog features records of law reports available in our library, comprising court decisions and judgments that serve as important references for case law and legal precedent.
+
             </p>
             <button @click="handleCatalog('law-reports')" class="view-button">View</button>
           </div>
@@ -55,7 +58,8 @@
           <div class="catalog-content">
             <h2 class="catalog-name">Articles/Journals <span class="catalog-count">({{catalogueCountObj?.articles ?? '0'}})</span></h2>
             <p class="catalog-description">
-              Delve into a world of legal information, including statutes, case law, and scholarly articles, to support your legal analysis.
+              Here you'll find cataloged records of legal journals, scholarly articles, and research papers accessible in our library. These materials offer insight into various legal issues and developments.
+
             </p>
             <button @click="handleCatalog('articles-journals')" class="view-button">View</button>
           </div>
@@ -69,7 +73,7 @@
           <div class="catalog-content">
             <h2 class="catalog-name">Client Files <span class="catalog-count">({{catalogueCountObj?.clientFiles ?? '0'}})</span></h2>
             <p class="catalog-description">
-              Delve into a world of legal information, including statutes, case law, and scholarly articles, to support your legal analysis.
+              This section includes catalog records of archived client files stored within our library. These are for internal reference only and contain documentation related to cases handled by the firm.
             </p>
             <button @click="handleCatalog('client-files')" class="view-button">View</button>
           </div>
