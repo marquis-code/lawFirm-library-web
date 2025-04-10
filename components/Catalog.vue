@@ -101,6 +101,10 @@
   };
   console.log(categoryMap)
 
+  if(item === 'client-files'){
+      router.push(`/client-files-catalog?categoryId=92cef6d0-8e05-4bea-8419-55007a5085d5?name=client-files`)
+    }
+
       if(item === 'books'){
       router.push(`/catalog?caregoryId=${bookCategoriesList.value[3].uuid}&name=${bookCategoriesList.value[3].type}`)
     }

@@ -7,15 +7,15 @@
     </div>
     <!-- Header -->
     <div class="bg-green-700 text-white py-6 px-8 rounded-lg mb-8">
-      <h1 class="text-3xl font-serif uppercase">{{route.query.name}}</h1>
+      <h1 class="text-3xl font-serif uppercase">{{route.query.name === 'statues' ? 'Statutes' : route.query.name}}</h1>
     </div>
     
     <!-- NWLR Info -->
     <div class="mb-8">
       <p class="text-lg">
-        <span class="font-bold">Indexes of NWLR:</span> 
-        Visit NWLR website to view full report. 
-        <a href="https://nwlronline.com/" class="text-blue-600 hover:underline">https://nwlronline.com/</a>
+        <span class="font-bold">Indexes of {{route.query.name}}:</span> 
+        <!-- Visit NWLR website to view full report. 
+        <a href="https://nwlronline.com/" class="text-blue-600 hover:underline">https://nwlronline.com/</a> -->
       </p>
     </div>
     
@@ -41,24 +41,40 @@
     </div>
     
     <!-- Loading State -->
-    <div v-if="loading" class="text-center py-8">
-      <p class="text-gray-500 text-lg">Loading {{route.query.name}}...</p>
-    </div>
+     <!-- {{bookCategoriesList}} -->
+    <!-- <div v-if="loading" class="text-center py-8">
+      <p class="text-gray-500 text-lg">Loading {{route.query.name === 'statues' ? 'Statutes' : route.query.name}}...</p>
+    </div> -->
     
     <!-- Law Reports List -->
-    <div v-else class="space-y-4">
+    <div class="space-y-4">
+      <div v-if="bookCategoriesList && bookCategoriesList.length > 0" class="grid gap-4">
+        <div v-for="(report, index) in bookCategoriesList" :key="index" class="p-4 rounded-lg space-y-2 shadow-md bg-white border border-gray-200">
+          <h3 class="text-xl font-semibold text-gray-800">{{ report.title }}</h3>
+          <p class="text-gray-600"><span class="font-medium">Author:</span> {{ report.author }}</p>
+          <p class="text-gray-600"><span class="font-medium">Location:</span> {{ report.location }}</p>
+          <p class="text-gray-600"><span class="font-medium">Year:</span> {{ report.year }}</p>
+          <p class="text-gray-600"><span class="font-medium">Description:</span> {{ report.description }}</p>
+        </div>
+      </div>
+      <div v-else class="text-gray-500 text-center py-4">
+        No {{route.query.name === 'statues' ? 'Statutes' : route.query.name}} available.
+      </div>
+    </div>
+
+    <!-- <div  class="space-y-4">
       <div v-if="bookCategoriesList && bookCategoriesList.length > 0">
         <ul class="list-disc list-inside space-y-4 pl-4">
           <li v-for="(report, index) in bookCategoriesList" :key="index" class="text-lg">
-            {{ report.title }}
+            {{ report.title }} -  {{ report.author }} - {{ report.location }} - {{ report.year }} - {{ report.description }}
           </li>
         </ul>
       </div>
-      <div v-else class="text-center py-8">
+    </div> -->
+
+     <!-- <div v-else class="text-center py-8">
         <p class="text-gray-500 text-lg">No {{route.query.name}} found starting with '{{ selectedLetter }}'</p>
-      </div>
-    </div>
-    
+      </div> -->
     <!-- Pagination -->
     <!-- <div class="flex justify-end mt-8">
       <button @click="router.back()" class="bg-green-700 hover:bg-green-800 text-white px-4 py-2 rounded transition-colors">

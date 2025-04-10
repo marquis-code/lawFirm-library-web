@@ -21,7 +21,7 @@
             @click="selectSearchType(option)" 
             class="px-4 py-4 hover:bg-gray-100 cursor-pointer"
           >
-            {{ option.name }}
+            {{ option.name === 'Statues' ? 'Statutes' : option.name }}
           </div>
         </div>
       </div>
