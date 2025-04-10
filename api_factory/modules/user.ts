@@ -34,7 +34,7 @@ export const user_api = {
         return GATEWAY_ENDPOINT.get(url);
       },
       $_get_client_index_alphabetically: (order: string, categoryId?: string) => {
-        const url  =  `/user/search-client?order=${order}`
+        const url  =  `/user/search-client-file?order=${order}`
         return GATEWAY_ENDPOINT.get(url);
       },
 };
