@@ -2,6 +2,7 @@ import axios, { type AxiosResponse } from "axios";
 import { useUser } from "@/composables/modules/auth/user";
 import { useCustomToast } from '@/composables/core/useCustomToast'
 const { showToast } = useCustomToast();
+const router = useRouter()
 
 const { token, logOut } = useUser();
 
@@ -88,12 +89,13 @@ instanceArray.forEach((instance) => {
       if (err.response.status === 401) {
         console.log(err.response.data.error)
         // logOut();
-        showToast({
-          title: "Error",
-          message: err?.response?.data?.message || err?.response?.data?.error || "An error occured",
-          toastType: "error",
-          duration: 3000
-        });
+        // showToast({
+        //   title: "Error",
+        //   message: err?.response?.data?.message || err?.response?.data?.error || "An error occured",
+        //   toastType: "error",
+        //   duration: 3000
+        // });
+        router.push('/login')
         return {
           type: "ERROR",
           ...err.response,
